@@ -35,7 +35,7 @@ html {
 body {
     font-family: var(--font-mono);
     background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), 
-                url('https://live.staticflickr.com/65535/52259221868_56b9d9e6a6_o.jpg') center/cover no-repeat fixed;
+                url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat fixed;
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
@@ -43,7 +43,6 @@ body {
     justify-content: center;
     overflow-x: hidden;
     line-height: 1.6;
-    transition: background-image 1s ease-in-out;
 }
 
 .skip-link {

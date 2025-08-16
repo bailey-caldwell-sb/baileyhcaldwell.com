@@ -373,86 +373,6 @@ class PerformanceMonitor {
     }
 }
 
-// Background image rotation manager
-class BackgroundRotator {
-    constructor() {
-        this.images = [
-            // Carina Nebula "Cosmic Cliffs"
-            'https://live.staticflickr.com/65535/52259221868_56b9d9e6a6_o.jpg',
-            // Pillars of Creation (JWST)
-            'https://live.staticflickr.com/65535/52463002059_b2a4b2c1a9_o.jpg',
-            // Southern Ring Nebula
-            'https://live.staticflickr.com/65535/52259221773_ad7c32b8c0_o.jpg',
-            // Stephan's Quintet
-            'https://live.staticflickr.com/65535/52259221888_6b8e8b1e6b_o.jpg',
-            // Webb's First Deep Field
-            'https://live.staticflickr.com/65535/52259221903_8b5b0e1e8b_o.jpg',
-            // Phantom Galaxy (M74)
-            'https://live.staticflickr.com/65535/52356057494_b2a4b2c1a9_o.jpg'
-        ];
-        this.currentIndex = 0;
-        this.intervalId = null;
-        this.init();
-    }
-
-    init() {
-        // Preload all images for smooth transitions
-        this.preloadImages();
-        
-        // Start rotation after a short delay
-        setTimeout(() => {
-            this.startRotation();
-        }, 2000); // Wait 2 seconds before starting rotation
-    }
-
-    preloadImages() {
-        this.images.forEach(imageUrl => {
-            const img = new Image();
-            img.src = imageUrl;
-        });
-    }
-
-    startRotation() {
-        // Only start if user doesn't prefer reduced motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            return;
-        }
-
-        this.intervalId = setInterval(() => {
-            this.rotateBackground();
-        }, 5000); // Change every 5 seconds
-    }
-
-    rotateBackground() {
-        this.currentIndex = (this.currentIndex + 1) % this.images.length;
-        const newImageUrl = this.images[this.currentIndex];
-        
-        // Update the background image with smooth transition
-        document.body.style.backgroundImage = `linear-gradient(var(--bg-overlay), var(--bg-overlay)), url('${newImageUrl}')`;
-        
-        // Optional: Log the current image for debugging
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            console.log(`Background rotated to image ${this.currentIndex + 1}/${this.images.length}`);
-        }
-    }
-
-    pause() {
-        if (this.intervalId) {
-            clearInterval(this.intervalId);
-            this.intervalId = null;
-        }
-    }
-
-    resume() {
-        if (!this.intervalId) {
-            this.startRotation();
-        }
-    }
-
-    destroy() {
-        this.pause();
-    }
-}
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
@@ -462,8 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize contact form
     const contactForm = new ContactForm('.contact-form');
     
-    // Initialize background rotation
-    const backgroundRotator = new BackgroundRotator();
     
     // Initialize tilt effect (only if user doesn't prefer reduced motion)
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -481,13 +399,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle page visibility changes for performance
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-            // Pause animations and background rotation when page is not visible
+            // Pause animations when page is not visible
             document.body.style.animationPlayState = 'paused';
-            backgroundRotator.pause();
         } else {
-            // Resume animations and background rotation when page becomes visible
+            // Resume animations when page becomes visible
             document.body.style.animationPlayState = 'running';
-            backgroundRotator.resume();
         }
     });
 });
