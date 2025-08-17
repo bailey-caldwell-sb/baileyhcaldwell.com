@@ -64,16 +64,15 @@ body {
 
 .main-container {
     max-width: 1200px;
-    padding: 40px 30px;
-    text-align: left;
-    background: var(--glass-bg);
-    backdrop-filter: var(--backdrop-blur);
-    border: 1px solid var(--glass-border);
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
     border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-primary);
     animation: fadeIn 1.5s ease-out;
     position: relative;
-    transition: transform 0.1s ease-out;
     margin: 20px;
 }
 
