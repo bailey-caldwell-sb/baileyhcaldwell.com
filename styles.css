@@ -212,11 +212,6 @@ body {
     transform: scale(1.02);
 }
 
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(100, 181, 246, 0.2);
-    border-color: var(--primary-blue-light);
-}
 
 .service-title {
     font-size: 1.2rem;
