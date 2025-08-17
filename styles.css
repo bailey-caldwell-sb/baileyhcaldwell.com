@@ -395,19 +395,27 @@ body {
     font-size: 0.9rem;
 }
 
-.linkedin-link {
-    margin-top: 10px;
+.contact-linkedin {
+    margin-top: 20px;
 }
 
-.linkedin-link a {
+.linkedin-link-prominent {
+    display: inline-block;
+    font-size: 1.1rem;
     color: var(--primary-blue);
     text-decoration: none;
-    font-weight: 500;
+    padding: 12px 25px;
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius-small);
+    background: rgba(100, 181, 246, 0.05);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
 }
 
-.linkedin-link a:hover {
-    color: var(--primary-blue-light);
-    text-decoration: underline;
+.linkedin-link-prominent:focus {
+    outline: 2px solid var(--primary-blue);
+    outline-offset: 2px;
 }
 
 .success-message {
