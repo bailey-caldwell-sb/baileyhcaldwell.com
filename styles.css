@@ -401,16 +401,15 @@ body {
 
 .linkedin-link-prominent {
     display: inline-block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--primary-blue);
     text-decoration: none;
-    padding: 12px 25px;
+    padding: 15px 30px;
     border: 2px solid var(--primary-blue);
     border-radius: var(--border-radius-small);
-    background: rgba(100, 181, 246, 0.05);
+    background: rgba(100, 181, 246, 0.1);
     font-weight: 600;
     letter-spacing: 0.5px;
-    transition: all 0.2s ease;
 }
 
 .linkedin-link-prominent:focus {
