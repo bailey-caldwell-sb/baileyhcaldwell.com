@@ -63,8 +63,8 @@ body {
 }
 
 .main-container {
-    max-width: 600px;
-    padding: 40px 20px;
+    max-width: 700px;
+    padding: 50px 30px;
     text-align: center;
     background: var(--glass-bg);
     backdrop-filter: var(--backdrop-blur);
@@ -87,16 +87,28 @@ body {
     }
 }
 
-.site-title {
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: linear-gradient(45deg, var(--primary-blue), var(--primary-blue-light), var(--primary-blue-dark));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: glow 2s ease-in-out infinite alternate;
+.logo-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-logo {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(100, 181, 246, 0.3));
+    animation: logoGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        filter: drop-shadow(0 0 10px rgba(100, 181, 246, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(100, 181, 246, 0.6));
+    }
 }
 
 @keyframes glow {
@@ -109,23 +121,26 @@ body {
 }
 
 .subtitle {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-bottom: 30px;
-    color: var(--text-secondary);
-    letter-spacing: 1px;
+    color: var(--primary-blue-light);
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(66, 165, 245, 0.5);
 }
 
 .status-badge {
     font-size: 1.5rem;
     margin-bottom: 40px;
-    color: var(--accent-green);
+    color: var(--primary-blue);
     text-transform: uppercase;
     letter-spacing: 3px;
-    border: 2px solid var(--accent-green);
+    border: 2px solid var(--primary-blue);
     padding: 15px 30px;
     border-radius: var(--border-radius-pill);
     display: inline-block;
-    background: rgba(129, 199, 132, 0.1);
+    background: rgba(100, 181, 246, 0.1);
     animation: pulse 2s infinite;
     font-weight: bold;
 }
@@ -133,11 +148,11 @@ body {
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(129, 199, 132, 0.4);
+        box-shadow: 0 0 0 0 rgba(100, 181, 246, 0.4);
     }
     50% {
         transform: scale(1.02);
-        box-shadow: 0 0 20px 10px rgba(129, 199, 132, 0);
+        box-shadow: 0 0 20px 10px rgba(100, 181, 246, 0);
     }
 }
 
@@ -329,8 +344,8 @@ body {
         padding: 30px 20px;
     }
     
-    .site-title {
-        font-size: 2rem;
+    .main-logo {
+        max-width: 280px;
     }
     
     .status-badge {
@@ -340,7 +355,7 @@ body {
     }
     
     .subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .description {
@@ -352,6 +367,10 @@ body {
     .main-container {
         margin: 10px;
         padding: 25px 15px;
+    }
+    
+    .main-logo {
+        max-width: 250px;
     }
     
     .contact-form {
