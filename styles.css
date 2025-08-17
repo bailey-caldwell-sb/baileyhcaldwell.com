@@ -63,9 +63,9 @@ body {
 }
 
 .main-container {
-    max-width: 700px;
-    padding: 50px 30px;
-    text-align: center;
+    max-width: 1200px;
+    padding: 40px 30px;
+    text-align: left;
     background: var(--glass-bg);
     backdrop-filter: var(--backdrop-blur);
     border: 1px solid var(--glass-border);
@@ -74,6 +74,7 @@ body {
     animation: fadeIn 1.5s ease-out;
     position: relative;
     transition: transform 0.1s ease-out;
+    margin: 20px;
 }
 
 @keyframes fadeIn {
@@ -92,10 +93,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .main-logo {
-    max-width: 350px;
+    max-width: 300px;
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 15px rgba(100, 181, 246, 0.3));
@@ -121,28 +123,121 @@ body {
 }
 
 .subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
     color: var(--primary-blue-light);
     letter-spacing: 2px;
     font-weight: bold;
     text-transform: uppercase;
     text-shadow: 0 0 10px rgba(66, 165, 245, 0.5);
+    text-align: center;
 }
 
-.status-badge {
-    font-size: 1.5rem;
-    margin-bottom: 40px;
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 20px;
     color: var(--primary-blue);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    border: 2px solid var(--primary-blue);
-    padding: 15px 30px;
-    border-radius: var(--border-radius-pill);
-    display: inline-block;
-    background: rgba(100, 181, 246, 0.1);
-    animation: pulse 2s infinite;
     font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(100, 181, 246, 0.4);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* About Section */
+.about-section {
+    margin-bottom: 50px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 25px;
+    color: var(--primary-blue-light);
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.about-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/* Services Section */
+.services-section {
+    margin-bottom: 50px;
+    padding: 30px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    transition: var(--transition-smooth);
+    backdrop-filter: blur(5px);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(100, 181, 246, 0.2);
+    border-color: var(--primary-blue-light);
+}
+
+.service-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--primary-blue);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.service-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @keyframes pulse {
@@ -164,10 +259,14 @@ body {
 }
 
 .contact-form {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 
 .form-group {
@@ -340,22 +439,42 @@ body {
 /* Responsive design */
 @media (max-width: 768px) {
     .main-container {
-        margin: 20px;
-        padding: 30px 20px;
+        margin: 10px;
+        padding: 25px 20px;
+        text-align: center;
     }
     
     .main-logo {
-        max-width: 280px;
+        max-width: 250px;
     }
     
-    .status-badge {
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        padding: 12px 25px;
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+    
+    .about-content p {
+        text-align: left;
+    }
+    
+    .contact-form {
+        grid-template-columns: 1fr;
     }
     
     .subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .description {
@@ -365,12 +484,28 @@ body {
 
 @media (max-width: 480px) {
     .main-container {
-        margin: 10px;
-        padding: 25px 15px;
+        margin: 5px;
+        padding: 20px 15px;
     }
     
     .main-logo {
-        max-width: 250px;
+        max-width: 220px;
+    }
+    
+    .hero-title {
+        font-size: 1.4rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .service-card {
+        padding: 15px;
+    }
+    
+    .service-title {
+        font-size: 1.1rem;
     }
     
     .contact-form {
@@ -385,6 +520,7 @@ body {
     .submit-button {
         padding: 12px 30px;
         font-size: 0.9rem;
+        grid-column: 1 / -1;
     }
 }
 
