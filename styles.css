@@ -200,7 +200,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     padding: 2rem;
-    transition: all 0.3s ease;
     cursor: pointer;
 }
 
@@ -208,7 +207,6 @@ body {
     background: rgba(138, 43, 226, 0.15);
     border: 2px solid rgba(138, 43, 226, 0.4);
     box-shadow: 0 8px 32px rgba(138, 43, 226, 0.2);
-    transform: scale(1.02);
 }
 
 
@@ -289,13 +287,12 @@ body {
 .form-input,
 .form-textarea {
     font-family: var(--font-mono);
-    background: var(--input-bg);
-    border: 1px solid var(--input-border);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: var(--border-radius-small);
     padding: 15px;
     color: var(--text-primary);
     font-size: 1rem;
-    transition: var(--transition-smooth);
     width: 100%;
 }
 
