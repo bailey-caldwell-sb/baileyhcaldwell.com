@@ -318,31 +318,19 @@ body {
 }
 
 .submit-button {
-    background: linear-gradient(45deg, var(--primary-blue-dark), var(--primary-blue-light));
-    border: none;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
     color: white;
-    padding: 15px 40px;
-    font-size: 1rem;
+    border: none;
+    padding: 8px 20px;
+    font-size: 0.9rem;
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     border-radius: var(--border-radius-pill);
     cursor: pointer;
-    transition: var(--transition-smooth);
-    margin-top: 10px;
-    position: relative;
-    overflow: hidden;
     font-weight: bold;
 }
 
-.submit-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-button);
-}
-
-.submit-button:active {
-    transform: translateY(0);
-}
 
 .submit-button:disabled {
     opacity: 0.6;
