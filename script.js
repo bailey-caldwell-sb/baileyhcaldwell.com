@@ -1,3 +1,14 @@
+/**
+ * Bailey H. Caldwell Consulting Website - Interactive Elements
+ * Space-themed professional website with glassmorphism design
+ * 
+ * Features:
+ * - Animated starfield background
+ * - 3D tilt effects on mouse movement
+ * - Form validation and submission
+ * - Performance optimized animations
+ */
+
 // Performance optimized star creation and animation
 class StarField {
     constructor(containerId, starCount = 100) {
