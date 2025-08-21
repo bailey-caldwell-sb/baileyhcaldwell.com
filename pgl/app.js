@@ -39,7 +39,7 @@ class FantasyFootballApp {
             
             const clientId = 'dj0yJmk8TmV4OVl1MFlWQ3FsJmQ5WVd4OVZGVnNaRmRpYVkwbWNHbzlNY29jVlZXZWNyZXNWNyZzPWNvbnN1bWVyc2VjcmV0Jng9PTAz';
             const clientSecret = '5e41d85885b637f03d795dc29f06174ceb702ce';
-            const redirectUri = 'https://baileyhcaldwell.com/pgl/';
+            const redirectUri = 'https://baileyhcaldwell.com/pgl';
             
             const response = await fetch('https://api.login.yahoo.com/oauth2/get_token', {
                 method: 'POST',
@@ -90,7 +90,7 @@ class FantasyFootballApp {
     initiateAuth() {
         // Redirect to Yahoo OAuth with proper client ID and redirect URI
         const clientId = 'dj0yJmk8TmV4OVl1MFlWQ3FsJmQ5WVd4OVZGVnNaRmRpYVkwbWNHbzlNY29jVlZXZWNyZXNWNyZzPWNvbnN1bWVyc2VjcmV0Jng9PTAz';
-        const redirectUri = encodeURIComponent('https://baileyhcaldwell.com/pgl/');
+        const redirectUri = encodeURIComponent('https://baileyhcaldwell.com/pgl');
         const scope = 'fspt-r';
         
         const authUrl = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
