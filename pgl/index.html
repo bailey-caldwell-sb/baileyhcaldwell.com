@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGL - Fantasy Football Dashboard | Bailey Caldwell</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-football-ball"></i> Fantasy Football Dashboard</h1>
+                <div class="auth-section" id="authSection">
+                    <button id="loginBtn" class="btn btn-primary">
+                        <i class="fab fa-yahoo"></i> Connect to Yahoo
+                    </button>
+                    <div id="userInfo" class="user-info" style="display: none;">
+                        <span id="userName"></span>
+                        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Loading your fantasy data...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <div id="loginPrompt" class="login-prompt">
+                <div class="prompt-card">
+                    <i class="fas fa-football-ball fa-3x"></i>
+                    <h2>Welcome to Your Fantasy Dashboard</h2>
+                    <p>Connect your Yahoo Fantasy Football account to view live scores, standings, and league information.</p>
+                    <button id="connectBtn" class="btn btn-primary btn-large">
+                        <i class="fab fa-yahoo"></i> Connect Yahoo Account
+                    </button>
+                </div>
+            </div>
+
+            <div id="dashboardContent" class="dashboard-content" style="display: none;">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="leagueName">League Name</h3>
+                            <p>Current Week: <span id="currentWeek">-</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="numTeams">0</h3>
+                            <p>Teams</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="draftStatus">-</h3>
+                            <p>Draft Status</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <section class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-list-ol"></i> League Standings</h2>
+                            <button id="refreshStandings" class="btn btn-small">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <div id="standingsTable" class="standings-table">
+                                <div class="loading-placeholder">Loading standings...</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-chart-line"></i> Live Scores</h2>
+                            <button id="refreshScores" class="btn btn-small">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                        </div>
+                        <div class="card-content">
+                            <div id="liveScores" class="live-scores">
+                                <div class="loading-placeholder">Loading live scores...</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user"></i> My Team</h2>
+                        <button id="refreshTeam" class="btn btn-small">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <div id="myTeam" class="my-team">
+                            <div class="loading-placeholder">Loading your team...</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
