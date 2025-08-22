@@ -95,6 +95,11 @@ class FantasyFootballApp {
         
         const authUrl = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
         
+        // Debug: log the URL being used
+        console.log('OAuth URL:', authUrl);
+        console.log('Client ID:', clientId);
+        console.log('Redirect URI:', redirectUri);
+        
         window.location.href = authUrl;
     }
 
