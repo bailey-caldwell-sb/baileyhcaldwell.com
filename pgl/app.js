@@ -93,7 +93,7 @@ class FantasyFootballApp {
         const redirectUri = encodeURIComponent('https://baileyhcaldwell.com/pgl');
         const scope = 'fspt-r';
         
-        const authUrl = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}`;
+        const authUrl = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=fantasy_dashboard`;
         
         // Debug: log the URL being used
         console.log('=== FANTASY DASHBOARD OAUTH DEBUG ===');
