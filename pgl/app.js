@@ -103,18 +103,11 @@ class FantasyFootballApp {
                 </div>
                 <div class="auth-modal-body">
                     <div class="setup-step">
-                        <h3>Step 1: Get OAuth Authorization Code</h3>
-                        <p>Visit this URL to authorize your app:</p>
-                        <div class="oauth-url">
-                            <a href="https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk8TmV4OVl1MFlWQ3FsJmQ5WVd4OVZGVnNaRmRpYVkwbWNHbzlNY29jVlZXZWNyZXNWNyZzPWNvbnN1bWVyc2VjcmV0Jng9PTAz&redirect_uri=https%3A%2F%2Fbaileyhcaldwell.com%2Fpgl&response_type=code&scope=fspt-r" target="_blank">Click here to authorize with Yahoo</a>
-                        </div>
-                        <p><small>You'll be redirected back here with an authorization code in the URL</small></p>
-                    </div>
-                    <div class="setup-step">
-                        <h3>Step 2: Enter Your League Information</h3>
-                        <input type="text" id="accessTokenInput" placeholder="Access token (if you have one)" class="token-input">
-                        <input type="text" id="leagueKeyInput" placeholder="League key (e.g., 414.l.123456)" class="token-input">
-                        <button id="saveTokenBtn" class="btn btn-primary">Save & Connect</button>
+                        <h3>Demo Mode Setup</h3>
+                        <p>Since Yahoo's OAuth is having issues, let's set up your league in demo mode:</p>
+                        <input type="text" id="leagueKeyInput" placeholder="Enter your league key (e.g., 414.l.123456)" class="token-input">
+                        <button id="saveTokenBtn" class="btn btn-primary">Continue in Demo Mode</button>
+                        <p><small>This will show your league structure with sample data until OAuth is resolved</small></p>
                     </div>
                     <div class="setup-help">
                         <h4>Finding Your League Key</h4>
@@ -236,19 +229,18 @@ class FantasyFootballApp {
         });
 
         document.getElementById('saveTokenBtn').addEventListener('click', () => {
-            const token = document.getElementById('accessTokenInput').value.trim();
             const leagueKey = document.getElementById('leagueKeyInput').value.trim();
             
-            if (token && leagueKey) {
-                this.accessToken = token;
+            if (leagueKey) {
                 this.leagueKey = leagueKey;
-                localStorage.setItem('yahoo_access_token', token);
+                this.accessToken = 'demo_mode'; // Demo mode flag
                 localStorage.setItem('league_key', leagueKey);
+                localStorage.setItem('yahoo_access_token', 'demo_mode');
                 document.body.removeChild(modal);
                 this.showDashboard();
-                this.loadDashboardData();
+                this.loadDemoData();
             } else {
-                alert('Please enter both access token and league key');
+                alert('Please enter your league key');
             }
         });
     }
@@ -328,6 +320,11 @@ class FantasyFootballApp {
     }
 
     async loadDashboardData() {
+        if (this.accessToken === 'demo_mode') {
+            this.loadDemoData();
+            return;
+        }
+        
         try {
             await Promise.all([
                 this.loadLeagueInfo(),
@@ -338,6 +335,98 @@ class FantasyFootballApp {
         } catch (error) {
             this.showError('Failed to load dashboard data. Please check your access token and league key.');
         }
+    }
+
+    loadDemoData() {
+        // Demo league info
+        document.getElementById('leagueName').textContent = 'Demo Fantasy League';
+        document.getElementById('currentWeek').textContent = '3';
+        document.getElementById('numTeams').textContent = '12';
+        document.getElementById('draftStatus').textContent = 'Postdraft';
+
+        // Demo standings
+        const standingsHtml = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                        <th>W-L</th>
+                        <th>Points For</th>
+                        <th>Points Against</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Team Thunder</td><td>3-0</td><td>387.2</td><td>298.1</td></tr>
+                    <tr><td>2</td><td>Gridiron Giants</td><td>2-1</td><td>356.8</td><td>312.4</td></tr>
+                    <tr><td>3</td><td>End Zone Eagles</td><td>2-1</td><td>341.5</td><td>329.7</td></tr>
+                    <tr><td>4</td><td>Touchdown Titans</td><td>2-1</td><td>334.2</td><td>318.9</td></tr>
+                    <tr><td>5</td><td>Field Goal Foxes</td><td>1-2</td><td>298.7</td><td>345.3</td></tr>
+                    <tr><td>6</td><td>Blitz Bombers</td><td>1-2</td><td>287.4</td><td>356.8</td></tr>
+                </tbody>
+            </table>
+        `;
+        document.getElementById('standingsTable').innerHTML = standingsHtml;
+
+        // Demo live scores
+        const scoresHtml = `
+            <div class="matchup">
+                <div class="team">
+                    <div class="team-name">Team Thunder</div>
+                    <div class="team-score">124.3</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <div class="team-name">Gridiron Giants</div>
+                    <div class="team-score">98.7</div>
+                </div>
+            </div>
+            <div class="matchup">
+                <div class="team">
+                    <div class="team-name">End Zone Eagles</div>
+                    <div class="team-score">112.1</div>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <div class="team-name">Touchdown Titans</div>
+                    <div class="team-score">89.4</div>
+                </div>
+            </div>
+        `;
+        document.getElementById('liveScores').innerHTML = scoresHtml;
+
+        // Demo team roster
+        const teamHtml = `
+            <div class="player-row">
+                <div class="player-info">
+                    <div class="player-name">Josh Allen</div>
+                    <div class="player-position">QB - BUF</div>
+                </div>
+                <div class="player-points">24.3 pts</div>
+            </div>
+            <div class="player-row">
+                <div class="player-info">
+                    <div class="player-name">Christian McCaffrey</div>
+                    <div class="player-position">RB - SF</div>
+                </div>
+                <div class="player-points">18.7 pts</div>
+            </div>
+            <div class="player-row">
+                <div class="player-info">
+                    <div class="player-name">Tyreek Hill</div>
+                    <div class="player-position">WR - MIA</div>
+                </div>
+                <div class="player-points">15.2 pts</div>
+            </div>
+            <div class="player-row">
+                <div class="player-info">
+                    <div class="player-name">Travis Kelce</div>
+                    <div class="player-position">TE - KC</div>
+                </div>
+                <div class="player-points">12.8 pts</div>
+            </div>
+        `;
+        document.getElementById('myTeam').innerHTML = teamHtml;
     }
 
     async loadLeagueInfo() {
