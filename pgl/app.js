@@ -88,21 +88,8 @@ class FantasyFootballApp {
     }
 
     initiateAuth() {
-        // Redirect to Yahoo OAuth with proper client ID and redirect URI
-        const clientId = 'dj0yJmk8TmV4OVl1MFlWQ3FsJmQ5WVd4OVZGVnNaRmRpYVkwbWNHbzlNY29jVlZXZWNyZXNWNyZzPWNvbnN1bWVyc2VjcmV0Jng9PTAz';
-        const redirectUri = encodeURIComponent('https://baileyhcaldwell.com/pgl');
-        const scope = 'fspt-r';
-        
-        const authUrl = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scope}&state=fantasy_dashboard`;
-        
-        // Debug: log the URL being used
-        console.log('=== FANTASY DASHBOARD OAUTH DEBUG ===');
-        console.log('OAuth URL:', authUrl);
-        console.log('Client ID:', clientId);
-        console.log('Redirect URI:', redirectUri);
-        console.log('=== END DEBUG ===');
-        
-        window.location.href = authUrl;
+        // Show manual token entry option due to OAuth issues
+        this.showAuthInstructions();
     }
 
     showAuthInstructions() {
@@ -116,22 +103,24 @@ class FantasyFootballApp {
                 </div>
                 <div class="auth-modal-body">
                     <div class="setup-step">
-                        <h3>Step 1: Create Yahoo App</h3>
-                        <p>Go to <a href="https://developer.yahoo.com/apps/create/" target="_blank">Yahoo Developer Console</a> and create a new app with Fantasy Sports API access.</p>
+                        <h3>Step 1: Get OAuth Authorization Code</h3>
+                        <p>Visit this URL to authorize your app:</p>
+                        <div class="oauth-url">
+                            <a href="https://api.login.yahoo.com/oauth2/request_auth?client_id=dj0yJmk8TmV4OVl1MFlWQ3FsJmQ5WVd4OVZGVnNaRmRpYVkwbWNHbzlNY29jVlZXZWNyZXNWNyZzPWNvbnN1bWVyc2VjcmV0Jng9PTAz&redirect_uri=https%3A%2F%2Fbaileyhcaldwell.com%2Fpgl&response_type=code&scope=fspt-r" target="_blank">Click here to authorize with Yahoo</a>
+                        </div>
+                        <p><small>You'll be redirected back here with an authorization code in the URL</small></p>
                     </div>
                     <div class="setup-step">
-                        <h3>Step 2: Get Your Credentials</h3>
-                        <p>You'll need your Client ID, Client Secret, and to complete the OAuth flow to get an access token.</p>
-                    </div>
-                    <div class="setup-step">
-                        <h3>Step 3: Enter Your Access Token</h3>
-                        <input type="text" id="accessTokenInput" placeholder="Enter your access token here" class="token-input">
-                        <input type="text" id="leagueKeyInput" placeholder="Enter your league key (e.g., 414.l.123456)" class="token-input">
+                        <h3>Step 2: Enter Your League Information</h3>
+                        <input type="text" id="accessTokenInput" placeholder="Access token (if you have one)" class="token-input">
+                        <input type="text" id="leagueKeyInput" placeholder="League key (e.g., 414.l.123456)" class="token-input">
                         <button id="saveTokenBtn" class="btn btn-primary">Save & Connect</button>
                     </div>
                     <div class="setup-help">
-                        <h4>Need help getting your access token?</h4>
-                        <p>For development purposes, you can use tools like Postman or curl to complete the OAuth flow. The league key format is: {game_id}.l.{league_id}</p>
+                        <h4>Finding Your League Key</h4>
+                        <p>Your league key is in your Yahoo Fantasy URL: <br>
+                        <code>https://football.fantasysports.yahoo.com/f1/123456</code><br>
+                        Format: <code>414.l.123456</code> (414 = current NFL season)</p>
                     </div>
                 </div>
             </div>
@@ -224,6 +213,12 @@ class FantasyFootballApp {
                 .setup-help p {
                     color: #4a5568;
                     font-size: 14px;
+                }
+                .setup-help code {
+                    background: #f7fafc;
+                    padding: 2px 6px;
+                    border-radius: 4px;
+                    font-family: monospace;
                 }
             </style>
         `;
