@@ -578,6 +578,11 @@
 
     <script src="script.js"></script>
     <script>
+        // Check if user has access
+        if (!sessionStorage.getItem('finops-access')) {
+            window.location.href = 'login.html';
+        }
+        
         // Company data with website URLs
         const companies = [
             { name: "Flexera", vision: 9, execution: 8, quadrant: "pioneers", url: "https://www.flexera.com/" },
