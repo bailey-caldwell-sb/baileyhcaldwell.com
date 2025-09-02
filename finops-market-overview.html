@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="FinOps Market Overview - Comprehensive analysis of the FinOps and AI Cost Management landscape with interactive Magic Quadrant visualization by Bailey H. Caldwell Consulting.">
+    <meta name="keywords"
+        content="FinOps, Cloud Cost Management, AI Cost Management, Magic Quadrant, Market Analysis, Bailey Caldwell, Technology Consulting">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baileyhcaldwell.com/finops-market-overview">
+    <meta property="og:title" content="FinOps Market Overview - Bailey H. Caldwell Consulting">
+    <meta property="og:description"
+        content="Interactive Magic Quadrant analysis of the FinOps and AI Cost Management market landscape.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://baileyhcaldwell.com/finops-market-overview">
+    <meta property="twitter:title" content="FinOps Market Overview - Bailey H. Caldwell Consulting">
+    <meta property="twitter:description"
+        content="Interactive Magic Quadrant analysis of the FinOps and AI Cost Management market landscape.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <title>FinOps Market Overview - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Additional styles for Magic Quadrant */
+        .magic-quadrant-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .chart-with-legend {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-legend {
+            flex: 0 0 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .legend-title {
+            color: var(--primary-blue-light);
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .legend-companies {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-company {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .legend-company:hover {
+            background: rgba(100, 181, 246, 0.1);
+            transform: translateX(5px);
+        }
+
+        .legend-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .legend-company-name {
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        .quadrant-chart {
+            position: relative;
+            flex: 1;
+            height: 600px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            border: 2px solid var(--primary-blue);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .quadrant {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 15px;
+        }
+
+        .quadrant-pioneers {
+            top: 0;
+            right: 0;
+            background: rgba(129, 199, 132, 0.1);
+        }
+
+        .quadrant-experts {
+            top: 0;
+            left: 0;
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        .quadrant-labs {
+            bottom: 0;
+            right: 0;
+            background: rgba(156, 39, 176, 0.1);
+        }
+
+        .quadrant-emerging {
+            bottom: 0;
+            left: 0;
+            background: rgba(96, 125, 139, 0.1);
+        }
+
+        .quadrant-label {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-blue-light);
+            text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .company-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .company-dot:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(100, 181, 246, 0.6);
+            z-index: 10;
+        }
+
+        .company-dot.pioneers {
+            background: var(--accent-green);
+        }
+
+        .company-dot.experts {
+            background: #ffc107;
+        }
+
+        .company-dot.labs {
+            background: #9c27b0;
+        }
+
+        .company-dot.emerging {
+            background: #607d8b;
+        }
+
+        .company-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 1px solid var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-tooltip.visible {
+            opacity: 1;
+        }
+
+        .axis-labels {
+            position: absolute;
+            color: var(--text-secondary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+        }
+
+        .x-axis-label {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .y-axis-label {
+            left: -120px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .axis-line {
+            position: absolute;
+            background: var(--primary-blue);
+            opacity: 0.6;
+        }
+
+        .axis-line.vertical {
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+        .axis-line.horizontal {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-small);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .legend-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--primary-blue);
+            border-radius: var(--border-radius-small);
+            background: rgba(100, 181, 246, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            background: rgba(100, 181, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .market-insights {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .insight-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-small);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .insight-title {
+            color: var(--primary-blue-light);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .chart-with-legend {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .company-legend {
+                flex: none;
+                max-height: 300px;
+                order: 2;
+            }
+            
+            .quadrant-chart {
+                height: 500px;
+                order: 1;
+            }
+            
+            .y-axis-label {
+                left: -100px;
+                font-size: 0.8rem;
+            }
+            
+            .x-axis-label {
+                font-size: 0.8rem;
+            }
+            
+            .company-dot {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Animated star background -->
+    <div class="stars-container" id="stars" aria-hidden="true"></div>
+
+    <!-- Main content -->
+    <main id="main-content" class="main-container" role="main">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">FinOps Market Overview</h1>
+            <p class="hero-description">
+                Interactive analysis of the FinOps and AI Cost Management landscape. This Magic Quadrant-style visualization 
+                maps vendors based on their completeness of vision and ability to execute, providing strategic insights 
+                for technology leaders evaluating FinOps solutions.
+            </p>
+        </section>
+
+        <!-- Magic Quadrant Chart -->
+        <section class="magic-quadrant-container">
+            <h2 class="section-title">FinOps & AI Cost Management Magic Quadrant</h2>
+            
+            <div class="chart-with-legend">
+                <!-- Company Legend -->
+                <div class="company-legend">
+                    <div class="legend-title">Companies</div>
+                    <div class="legend-companies" id="companyLegend">
+                        <!-- Legend items will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Chart -->
+                <div class="quadrant-chart" id="quadrantChart">
+                    <!-- Axis lines -->
+                    <div class="axis-line vertical"></div>
+                    <div class="axis-line horizontal"></div>
+                    
+                    <!-- Quadrant sections -->
+                    <div class="quadrant quadrant-experts">
+                        <div class="quadrant-label">Execution Experts</div>
+                    </div>
+                    <div class="quadrant quadrant-pioneers">
+                        <div class="quadrant-label">Market Pioneers</div>
+                    </div>
+                    <div class="quadrant quadrant-emerging">
+                        <div class="quadrant-label">Emerging Players</div>
+                    </div>
+                    <div class="quadrant quadrant-labs">
+                        <div class="quadrant-label">Innovation Labs</div>
+                    </div>
+                    
+                    <!-- Axis labels -->
+                    <div class="axis-labels x-axis-label">Ability to Execute →</div>
+                    <div class="axis-labels y-axis-label">Completeness of Vision →</div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot pioneers" style="background: var(--accent-green);"></div>
+                    <span class="legend-text">Market Pioneers - High vision, high execution</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot experts" style="background: #ffc107;"></div>
+                    <span class="legend-text">Execution Experts - Lower vision, high execution</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot labs" style="background: #9c27b0;"></div>
+                    <span class="legend-text">Innovation Labs - High vision, lower execution</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot emerging" style="background: #607d8b;"></div>
+                    <span class="legend-text">Emerging Players - Lower vision, lower execution</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Market Insights -->
+        <section class="market-insights">
+            <h2 class="section-title">Market Insights</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-title">Market Pioneers</div>
+                    <div class="insight-text">
+                        Established players like Flexera, VMware CloudHealth, and IBM Cloudability lead with 
+                        comprehensive platforms and proven execution. CloudZero and Finout represent newer entrants 
+                        with innovative approaches to cost attribution and real-time optimization.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Innovation Labs Emergence</div>
+                    <div class="insight-text">
+                        The Innovation Labs quadrant shows breakthrough developments in AI/LLM cost management with 
+                        specialized tools like Langfuse, LangSmith, and Portkey pioneering solutions for 
+                        AI workload optimization and observability.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Market Consolidation</div>
+                    <div class="insight-text">
+                        Traditional cloud cost management is maturing, while AI cost management represents the 
+                        next frontier. Organizations need integrated solutions that address both traditional 
+                        infrastructure and emerging AI workloads.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Strategic Recommendations</div>
+                    <div class="insight-text">
+                        Enterprise buyers should evaluate vendors based on their specific use cases: traditional 
+                        FinOps maturity, AI/ML workload requirements, and integration capabilities with existing 
+                        cloud and observability toolchains.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="section-title">Need FinOps Strategy Guidance?</h2>
+            <p class="contact-intro">
+                As a former McKinsey Associate Partner who built their FinOps practice, I can help you navigate 
+                this complex landscape and select the right solutions for your organization.
+            </p>
+            <div class="contact-links">
+                <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
+                <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="bio.html">Full Bio</a></p>
+            </div>
+        </section>
+
+        <footer class="site-footer" role="contentinfo">
+            <p>&copy; 2025 Bailey H Caldwell | FinOps Market Analysis</p>
+        </footer>
+    </main>
+
+    <!-- Tooltip for company information -->
+    <div id="companyTooltip" class="company-tooltip"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Company data with website URLs
+        const companies = [
+            { name: "Flexera", vision: 9, execution: 8, quadrant: "pioneers", url: "https://www.flexera.com/" },
+            { name: "VMware Tanzu CloudHealth", vision: 8.5, execution: 9, quadrant: "pioneers", url: "https://www.vmware.com/products/cloudhealth.html" },
+            { name: "IBM Cloudability / Apptio", vision: 9, execution: 8.5, quadrant: "pioneers", url: "https://www.ibm.com/products/cloudability" },
+            { name: "CloudZero", vision: 8, execution: 8, quadrant: "pioneers", url: "https://www.cloudzero.com/" },
+            { name: "Finout", vision: 7.5, execution: 8, quadrant: "pioneers", url: "https://www.finout.io/" },
+            { name: "Spot by NetApp", vision: 6, execution: 8.5, quadrant: "experts", url: "https://spot.io/" },
+            { name: "IBM Turbonomic", vision: 5.5, execution: 8, quadrant: "experts", url: "https://www.ibm.com/products/turbonomic" },
+            { name: "Datadog", vision: 6.5, execution: 7.5, quadrant: "experts", url: "https://www.datadoghq.com/" },
+            { name: "ProsperOps", vision: 5, execution: 7.5, quadrant: "experts", url: "https://www.prosperops.com/" },
+            { name: "Harness", vision: 6, execution: 7, quadrant: "experts", url: "https://www.harness.io/" },
+            { name: "Anodot (Umbrella)", vision: 8, execution: 6, quadrant: "labs", url: "https://www.anodot.com/" },
+            { name: "Yotascale", vision: 7.5, execution: 5.5, quadrant: "labs", url: "https://www.yotascale.com/" },
+            { name: "Pay-i", vision: 8.5, execution: 5, quadrant: "labs", url: "https://www.pay-i.com/" },
+            { name: "Amnic", vision: 8, execution: 4.5, quadrant: "labs", url: "https://www.amnic.com/" },
+            { name: "Portkey", vision: 7, execution: 4, quadrant: "labs", url: "https://portkey.ai/" },
+            { name: "Langfuse", vision: 7.5, execution: 4.5, quadrant: "labs", url: "https://langfuse.com/" },
+            { name: "LangSmith (LangChain)", vision: 8, execution: 6.5, quadrant: "labs", url: "https://www.langchain.com/langsmith" },
+            { name: "Maxim AI", vision: 7.5, execution: 4, quadrant: "labs", url: "https://www.maxim.ai/" },
+            { name: "Stitcher AI", vision: 7, execution: 2.5, quadrant: "labs", url: "https://www.stitcher.ai/" },
+            { name: "OpenTelemetry GenAI", vision: 8, execution: 1, quadrant: "labs", url: "https://opentelemetry.io/" },
+            { name: "Ternary", vision: 7, execution: 5, quadrant: "labs", url: "https://www.ternary.app/" },
+            { name: "AgentOps", vision: 7, execution: 4, quadrant: "labs", url: "https://www.agentops.ai/" },
+            { name: "Revenium", vision: 7, execution: 5.5, quadrant: "labs", url: "https://www.revenium.io/" },
+            { name: "Helicone", vision: 4, execution: 4, quadrant: "emerging", url: "https://www.helicone.ai/" },
+            { name: "nOps", vision: 3.5, execution: 5, quadrant: "emerging", url: "https://www.nops.io/" },
+            { name: "CloudEagle", vision: 4.5, execution: 4.5, quadrant: "emerging", url: "https://www.cloudeagle.ai/" },
+            { name: "OpenOps", vision: 5, execution: 3, quadrant: "emerging", url: "https://www.openops.io/" },
+            { name: "Economize", vision: 3, execution: 4, quadrant: "emerging", url: "https://www.economize.cloud/" },
+            { name: "Rafay Systems", vision: 4, execution: 3.5, quadrant: "emerging", url: "https://rafay.co/" },
+            { name: "Loft Labs", vision: 5, execution: 3, quadrant: "emerging", url: "https://loft.sh/" },
+            { name: "Kubecost/OpenCost", vision: 4.5, execution: 3.5, quadrant: "emerging", url: "https://www.kubecost.com/" },
+            { name: "Arize Phoenix (Arize AX)", vision: 6, execution: 5, quadrant: "emerging", url: "https://arize.com/" },
+            { name: "Weights & Biases (WandB/Weave)", vision: 5.5, execution: 6, quadrant: "emerging", url: "https://wandb.ai/" },
+            { name: "HoneyHive", vision: 4.5, execution: 3.5, quadrant: "emerging", url: "https://honeyhive.ai/" },
+            { name: "Cast AI", vision: 3.5, execution: 4.5, quadrant: "emerging", url: "https://cast.ai/" },
+            { name: "PointFive", vision: 6.5, execution: 4, quadrant: "emerging", url: "https://www.pointfive.co/" },
+            { name: "FinOpsly", vision: 6.5, execution: 2, quadrant: "emerging", url: "https://finopsly.com/" },
+            { name: "Cloud Provider Natives (AWS, Azure, GCP)", vision: 2.5, execution: 6, quadrant: "emerging", url: "https://aws.amazon.com/aws-cost-management/" }
+        ];
+
+        // Initialize the Magic Quadrant chart
+        function initializeMagicQuadrant() {
+            const chart = document.getElementById('quadrantChart');
+            const tooltip = document.getElementById('companyTooltip');
+            const legendContainer = document.getElementById('companyLegend');
+            
+            // Create legend items and chart dots
+            companies.forEach((company, index) => {
+                const companyNumber = index + 1;
+                
+                // Create legend item
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-company';
+                legendItem.innerHTML = `
+                    <div class="legend-number ${company.quadrant}" style="background: ${getQuadrantColor(company.quadrant)};">${companyNumber}</div>
+                    <div class="legend-company-name">${company.name}</div>
+                `;
+                
+                // Add click event to legend item
+                legendItem.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+                
+                legendContainer.appendChild(legendItem);
+                
+                // Create chart dot
+                const dot = document.createElement('div');
+                dot.className = `company-dot ${company.quadrant}`;
+                dot.textContent = companyNumber;
+                
+                // Position based on scores (0-10 scale)
+                // Vision (Y-axis): 0 at bottom, 10 at top
+                // Execution (X-axis): 0 at left, 10 at right
+                const x = (company.execution / 10) * 100;
+                const y = 100 - (company.vision / 10) * 100; // Invert Y for proper positioning
+                
+                dot.style.left = `${x}%`;
+                dot.style.top = `${y}%`;
+                dot.style.transform = 'translate(-50%, -50%)';
+                
+                // Add click event to open company website
+                dot.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+                
+                // Add hover events for tooltip
+                dot.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `
+                        <strong>${companyNumber}. ${company.name}</strong><br>
+                        Vision: ${company.vision}/10<br>
+                        Execution: ${company.execution}/10<br>
+                        <em>Click to visit website</em>
+                    `;
+                    tooltip.classList.add('visible');
+                    
+                    // Highlight corresponding legend item
+                    legendItem.style.background = 'rgba(100, 181, 246, 0.2)';
+                });
+                
+                dot.addEventListener('mousemove', (e) => {
+                    const rect = chart.getBoundingClientRect();
+                    tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+                    tooltip.style.top = `${e.clientY - rect.top - 10}px`;
+                });
+                
+                dot.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                    legendItem.style.background = '';
+                });
+                
+                // Add hover events to legend item
+                legendItem.addEventListener('mouseenter', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                    dot.style.boxShadow = '0 0 20px rgba(100, 181, 246, 0.6)';
+                    dot.style.zIndex = '10';
+                });
+                
+                legendItem.addEventListener('mouseleave', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    dot.style.boxShadow = '0 0 10px rgba(100, 181, 246, 0.3)';
+                    dot.style.zIndex = '';
+                });
+                
+                chart.appendChild(dot);
+            });
+        }
+        
+        // Helper function to get quadrant colors
+        function getQuadrantColor(quadrant) {
+            switch(quadrant) {
+                case 'pioneers': return 'var(--accent-green)';
+                case 'experts': return '#ffc107';
+                case 'labs': return '#9c27b0';
+                case 'emerging': return '#607d8b';
+                default: return '#607d8b';
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeMagicQuadrant();
+        });
+    </script>
+</body>
+
+</html>
