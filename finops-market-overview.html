@@ -60,14 +60,41 @@
             padding: 20px;
             max-height: 600px;
             overflow-y: auto;
+            width: 300px;
+            margin-right: 30px;
         }
 
         .legend-title {
             color: var(--primary-blue-light);
+            font-size: 1.1rem;
             font-weight: bold;
             margin-bottom: 15px;
-            font-size: 1.1rem;
             text-align: center;
+        }
+
+        .legend-search {
+            margin-bottom: 15px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-small);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
         }
 
         .legend-companies {
@@ -456,6 +483,9 @@
                 <!-- Company Legend -->
                 <div class="company-legend">
                     <div class="legend-title">Companies</div>
+                    <div class="legend-search">
+                        <input type="text" id="companySearch" placeholder="Search companies..." class="search-input">
+                    </div>
                     <div class="legend-companies" id="companyLegend">
                         <!-- Legend items will be populated by JavaScript -->
                     </div>
@@ -638,6 +668,23 @@
             const chart = document.getElementById('quadrantChart');
             const tooltip = document.getElementById('companyTooltip');
             const legendContainer = document.getElementById('companyLegend');
+            const searchInput = document.getElementById('companySearch');
+            
+            let allCompanies = [];
+            
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filterCompanies(searchTerm);
+            });
+            
+            function filterCompanies(searchTerm) {
+                allCompanies.forEach(({ legendItem, dot, company }) => {
+                    const isVisible = company.name.toLowerCase().includes(searchTerm);
+                    legendItem.style.display = isVisible ? 'flex' : 'none';
+                    dot.style.display = isVisible ? 'block' : 'none';
+                });
+            }
             
             // Create legend items and chart dots
             companies.forEach((company, index) => {
@@ -717,6 +764,9 @@
                 });
                 
                 chart.appendChild(dot);
+                
+                // Store reference for search functionality
+                allCompanies.push({ legendItem, dot, company });
             });
         }
         
