@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="The Scale-Intelligence Convergence: Enterprise Kubernetes Fleet Management meets AIOps - Interactive 2x2 analysis by Bailey H. Caldwell Consulting.">
+    <meta name="keywords"
+        content="Kubernetes, AIOps, Fleet Management, Enterprise Scale, RealTheory.ai, Competitive Analysis, Bailey Caldwell">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baileyhcaldwell.com/k8s-market-analysis">
+    <meta property="og:title" content="Kubernetes Fleet Management + AIOps Market Analysis - Bailey H. Caldwell Consulting">
+    <meta property="og:description"
+        content="The Scale-Intelligence Convergence: Where Enterprise Kubernetes meets Autonomous Operations.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://baileyhcaldwell.com/k8s-market-analysis">
+    <meta property="twitter:title" content="Kubernetes Fleet Management + AIOps Market Analysis - Bailey H. Caldwell Consulting">
+    <meta property="twitter:description"
+        content="The Scale-Intelligence Convergence: Where Enterprise Kubernetes meets Autonomous Operations.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <title>Kubernetes Fleet Management + AIOps Market Analysis - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Additional styles for 2x2 Analysis */
+        .analysis-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .chart-with-legend {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-legend {
+            flex: 0 0 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .legend-title {
+            color: var(--primary-blue-light);
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .legend-companies {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-company {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .legend-company:hover {
+            background: rgba(100, 181, 246, 0.1);
+            transform: translateX(5px);
+        }
+
+        .legend-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .legend-company-name {
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        .quadrant-chart {
+            position: relative;
+            flex: 1;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            border: 2px solid var(--primary-blue);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .quadrant {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            border: 1px solid rgba(100, 181, 246, 0.3);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 15px;
+        }
+
+        .quadrant-leaders {
+            top: 0;
+            right: 0;
+            background: rgba(129, 199, 132, 0.1);
+        }
+
+        .quadrant-challengers {
+            top: 0;
+            left: 0;
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        .quadrant-visionaries {
+            bottom: 0;
+            right: 0;
+            background: rgba(156, 39, 176, 0.1);
+        }
+
+        .quadrant-niche {
+            bottom: 0;
+            left: 0;
+            background: rgba(96, 125, 139, 0.1);
+        }
+
+        .quadrant-label {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--primary-blue-light);
+            text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .company-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .company-dot:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(100, 181, 246, 0.6);
+            z-index: 10;
+        }
+
+        .company-dot.leaders {
+            background: var(--accent-green);
+        }
+
+        .company-dot.challengers {
+            background: #ffc107;
+        }
+
+        .company-dot.visionaries {
+            background: #9c27b0;
+        }
+
+        .company-dot.niche {
+            background: #607d8b;
+        }
+
+        .company-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border: 1px solid var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .company-tooltip.visible {
+            opacity: 1;
+        }
+
+        .axis-labels {
+            position: absolute;
+            color: var(--text-secondary);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
+        }
+
+        .x-axis-label {
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .y-axis-label {
+            left: -150px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+        }
+
+        .axis-line {
+            position: absolute;
+            background: var(--primary-blue);
+            opacity: 0.6;
+        }
+
+        .axis-line.vertical {
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            transform: translateX(-50%);
+        }
+
+        .axis-line.horizontal {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-small);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .legend-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .legend-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--primary-blue);
+            border-radius: var(--border-radius-small);
+            background: rgba(100, 181, 246, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .back-link:hover {
+            background: rgba(100, 181, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .market-insights {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .insight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .insight-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-small);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .insight-title {
+            color: var(--primary-blue-light);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .insight-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .chart-with-legend {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .company-legend {
+                flex: none;
+                max-height: 300px;
+                order: 2;
+            }
+            
+            .quadrant-chart {
+                height: 400px;
+                order: 1;
+            }
+            
+            .y-axis-label {
+                left: -120px;
+                font-size: 0.8rem;
+            }
+            
+            .x-axis-label {
+                font-size: 0.8rem;
+            }
+            
+            .company-dot {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Animated star background -->
+    <div class="stars-container" id="stars" aria-hidden="true"></div>
+
+    <!-- Main content -->
+    <main id="main-content" class="main-container" role="main">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">The Scale-Intelligence Convergence: Enterprise Kubernetes Fleet Management + AIOps</h1>
+            <p class="hero-description">
+                The enterprise Kubernetes market stands at a critical inflection point where massive fleet management capabilities must converge with advanced AIOps intelligence. This analysis reveals the strategic positioning of vendors navigating the complex intersection of 100+ cluster scale operations and AI-powered autonomous management.
+            </p>
+        </section>
+
+        <!-- Market Context -->
+        <section class="market-insights">
+            <h2 class="section-title">The Convergence Imperative: Scale Meets Intelligence</h2>
+            <div class="insight-text" style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);">
+                <p><strong>The Enterprise Scale Challenge:</strong> Only 6% of companies operate 100+ Kubernetes clusters, yet these organizations represent the highest-value market segment. Managing thousands of clusters across multi-cloud environments requires fundamentally different approaches than traditional single-cluster operations. The complexity grows exponentially: policy enforcement, security compliance, resource optimization, and troubleshooting at this scale demands automated intelligence.</p>
+                
+                <p><strong>The AIOps Intelligence Revolution:</strong> Artificial intelligence is transforming Kubernetes operations from reactive troubleshooting to predictive optimization. Natural language interfaces, autonomous remediation, and ML-driven anomaly detection are no longer experimental features—they're becoming operational necessities. However, most AIOps innovations emerge from smaller vendors who lack the enterprise scale infrastructure to support massive fleet deployments.</p>
+                
+                <p><strong>The Convergence Gap:</strong> Our analysis reveals a critical market gap: few vendors successfully combine massive enterprise scale capabilities with advanced AIOps intelligence. This convergence represents the next frontier of enterprise Kubernetes management, where operational complexity meets autonomous intelligence to enable truly scalable cloud-native operations.</p>
+            </div>
+        </section>
+
+        <!-- 2x2 Analysis Chart -->
+        <section class="analysis-container">
+            <h2 class="section-title">Enterprise Kubernetes Fleet Management + AIOps: Strategic Positioning</h2>
+            
+            <div class="chart-with-legend">
+                <!-- Company Legend -->
+                <div class="company-legend">
+                    <div class="legend-title">Vendors</div>
+                    <div class="legend-companies" id="companyLegend">
+                        <!-- Legend items will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Chart -->
+                <div class="quadrant-chart" id="quadrantChart">
+                    <!-- Axis lines -->
+                    <div class="axis-line vertical"></div>
+                    <div class="axis-line horizontal"></div>
+                    
+                    <!-- Quadrant sections -->
+                    <div class="quadrant quadrant-challengers">
+                        <div class="quadrant-label">Challengers</div>
+                    </div>
+                    <div class="quadrant quadrant-leaders">
+                        <div class="quadrant-label">Leaders</div>
+                    </div>
+                    <div class="quadrant quadrant-niche">
+                        <div class="quadrant-label">Niche Players</div>
+                    </div>
+                    <div class="quadrant quadrant-visionaries">
+                        <div class="quadrant-label">Visionaries</div>
+                    </div>
+                    
+                    <!-- Axis labels -->
+                    <div class="axis-labels x-axis-label">Enterprise Scale & Execution →</div>
+                    <div class="axis-labels y-axis-label">AIOps Intelligence & Automation →</div>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot leaders" style="background: var(--accent-green);"></div>
+                    <span class="legend-text">Leaders - High scale, high AIOps intelligence</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot challengers" style="background: #ffc107;"></div>
+                    <span class="legend-text">Challengers - High scale, emerging AIOps</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot visionaries" style="background: #9c27b0;"></div>
+                    <span class="legend-text">Visionaries - High AIOps, limited enterprise scale</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot niche" style="background: #607d8b;"></div>
+                    <span class="legend-text">Niche Players - Specialized focus areas</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Analysis -->
+        <section class="market-insights">
+            <h2 class="section-title">Strategic Market Positioning Analysis</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-title">Leaders: The Convergence Pioneers</div>
+                    <div class="insight-text">
+                        <strong>IBM Turbonomic</strong> leads with proven enterprise automation at 8,000+ VM scale and AI-powered resource optimization. <strong>Spectro Cloud</strong> uniquely demonstrates 10,000+ cluster management capabilities with $75M Series C funding. <strong>RealTheory.ai</strong> positions as the AI-native copilot, targeting the convergence gap with multi-LLM integration and complex enterprise environment focus.
+                        <br><br><strong>Strategic Advantage:</strong> These vendors understand that enterprise scale and AIOps intelligence are not separate capabilities but must be architected together from the ground up.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Challengers: Scale-First, AI-Second</div>
+                    <div class="insight-text">
+                        <strong>Harness</strong> leverages its mature DevOps platform ($425M funding) to expand into K8s AIOps, while <strong>CAST AI</strong> demonstrates rapid growth with $108M Series C and 2,100+ customers in multi-cloud optimization.
+                        <br><br><strong>Strategic Challenge:</strong> These vendors excel at enterprise scale but are retrofitting AI capabilities rather than building AI-native architectures. Success depends on how quickly they can evolve beyond traditional automation.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Visionaries: AI-First, Scale-Later</div>
+                    <div class="insight-text">
+                        <strong>K8sGPT</strong> leads open-source AI troubleshooting with CNCF Sandbox status and 5K+ GitHub stars. <strong>kagent</strong> represents the most advanced agentic AI framework for Kubernetes operations. <strong>Kubecost/OpenCost</strong> combines CNCF graduated status with AI optimization capabilities.
+                        <br><br><strong>Innovation Leadership:</strong> These vendors define the future of AIOps but face commercialization and enterprise scale challenges. Their technologies often get acquired by Leaders and Challengers.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Niche Players: Specialized Excellence</div>
+                    <div class="insight-text">
+                        <strong>Komodor</strong> focuses specifically on Kubernetes troubleshooting with AI integration, serving a focused market segment with deep domain expertise.
+                        <br><br><strong>Market Position:</strong> Niche players succeed through specialized excellence but face pressure to expand or risk acquisition as the market consolidates around convergence platforms.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Market Dynamics: The Convergence Imperative</div>
+                    <div class="insight-text">
+                        <strong>Scale Validation Crisis:</strong> Only 2-3 vendors have proven 1,000+ cluster management capabilities, creating a significant barrier to entry for AI-first startups.
+                        <br><br><strong>Innovation Gap:</strong> Open-source projects lead AI innovation but lack enterprise commercialization, while enterprise vendors struggle to match AI-native capabilities.
+                        <br><br><strong>Buyer Behavior:</strong> Enterprises increasingly demand both massive scale AND advanced AIOps in single platforms rather than point solutions.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Strategic Recommendations</div>
+                    <div class="insight-text">
+                        <strong>For RealTheory.ai:</strong> Maintain "AI-native copilot" differentiation while rapidly proving enterprise scale capabilities. Partner with or acquire complementary scale infrastructure.
+                        <br><br><strong>For Enterprise Buyers:</strong> Evaluate vendors on convergence readiness—can they deliver both scale and intelligence, or will you need multiple platforms?
+                        <br><br><strong>For Investors:</strong> The convergence gap represents a $2B+ market opportunity as enterprises consolidate Kubernetes toolchains around intelligent platforms.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="section-title">Need Kubernetes Strategy Guidance?</h2>
+            <p class="contact-intro">
+                As a former McKinsey Associate Partner with deep enterprise architecture experience, I can help you navigate 
+                the complex Kubernetes vendor landscape and develop winning platform strategies.
+            </p>
+            <div class="contact-links">
+                <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
+                <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="bio.html">Full Bio</a></p>
+            </div>
+        </section>
+
+        <footer class="site-footer" role="contentinfo">
+            <p>&copy; 2025 Bailey H Caldwell | Kubernetes Fleet Management + AIOps Market Analysis</p>
+        </footer>
+    </main>
+
+    <!-- Tooltip for company information -->
+    <div id="companyTooltip" class="company-tooltip"></div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check if user has access
+        if (!sessionStorage.getItem('k8s-access')) {
+            window.location.href = 'k8s-login.html';
+        }
+        
+        // Company data for Kubernetes Fleet Management + AIOps analysis
+        const companies = [
+            // Leaders (High Scale + High AIOps)
+            { name: "IBM Turbonomic", scale: 9, aiops: 8.5, quadrant: "leaders", url: "https://www.ibm.com/products/turbonomic", funding: "Enterprise Standard", description: "AI-powered resource optimization, 8,000+ VM scale proven" },
+            { name: "Spectro Cloud", scale: 9.5, aiops: 8, quadrant: "leaders", url: "https://www.spectrocloud.com/", funding: "$75M Series C", description: "Only vendor proven at 10,000+ cluster scale" },
+            { name: "RealTheory.ai", scale: 7.5, aiops: 9, quadrant: "leaders", url: "https://realtheory.ai/", funding: "Positioning", description: "AI-native K8s copilot, multi-LLM integration" },
+            
+            // Challengers (High Scale + Emerging AIOps)
+            { name: "Harness", scale: 8.5, aiops: 6.5, quadrant: "challengers", url: "https://www.harness.io/", funding: "$425M Series D", description: "Mature DevOps platform expanding K8s AIOps" },
+            { name: "CAST AI", scale: 8, aiops: 7, quadrant: "challengers", url: "https://cast.ai/", funding: "$108M Series C", description: "Fast-growing optimization, 2,100+ customers" },
+            
+            // Visionaries (High AIOps + Limited Scale)
+            { name: "K8sGPT", scale: 5, aiops: 9, quadrant: "visionaries", url: "https://k8sgpt.ai/", funding: "CNCF Sandbox", description: "Leading open-source AI troubleshooting, 5K+ stars" },
+            { name: "kagent (Solo.io)", scale: 4, aiops: 9.5, quadrant: "visionaries", url: "https://www.solo.io/", funding: "CNCF Contribution", description: "Most advanced agentic AI framework for K8s" },
+            { name: "Kubecost/OpenCost", scale: 6, aiops: 8, quadrant: "visionaries", url: "https://www.kubecost.com/", funding: "CNCF Graduated", description: "Cost management with AI optimization" },
+            
+            // Niche Players
+            { name: "Komodor", scale: 5.5, aiops: 6, quadrant: "niche", url: "https://komodor.com/", funding: "K8s Specialist", description: "Specialized K8s troubleshooting with AI" }
+        ];
+
+        // Initialize the 2x2 analysis chart
+        function initialize2x2Analysis() {
+            const chart = document.getElementById('quadrantChart');
+            const tooltip = document.getElementById('companyTooltip');
+            const legendContainer = document.getElementById('companyLegend');
+            
+            // Create legend items and chart dots
+            companies.forEach((company, index) => {
+                const companyNumber = index + 1;
+                
+                // Create legend item
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-company';
+                legendItem.innerHTML = `
+                    <div class="legend-number ${company.quadrant}" style="background: ${getQuadrantColor(company.quadrant)};">${companyNumber}</div>
+                    <div class="legend-company-name">${company.name}</div>
+                `;
+                
+                // Add click event to legend item
+                legendItem.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+                
+                legendContainer.appendChild(legendItem);
+                
+                // Create chart dot
+                const dot = document.createElement('div');
+                dot.className = `company-dot ${company.quadrant}`;
+                dot.textContent = companyNumber;
+                
+                // Position based on scores (0-10 scale)
+                // AIOps (Y-axis): 0 at bottom, 10 at top
+                // Scale (X-axis): 0 at left, 10 at right
+                const x = (company.scale / 10) * 100;
+                const y = 100 - (company.aiops / 10) * 100; // Invert Y for proper positioning
+                
+                dot.style.left = `${x}%`;
+                dot.style.top = `${y}%`;
+                dot.style.transform = 'translate(-50%, -50%)';
+                
+                // Add click event to open company website
+                dot.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+                
+                // Add hover events for tooltip
+                dot.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `
+                        <strong>${companyNumber}. ${company.name}</strong><br>
+                        Scale: ${company.scale}/10<br>
+                        AIOps: ${company.aiops}/10<br>
+                        Funding: ${company.funding}<br>
+                        <em>${company.description}</em><br>
+                        <small>Click to visit website</small>
+                    `;
+                    tooltip.classList.add('visible');
+                    
+                    // Highlight corresponding legend item
+                    legendItem.style.background = 'rgba(100, 181, 246, 0.2)';
+                });
+                
+                dot.addEventListener('mousemove', (e) => {
+                    const rect = chart.getBoundingClientRect();
+                    tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+                    tooltip.style.top = `${e.clientY - rect.top - 10}px`;
+                });
+                
+                dot.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                    legendItem.style.background = '';
+                });
+                
+                // Add hover events to legend item
+                legendItem.addEventListener('mouseenter', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                    dot.style.boxShadow = '0 0 20px rgba(100, 181, 246, 0.6)';
+                    dot.style.zIndex = '10';
+                });
+                
+                legendItem.addEventListener('mouseleave', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    dot.style.boxShadow = '0 0 10px rgba(100, 181, 246, 0.3)';
+                    dot.style.zIndex = '';
+                });
+                
+                chart.appendChild(dot);
+            });
+        }
+        
+        // Helper function to get quadrant colors
+        function getQuadrantColor(quadrant) {
+            switch(quadrant) {
+                case 'leaders': return 'var(--accent-green)';
+                case 'challengers': return '#ffc107';
+                case 'visionaries': return '#9c27b0';
+                case 'niche': return '#607d8b';
+                default: return '#607d8b';
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initialize2x2Analysis();
+        });
+    </script>
+</body>
+
+</html>
