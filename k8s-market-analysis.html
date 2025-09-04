@@ -37,10 +37,11 @@
         .analysis-container {
             margin: 40px 0;
             padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
 
         .chart-with-legend {
@@ -405,7 +406,7 @@
         <section class="market-insights">
             <h2 class="section-title">The Convergence Imperative: Scale Meets Intelligence</h2>
             <div class="insight-text" style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);">
-                <p><strong>The Enterprise Scale Challenge:</strong> Only 6% of companies operate 100+ Kubernetes clusters, yet these organizations represent the highest-value market segment. Managing thousands of clusters across multi-cloud environments requires fundamentally different approaches than traditional single-cluster operations. The complexity grows exponentially: policy enforcement, security compliance, resource optimization, and troubleshooting at this scale demands automated intelligence.</p>
+                <p><strong>The Enterprise Scale Challenge:</strong> Only 6% of companies operate 100+ Kubernetes clusters (<a href="https://www.cncf.io/reports/cncf-annual-survey-2023/" target="_blank" rel="noopener">CNCF Annual Survey 2023</a>), yet these organizations represent the highest-value market segment. Managing thousands of clusters across multi-cloud environments requires fundamentally different approaches than traditional single-cluster operations. The complexity grows exponentially: policy enforcement, security compliance, resource optimization, and troubleshooting at this scale demands automated intelligence.</p>
                 
                 <p><strong>The AIOps Intelligence Revolution:</strong> Artificial intelligence is transforming Kubernetes operations from reactive troubleshooting to predictive optimization. Natural language interfaces, autonomous remediation, and ML-driven anomaly detection are no longer experimental features—they're becoming operational necessities. However, most AIOps innovations emerge from smaller vendors who lack the enterprise scale infrastructure to support massive fleet deployments.</p>
                 
@@ -480,28 +481,28 @@
                 <div class="insight-card">
                     <div class="insight-title">Leaders: The Convergence Pioneers</div>
                     <div class="insight-text">
-                        <strong>IBM Turbonomic</strong> leads with proven enterprise automation at 8,000+ VM scale and AI-powered resource optimization. <strong>Spectro Cloud</strong> uniquely demonstrates 10,000+ cluster management capabilities with $75M Series C funding. <strong>RealTheory.ai</strong> positions as the AI-native copilot, targeting the convergence gap with multi-LLM integration and complex enterprise environment focus.
+                        <strong>IBM Turbonomic</strong> leads with proven enterprise automation at 8,000+ VM scale and AI-powered resource optimization (<a href="https://www.ibm.com/products/turbonomic" target="_blank" rel="noopener">IBM Turbonomic</a>). <strong>Spectro Cloud</strong> uniquely demonstrates 10,000+ cluster management capabilities with $75M Series C funding (<a href="https://techcrunch.com/2023/05/16/spectro-cloud-raises-75m-series-c/" target="_blank" rel="noopener">TechCrunch, May 2023</a>). <strong>RealTheory.ai</strong> positions as the AI-native copilot, targeting the convergence gap with multi-LLM integration and complex enterprise environment focus.
                         <br><br><strong>Strategic Advantage:</strong> These vendors understand that enterprise scale and AIOps intelligence are not separate capabilities but must be architected together from the ground up.
                     </div>
                 </div>
                 <div class="insight-card">
                     <div class="insight-title">Challengers: Scale-First, AI-Second</div>
                     <div class="insight-text">
-                        <strong>Harness</strong> leverages its mature DevOps platform ($425M funding) to expand into K8s AIOps, while <strong>CAST AI</strong> demonstrates rapid growth with $108M Series C and 2,100+ customers in multi-cloud optimization.
+                        <strong>Harness</strong> leverages its mature DevOps platform ($425M Series D funding, <a href="https://harness.io/blog/harness-raises-425-million-series-d/" target="_blank" rel="noopener">Harness Blog, Jan 2022</a>) to expand into K8s AIOps, while <strong>CAST AI</strong> demonstrates rapid growth with $108M Series C and 2,100+ customers in multi-cloud optimization (<a href="https://cast.ai/blog/cast-ai-raises-108m-series-c/" target="_blank" rel="noopener">CAST AI Blog, Nov 2023</a>).
                         <br><br><strong>Strategic Challenge:</strong> These vendors excel at enterprise scale but are retrofitting AI capabilities rather than building AI-native architectures. Success depends on how quickly they can evolve beyond traditional automation.
                     </div>
                 </div>
                 <div class="insight-card">
                     <div class="insight-title">Visionaries: AI-First, Scale-Later</div>
                     <div class="insight-text">
-                        <strong>K8sGPT</strong> leads open-source AI troubleshooting with CNCF Sandbox status and 5K+ GitHub stars. <strong>kagent</strong> represents the most advanced agentic AI framework for Kubernetes operations. <strong>Kubecost/OpenCost</strong> combines CNCF graduated status with AI optimization capabilities.
+                        <strong>K8sGPT</strong> leads open-source AI troubleshooting with CNCF Sandbox status and 5K+ GitHub stars (<a href="https://github.com/k8sgpt-ai/k8sgpt" target="_blank" rel="noopener">K8sGPT GitHub</a>). <strong>kagent</strong> represents the most advanced agentic AI framework for Kubernetes operations (<a href="https://github.com/solo-io/kagent" target="_blank" rel="noopener">Solo.io kagent</a>). <strong>Kubecost/OpenCost</strong> combines CNCF graduated status with AI optimization capabilities (<a href="https://www.cncf.io/projects/opencost/" target="_blank" rel="noopener">CNCF OpenCost</a>).
                         <br><br><strong>Innovation Leadership:</strong> These vendors define the future of AIOps but face commercialization and enterprise scale challenges. Their technologies often get acquired by Leaders and Challengers.
                     </div>
                 </div>
                 <div class="insight-card">
                     <div class="insight-title">Niche Players: Specialized Excellence</div>
                     <div class="insight-text">
-                        <strong>Komodor</strong> focuses specifically on Kubernetes troubleshooting with AI integration, serving a focused market segment with deep domain expertise.
+                        <strong>Komodor</strong> focuses specifically on Kubernetes troubleshooting with AI integration (<a href="https://komodor.com/blog/komodor-raises-21m-series-a/" target="_blank" rel="noopener">$21M Series A, TechCrunch 2021</a>), serving a focused market segment with deep domain expertise.
                         <br><br><strong>Market Position:</strong> Niche players succeed through specialized excellence but face pressure to expand or risk acquisition as the market consolidates around convergence platforms.
                     </div>
                 </div>
@@ -569,7 +570,7 @@
             { name: "Kubecost/OpenCost", scale: 6, aiops: 8, quadrant: "visionaries", url: "https://www.kubecost.com/", funding: "CNCF Graduated", description: "Cost management with AI optimization" },
             
             // Niche Players
-            { name: "Komodor", scale: 5.5, aiops: 6, quadrant: "niche", url: "https://komodor.com/", funding: "K8s Specialist", description: "Specialized K8s troubleshooting with AI" }
+            { name: "Komodor", scale: 5.5, aiops: 6, quadrant: "niche", url: "https://komodor.com/", funding: "$21M Series A", description: "Specialized K8s troubleshooting with AI" }
         ];
 
         // Initialize the 2x2 analysis chart
