@@ -556,21 +556,21 @@
         // Company data for Kubernetes Fleet Management + AIOps analysis
         const companies = [
             // Leaders (High Scale + High AIOps)
-            { name: "IBM Turbonomic", scale: 9, aiops: 8.5, quadrant: "leaders", url: "https://www.ibm.com/products/turbonomic", funding: "Enterprise Standard", description: "AI-powered resource optimization, 8,000+ VM scale proven" },
-            { name: "Spectro Cloud", scale: 9.5, aiops: 8, quadrant: "leaders", url: "https://www.spectrocloud.com/", funding: "$75M Series C", description: "Only vendor proven at 10,000+ cluster scale" },
-            { name: "RealTheory.ai", scale: 7.5, aiops: 9, quadrant: "leaders", url: "https://realtheory.ai/", funding: "Positioning", description: "AI-native K8s copilot, multi-LLM integration" },
+            { name: "IBM Turbonomic", scale: 8.5, aiops: 8.5, quadrant: "leaders", url: "https://www.ibm.com/products/turbonomic", funding: "Enterprise Standard", description: "AI-powered resource optimization, 8,000+ VM scale proven" },
+            { name: "Spectro Cloud", scale: 9, aiops: 7.5, quadrant: "leaders", url: "https://www.spectrocloud.com/", funding: "$75M Series C", description: "Only vendor proven at 10,000+ cluster scale" },
+            { name: "RealTheory.ai", scale: 7, aiops: 8.5, quadrant: "leaders", url: "https://realtheory.ai/", funding: "Positioning", description: "AI-native K8s copilot, multi-LLM integration" },
             
-            // Challengers (High Scale + Emerging AIOps)
-            { name: "Harness", scale: 8.5, aiops: 6.5, quadrant: "challengers", url: "https://www.harness.io/", funding: "$425M Series D", description: "Mature DevOps platform expanding K8s AIOps" },
-            { name: "CAST AI", scale: 8, aiops: 7, quadrant: "challengers", url: "https://cast.ai/", funding: "$108M Series C", description: "Fast-growing optimization, 2,100+ customers" },
+            // Challengers (High Scale + Lower AIOps)
+            { name: "Harness", scale: 8, aiops: 4.5, quadrant: "challengers", url: "https://www.harness.io/", funding: "$425M Series D", description: "Mature DevOps platform expanding K8s AIOps" },
+            { name: "CAST AI", scale: 7.5, aiops: 5, quadrant: "challengers", url: "https://cast.ai/", funding: "$108M Series C", description: "Fast-growing optimization, 2,100+ customers" },
             
-            // Visionaries (High AIOps + Limited Scale)
-            { name: "K8sGPT", scale: 5, aiops: 9, quadrant: "visionaries", url: "https://k8sgpt.ai/", funding: "CNCF Sandbox", description: "Leading open-source AI troubleshooting, 5K+ stars" },
-            { name: "kagent (Solo.io)", scale: 4, aiops: 9.5, quadrant: "visionaries", url: "https://www.solo.io/", funding: "CNCF Contribution", description: "Most advanced agentic AI framework for K8s" },
-            { name: "Kubecost/OpenCost", scale: 6, aiops: 8, quadrant: "visionaries", url: "https://www.kubecost.com/", funding: "CNCF Graduated", description: "Cost management with AI optimization" },
+            // Visionaries (Lower Scale + High AIOps)
+            { name: "K8sGPT", scale: 3.5, aiops: 8.5, quadrant: "visionaries", url: "https://k8sgpt.ai/", funding: "CNCF Sandbox", description: "Leading open-source AI troubleshooting, 5K+ stars" },
+            { name: "kagent (Solo.io)", scale: 2.5, aiops: 9, quadrant: "visionaries", url: "https://www.solo.io/", funding: "CNCF Contribution", description: "Most advanced agentic AI framework for K8s" },
+            { name: "Kubecost/OpenCost", scale: 4, aiops: 7.5, quadrant: "visionaries", url: "https://www.kubecost.com/", funding: "CNCF Graduated", description: "Cost management with AI optimization" },
             
-            // Niche Players
-            { name: "Komodor", scale: 5.5, aiops: 6, quadrant: "niche", url: "https://komodor.com/", funding: "$21M Series A", description: "Specialized K8s troubleshooting with AI" }
+            // Niche Players (Lower Scale + Lower AIOps)
+            { name: "Komodor", scale: 4.5, aiops: 4, quadrant: "niche", url: "https://komodor.com/", funding: "$21M Series A", description: "Specialized K8s troubleshooting with AI" }
         ];
 
         // Initialize the 2x2 analysis chart
