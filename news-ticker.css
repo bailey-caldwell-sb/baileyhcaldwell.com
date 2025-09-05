@@ -5,13 +5,13 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 50px;
     background: linear-gradient(135deg, rgba(0,0,0,0.95), rgba(20,20,40,0.95));
     backdrop-filter: blur(15px);
-    border-bottom: 2px solid var(--primary-blue);
+    border-bottom: 1px solid var(--primary-blue);
     z-index: 1000;
     overflow: hidden;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .ticker-container {
@@ -19,15 +19,16 @@
     display: flex;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 .ticker-label {
     flex-shrink: 0;
-    padding: 0 20px;
+    padding: 0 15px;
     background: var(--primary-blue);
     color: white;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     height: 100%;
     display: flex;
     align-items: center;
@@ -37,10 +38,11 @@
 
 .ticker-content {
     display: flex;
-    animation: scroll-ticker 180s linear infinite;
+    animation: scroll-ticker 120s linear infinite;
     white-space: nowrap;
     height: 100%;
     align-items: center;
+    flex: 1;
 }
 
 .ticker-content:hover {
@@ -55,8 +57,8 @@
 .news-item {
     display: inline-flex;
     align-items: center;
-    padding: 0 30px;
-    min-width: 450px;
+    padding: 0 40px;
+    white-space: nowrap;
     height: 100%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -65,7 +67,6 @@
 
 .news-item:hover {
     background: rgba(100, 181, 246, 0.15);
-    transform: scale(1.02);
 }
 
 .impact-indicator {
@@ -169,7 +170,7 @@
 
 /* Adjust main content to account for fixed ticker */
 .main-container {
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 /* Loading state */
