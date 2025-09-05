@@ -89,14 +89,14 @@ class MarketNewsTicker {
 
     generateSampleNews() {
         const newsTemplates = [
-            'announces major funding round',
-            'launches new enterprise platform', 
-            'partners with leading cloud provider',
-            'reports strong quarterly growth',
-            'expands international operations',
-            'introduces AI-powered features',
-            'acquires strategic competitor',
-            'releases open-source framework'
+            { text: 'announces major funding round', url: 'https://techcrunch.com/funding-news' },
+            { text: 'launches new enterprise platform', url: 'https://venturebeat.com/enterprise-news' }, 
+            { text: 'partners with leading cloud provider', url: 'https://www.businesswire.com/cloud-partnerships' },
+            { text: 'reports strong quarterly growth', url: 'https://finance.yahoo.com/earnings' },
+            { text: 'expands international operations', url: 'https://www.reuters.com/business' },
+            { text: 'introduces AI-powered features', url: 'https://techcrunch.com/ai-news' },
+            { text: 'acquires strategic competitor', url: 'https://www.crunchbase.com/acquisitions' },
+            { text: 'releases open-source framework', url: 'https://github.com/trending' }
         ];
 
         const news = [];
@@ -104,7 +104,8 @@ class MarketNewsTicker {
             const template = newsTemplates[Math.floor(Math.random() * newsTemplates.length)];
             news.push({
                 company: company,
-                headline: `${company} ${template}`,
+                headline: `${company} ${template.text}`,
+                url: template.url,
                 impact: ['high', 'medium', 'low'][Math.floor(Math.random() * 3)]
             });
         });
@@ -115,12 +116,12 @@ class MarketNewsTicker {
     renderScrollingTicker(newsItems) {
         if (!this.tickerContent) return;
 
-        // Create scrolling content
+        // Create scrolling content with clickable links
         const newsHtml = newsItems.map(item => `
-            <div class="news-item">
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="news-item">
                 <div class="impact-indicator impact-${item.impact}"></div>
                 <span class="news-text">${item.headline}</span>
-            </div>
+            </a>
         `).join('');
 
         this.tickerContent.innerHTML = newsHtml;

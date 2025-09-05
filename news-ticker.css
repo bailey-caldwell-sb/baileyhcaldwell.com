@@ -63,10 +63,14 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border-right: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: inherit;
 }
 
 .news-item:hover {
     background: rgba(100, 181, 246, 0.15);
+    text-decoration: none;
+    color: inherit;
 }
 
 .impact-indicator {
