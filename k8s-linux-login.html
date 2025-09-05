@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Access Kubernetes-Optimized Linux OS Distributions Analysis - Bailey H. Caldwell Consulting">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Access Required - Kubernetes-Optimized Linux Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        .login-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-title {
+            color: var(--primary-blue-light);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .login-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .access-form {
+            margin-bottom: 30px;
+        }
+
+        .access-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .access-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .access-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .access-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .access-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(100, 181, 246, 0.3);
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-blue-light);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Animated star background -->
+    <div class="stars-container" id="stars" aria-hidden="true"></div>
+
+    <div class="login-container">
+        <h1 class="login-title">Access Required</h1>
+        <p class="login-subtitle">Kubernetes-Optimized Linux OS Distributions Analysis</p>
+        
+        <form class="access-form" id="accessForm">
+            <input 
+                type="password" 
+                id="accessCode" 
+                class="access-input" 
+                placeholder="Enter access code"
+                autocomplete="off"
+                required
+            >
+            <button type="submit" class="access-button">Access Analysis</button>
+            <div id="errorMessage" class="error-message">
+                Invalid access code. Please try again.
+            </div>
+        </form>
+        
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('accessForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const accessCode = document.getElementById('accessCode').value.toLowerCase().trim();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Valid access codes for Kubernetes-Optimized Linux analysis
+            const validCodes = [
+                'k8s-linux-2025',
+                'immutable-os',
+                'secure-fleet',
+                'bailey'
+            ];
+            
+            if (validCodes.includes(accessCode)) {
+                // Store access in session
+                sessionStorage.setItem('k8s-linux-access', 'granted');
+                // Redirect to analysis page
+                window.location.href = 'k8s-linux-os-analysis.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                document.getElementById('accessCode').value = '';
+                
+                // Hide error message after 3 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Clear any existing access on page load
+        sessionStorage.removeItem('k8s-linux-access');
+    </script>
+</body>
+
+</html>
