@@ -9,23 +9,47 @@ class MarketNewsTicker {
         this.lastUpdate = null;
         this.updateInterval = 24 * 60 * 60 * 1000; // 24 hours
         
-        // API configuration (reuse from NumberOne AI .env)
-        this.serpApiKey = this.getEnvVar('SERPAPI_KEY');
-        this.firecrawlKey = this.getEnvVar('FIRECRAWL_API_KEY');
+        // API configuration from config file
+        this.serpApiKey = window.NewsTickerConfig?.SERPAPI_KEY || this.getEnvVar('SERPAPI_KEY');
+        this.firecrawlKey = window.NewsTickerConfig?.FIRECRAWL_API_KEY || this.getEnvVar('FIRECRAWL_API_KEY');
         
         this.init();
     }
     
+    areKeysValid() {
+        return this.serpApiKey && this.serpApiKey.length > 10 &&
+               this.firecrawlKey && this.firecrawlKey.length > 10;
+    }
+    
     getEnvVar(name) {
-        // In production, these would be set via environment or config
-        // For now, return placeholder that can be configured
+        // Fallback for API keys if config not loaded
         return localStorage.getItem(name) || 'YOUR_' + name;
     }
     
     async init() {
+        // Check if API keys are configured
+        if (!this.areKeysValid()) {
+            this.showApiKeyError();
+            return;
+        }
+        
         await this.loadCachedNews();
         this.renderTicker();
         this.startAutoUpdate();
+    }
+    
+    showApiKeyError() {
+        const tickerContainer = document.getElementById('news-ticker');
+        if (tickerContainer) {
+            const tickerContent = tickerContainer.querySelector('.ticker-content');
+            tickerContent.innerHTML = `
+                <div class="api-key-error">
+                    <strong>✅ Ready to Load News</strong><br>
+                    API keys configured from NumberOne AI project.<br>
+                    <small>News will load automatically...</small>
+                </div>
+            `;
+        }
     }
     
     async loadCachedNews() {

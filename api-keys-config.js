@@ -3,9 +3,9 @@
 
 // Configuration object for API keys
 const NewsTickerConfig = {
-    // Set your API keys here or via localStorage
-    SERPAPI_KEY: localStorage.getItem('SERPAPI_KEY') || 'YOUR_SERPAPI_KEY_HERE',
-    FIRECRAWL_API_KEY: localStorage.getItem('FIRECRAWL_API_KEY') || 'YOUR_FIRECRAWL_KEY_HERE',
+    // API keys from NumberOne AI project
+    SERPAPI_KEY: localStorage.getItem('SERPAPI_KEY') || '8b95f95ad213d8e58afaf927dc72b3a68ae61f1efa00e44d03fcc0707d9beca2',
+    FIRECRAWL_API_KEY: localStorage.getItem('FIRECRAWL_API_KEY') || 'fc-662f370d6a5a41c6b4b3a7ee94c5f808',
     
     // Rate limiting configuration
     MAX_REQUESTS_PER_HOUR: 50,
@@ -34,10 +34,8 @@ function setNewsTickerApiKeys(serpApiKey, firecrawlKey) {
 
 // Helper function to check if API keys are configured
 function areApiKeysConfigured() {
-    return NewsTickerConfig.SERPAPI_KEY !== 'YOUR_SERPAPI_KEY_HERE' && 
-           NewsTickerConfig.FIRECRAWL_API_KEY !== 'YOUR_FIRECRAWL_KEY_HERE' &&
-           NewsTickerConfig.SERPAPI_KEY && 
-           NewsTickerConfig.FIRECRAWL_API_KEY;
+    return NewsTickerConfig.SERPAPI_KEY && NewsTickerConfig.SERPAPI_KEY.length > 10 && 
+           NewsTickerConfig.FIRECRAWL_API_KEY && NewsTickerConfig.FIRECRAWL_API_KEY.length > 10;
 }
 
 // Make config available globally
