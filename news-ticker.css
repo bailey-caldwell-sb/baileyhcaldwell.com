@@ -38,7 +38,7 @@
 
 .ticker-content {
     display: flex;
-    animation: scroll-ticker 120s linear infinite;
+    animation: scroll-ticker 300s linear infinite;
     white-space: nowrap;
     height: 100%;
     align-items: center;
