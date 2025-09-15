@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="LLM Usage Dashboard - Track AI spending and token usage across OpenAI, Claude, Grok, and Perplexity APIs. Professional analytics by Bailey H. Caldwell Consulting.">
+    <meta name="keywords"
+        content="LLM usage, AI costs, OpenAI tracking, Claude analytics, Grok usage, Perplexity monitoring, Bailey Caldwell, AI spending dashboard">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baileyhcaldwell.com/llm-dashboard">
+    <meta property="og:title" content="LLM Usage Dashboard - Bailey H. Caldwell Consulting">
+    <meta property="og:description"
+        content="Professional AI spending analytics and token usage tracking across multiple LLM providers.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://baileyhcaldwell.com/llm-dashboard">
+    <meta property="twitter:title" content="LLM Usage Dashboard - Bailey H. Caldwell Consulting">
+    <meta property="twitter:description"
+        content="Professional AI spending analytics and token usage tracking across multiple LLM providers.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <title>LLM Usage Dashboard - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="llm-dashboard.css">
+    <link rel="stylesheet" href="news-ticker.css">
+
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Note: API keys now loaded from .env via NumberOne AI backend -->
+</head>
+
+<body data-analysis-type="llm-dashboard">
+    <!-- News Ticker Integration -->
+    <div id="news-ticker" class="news-ticker">
+        <div class="ticker-content">
+            <div class="ticker-item">Loading AI market intelligence...</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="logo">
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="finops-market-overview.html" class="nav-link">FinOps Analysis</a>
+                <a href="k8s-market-analysis.html" class="nav-link">K8s Analysis</a>
+                <a href="research.html" class="nav-link">AI Research</a>
+                <a href="llm-dashboard.html" class="nav-link active">LLM Dashboard</a>
+                <a href="bio.html" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="dashboard-hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">📊</span>
+                <span class="badge-text">LLM Usage Analytics</span>
+            </div>
+            <h1 class="hero-title">
+                AI Spending Dashboard
+                <span class="gradient-text">Real-Time Analytics</span>
+            </h1>
+            <p class="hero-description">
+                Comprehensive tracking of LLM usage and costs across OpenAI, Claude, Grok, and Perplexity APIs.
+                Monitor spending, analyze token efficiency, and optimize AI investments.
+            </p>
+        </div>
+    </section>
+
+    <!-- Dashboard Content -->
+    <section class="dashboard-content">
+        <div class="container">
+            <!-- Total Spend Summary -->
+            <div class="summary-card">
+                <div class="summary-header">
+                    <h2 class="summary-title">Total AI Spend (Last 30 Days)</h2>
+                    <div class="refresh-indicator">
+                        <span class="refresh-icon">🔄</span>
+                        <span class="last-updated">Updated: <span id="last-updated-time">--</span></span>
+                    </div>
+                </div>
+                <div class="total-spend">
+                    <span class="currency">$</span>
+                    <span class="amount" id="total-spend">0.00</span>
+                </div>
+                <div class="spend-trend">
+                    <span class="trend-indicator" id="spend-trend">📈</span>
+                    <span class="trend-text" id="trend-text">vs last month</span>
+                </div>
+            </div>
+
+            <!-- Provider Breakdown -->
+            <div class="providers-grid">
+                <div class="provider-card openai">
+                    <div class="provider-header">
+                        <div class="provider-logo">
+                            <span class="provider-icon">🤖</span>
+                            <span class="provider-name">OpenAI</span>
+                        </div>
+                        <div class="provider-status" id="openai-status">●</div>
+                    </div>
+                    <div class="provider-spend">
+                        <span class="provider-amount">$<span id="openai-spend">0.00</span></span>
+                        <span class="provider-percentage">(<span id="openai-percentage">0</span>%)</span>
+                    </div>
+                    <div class="provider-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Tokens:</span>
+                            <span class="detail-value" id="openai-tokens">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Requests:</span>
+                            <span class="detail-value" id="openai-requests">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-card claude">
+                    <div class="provider-header">
+                        <div class="provider-logo">
+                            <span class="provider-icon">🧠</span>
+                            <span class="provider-name">Claude</span>
+                        </div>
+                        <div class="provider-status" id="claude-status">●</div>
+                    </div>
+                    <div class="provider-spend">
+                        <span class="provider-amount">$<span id="claude-spend">0.00</span></span>
+                        <span class="provider-percentage">(<span id="claude-percentage">0</span>%)</span>
+                    </div>
+                    <div class="provider-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Tokens:</span>
+                            <span class="detail-value" id="claude-tokens">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Requests:</span>
+                            <span class="detail-value" id="claude-requests">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-card grok">
+                    <div class="provider-header">
+                        <div class="provider-logo">
+                            <span class="provider-icon">⚡</span>
+                            <span class="provider-name">Grok</span>
+                        </div>
+                        <div class="provider-status" id="grok-status">●</div>
+                    </div>
+                    <div class="provider-spend">
+                        <span class="provider-amount">$<span id="grok-spend">0.00</span></span>
+                        <span class="provider-percentage">(<span id="grok-percentage">0</span>%)</span>
+                    </div>
+                    <div class="provider-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Tokens:</span>
+                            <span class="detail-value" id="grok-tokens">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Requests:</span>
+                            <span class="detail-value" id="grok-requests">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="provider-card perplexity">
+                    <div class="provider-header">
+                        <div class="provider-logo">
+                            <span class="provider-icon">🔍</span>
+                            <span class="provider-name">Perplexity</span>
+                        </div>
+                        <div class="provider-status" id="perplexity-status">●</div>
+                    </div>
+                    <div class="provider-spend">
+                        <span class="provider-amount">$<span id="perplexity-spend">0.00</span></span>
+                        <span class="provider-percentage">(<span id="perplexity-percentage">0</span>%)</span>
+                    </div>
+                    <div class="provider-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Credits:</span>
+                            <span class="detail-value" id="perplexity-credits">0</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Requests:</span>
+                            <span class="detail-value" id="perplexity-requests">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-grid">
+                <!-- Daily Spend Trend -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Daily Spend Trends</h3>
+                        <div class="chart-controls">
+                            <select id="spend-period" class="chart-select">
+                                <option value="7">Last 7 days</option>
+                                <option value="30" selected>Last 30 days</option>
+                                <option value="90">Last 90 days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="daily-spend-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Cost Efficiency -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Cost Efficiency ($/1K Tokens)</h3>
+                        <div class="chart-legend">
+                            <span class="legend-item">
+                                <span class="legend-color input"></span>
+                                Input Tokens
+                            </span>
+                            <span class="legend-item">
+                                <span class="legend-color output"></span>
+                                Output Tokens
+                            </span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="cost-efficiency-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Usage Breakdown -->
+            <div class="models-section">
+                <h3 class="section-title">Token Usage by Model</h3>
+                <div class="models-grid">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <span class="model-name">GPT-4</span>
+                            <span class="model-provider">OpenAI</span>
+                        </div>
+                        <div class="model-usage">
+                            <div class="usage-bar">
+                                <div class="usage-fill gpt4" style="width: 0%"></div>
+                            </div>
+                            <span class="usage-tokens"><span id="gpt4-tokens">0</span>K tokens</span>
+                        </div>
+                    </div>
+
+                    <div class="model-card">
+                        <div class="model-header">
+                            <span class="model-name">Claude-3.5</span>
+                            <span class="model-provider">Anthropic</span>
+                        </div>
+                        <div class="model-usage">
+                            <div class="usage-bar">
+                                <div class="usage-fill claude35" style="width: 0%"></div>
+                            </div>
+                            <span class="usage-tokens"><span id="claude35-tokens">0</span>K tokens</span>
+                        </div>
+                    </div>
+
+                    <div class="model-card">
+                        <div class="model-header">
+                            <span class="model-name">Grok-3</span>
+                            <span class="model-provider">xAI</span>
+                        </div>
+                        <div class="model-usage">
+                            <div class="usage-bar">
+                                <div class="usage-fill grok3" style="width: 0%"></div>
+                            </div>
+                            <span class="usage-tokens"><span id="grok3-tokens">0</span>K tokens</span>
+                        </div>
+                    </div>
+
+                    <div class="model-card">
+                        <div class="model-header">
+                            <span class="model-name">PPLX-8x22B</span>
+                            <span class="model-provider">Perplexity</span>
+                        </div>
+                        <div class="model-usage">
+                            <div class="usage-bar">
+                                <div class="usage-fill pplx" style="width: 0%"></div>
+                            </div>
+                            <span class="usage-tokens"><span id="pplx-tokens">0</span>K tokens</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Alerts -->
+            <div class="alerts-section">
+                <h3 class="section-title">Budget Alerts</h3>
+                <div class="alerts-container" id="alerts-container">
+                    <div class="alert-item info">
+                        <span class="alert-icon">ℹ️</span>
+                        <span class="alert-text">Dashboard initialized. Real-time monitoring active.</span>
+                    </div>
+                </div>
+                <div class="budget-settings">
+                    <label for="budget-threshold">Monthly Budget Alert ($):</label>
+                    <input type="number" id="budget-threshold" value="100" min="0" step="10">
+                    <button id="save-budget" class="save-button">Save</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>LLM Analytics</h4>
+                    <p>Professional AI usage tracking and cost optimization for technology leaders.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Data Sources</h4>
+                    <ul>
+                        <li>OpenAI Usage API</li>
+                        <li>Claude Billing API</li>
+                        <li>Grok Usage Monitoring</li>
+                        <li>Perplexity Credit Tracking</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <p>
+                        <a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a><br>
+                        <a href="https://linkedin.com/in/baileyhcaldwell">LinkedIn</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bailey H. Caldwell Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="news-ticker.js"></script>
+    <script src="llm-dashboard.js"></script>
+</body>
+
+</html>
