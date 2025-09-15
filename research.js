@@ -179,32 +179,32 @@ class NumberOneResearch {
         if (resultsSection) resultsSection.style.display = 'none';
 
         try {
-            // Check if backend is available
-            const backendAvailable = await this.checkBackendAvailability();
-            
-            if (backendAvailable) {
-                // Use real backend
-                await this.startRealResearch(topic);
-            } else {
-                // Use demo mode
-                await this.startDemoResearch(topic);
-            }
+            // Always use demo mode for now since backend isn't deployed
+            console.log('Starting demo research for:', topic);
+            await this.startDemoResearch(topic);
             
         } catch (error) {
             console.error('Research start error:', error);
-            // Fallback to demo mode
-            await this.startDemoResearch(topic);
+            this.showError('Failed to start research. Please try again.');
+            this.isResearching = false;
+            this.hideProgressSection();
         }
     }
 
     async checkBackendAvailability() {
         try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3000);
+            
             const response = await fetch(`${this.apiBaseUrl}/health`, { 
                 method: 'GET',
-                timeout: 3000 
+                signal: controller.signal
             });
+            
+            clearTimeout(timeoutId);
             return response.ok;
         } catch (error) {
+            console.log('Backend unavailable, using demo mode:', error.message);
             return false;
         }
     }
