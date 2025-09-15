@@ -179,31 +179,116 @@ class NumberOneResearch {
         if (resultsSection) resultsSection.style.display = 'none';
 
         try {
-            // Get selected provider (no auto option - user must choose)
-            const provider = document.getElementById('research-provider')?.value || 'perplexity';
+            // Check if backend is available
+            const backendAvailable = await this.checkBackendAvailability();
             
-            // Start research session
-            const sessionData = await this.callAPI('/research/start', {
-                method: 'POST',
-                body: JSON.stringify({
-                    topic: topic,
-                    depth: parseInt(document.getElementById('research-depth')?.value || '5'),
-                    provider: provider,
-                    custom_sources: document.getElementById('custom-sources')?.value?.split(',').map(s => s.trim()).filter(s => s) || []
-                })
-            });
-
-            this.currentSessionId = sessionData.session_id;
-            
-            // Start progress monitoring
-            this.startProgressMonitoring();
+            if (backendAvailable) {
+                // Use real backend
+                await this.startRealResearch(topic);
+            } else {
+                // Use demo mode
+                await this.startDemoResearch(topic);
+            }
             
         } catch (error) {
             console.error('Research start error:', error);
-            this.showError('Failed to start research. Please check your connection and try again.');
-            this.isResearching = false;
-            this.hideProgressSection();
+            // Fallback to demo mode
+            await this.startDemoResearch(topic);
         }
+    }
+
+    async checkBackendAvailability() {
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/health`, { 
+                method: 'GET',
+                timeout: 3000 
+            });
+            return response.ok;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    async startRealResearch(topic) {
+        const provider = document.getElementById('research-provider')?.value || 'perplexity';
+        
+        const sessionData = await this.callAPI('/research/start', {
+            method: 'POST',
+            body: JSON.stringify({
+                topic: topic,
+                depth: parseInt(document.getElementById('research-depth')?.value || '5'),
+                provider: provider,
+                custom_sources: document.getElementById('custom-sources')?.value?.split(',').map(s => s.trim()).filter(s => s) || []
+            })
+        });
+
+        this.currentSessionId = sessionData.session_id;
+        this.startProgressMonitoring();
+    }
+
+    async startDemoResearch(topic) {
+        this.currentSessionId = 'demo-' + Date.now();
+        
+        // Simulate research progress
+        let progress = 0;
+        const steps = [
+            { step: 1, progress: 25, message: 'Analyzing topic...' },
+            { step: 2, progress: 50, message: 'Collecting sources...' },
+            { step: 3, progress: 75, message: 'AI analysis in progress...' },
+            { step: 4, progress: 100, message: 'Generating report...' }
+        ];
+
+        for (const stepData of steps) {
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            this.updateProgress(stepData.progress, stepData.message);
+            this.updateProgressSteps(stepData.step);
+        }
+
+        // Show demo results
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        this.displayDemoResults(topic);
+        this.isResearching = false;
+        this.hideProgressSection();
+    }
+
+    displayDemoResults(topic) {
+        const demoResults = {
+            report: `# Research Report: ${topic}
+
+## Executive Summary
+This is a demonstration of the NumberOne AI Research Portal. In a live environment with backend connectivity, this would contain comprehensive research findings powered by Perplexity AI or SerpApi+Firecrawl.
+
+## Key Findings
+- **Market Overview**: Detailed analysis would appear here
+- **Trends & Insights**: Current market trends and projections  
+- **Competitive Landscape**: Key players and market positioning
+- **Recommendations**: Strategic recommendations based on research
+
+## Methodology
+This research would typically involve:
+1. Multi-source data collection
+2. AI-powered analysis and synthesis
+3. Citation verification and credibility scoring
+4. Professional report generation
+
+*Note: This is demo content. Connect the NumberOne AI backend for live research capabilities.*`,
+            sources: [
+                {
+                    title: "Demo Source 1 - Industry Report",
+                    url: "https://example.com/source1",
+                    credibility_score: 9
+                },
+                {
+                    title: "Demo Source 2 - Market Analysis", 
+                    url: "https://example.com/source2",
+                    credibility_score: 8
+                }
+            ],
+            duration: 180,
+            provider: "Demo Mode"
+        };
+
+        this.displayResults(demoResults);
     }
 
     showProgressSection() {
