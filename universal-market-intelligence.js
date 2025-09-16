@@ -9,6 +9,7 @@ class UniversalMarketIntelligence {
         this.apiBaseUrl = 'http://localhost:8000'; // NumberOne AI backend
         this.currentSegment = this.detectMarketSegment();
         this.isBackendAvailable = false;
+        this.useDemoData = true; // Force demo data for production deployment
     }
 
     /**
