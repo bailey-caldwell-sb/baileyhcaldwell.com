@@ -66,9 +66,12 @@ class UniversalMarketIntelligence {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 3000);
 
-            const response = await fetch(`${this.apiBaseUrl}/health`, {
+            const response = await fetch(`${this.apiBaseUrl}/api/health`, {
                 method: 'GET',
-                signal: controller.signal
+                signal: controller.signal,
+                headers: {
+                    'ngrok-skip-browser-warning': 'true'
+                }
             });
 
             clearTimeout(timeoutId);
@@ -98,7 +101,8 @@ class UniversalMarketIntelligence {
                 const response = await fetch(`${this.apiBaseUrl}/api/research/market-intelligence?segment=${this.currentSegment}`, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
                     }
                 });
                 
@@ -573,6 +577,13 @@ class UniversalMarketIntelligence {
      */
     async initialize() {
         console.log(`Initializing Universal Market Intelligence for segment: ${this.currentSegment}`);
+        
+        // Check if the market intelligence section exists
+        const section = document.querySelector('.market-intelligence-section');
+        if (!section) {
+            console.log('No market intelligence section found on this page');
+            return;
+        }
         
         // Wait for DOM to be ready
         if (document.readyState === 'loading') {
