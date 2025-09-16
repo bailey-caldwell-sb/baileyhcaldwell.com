@@ -6,10 +6,10 @@
 
 class UniversalMarketIntelligence {
     constructor() {
-        this.apiBaseUrl = 'http://localhost:8000'; // NumberOne AI backend
+        this.apiBaseUrl = 'https://00b2890bd272.ngrok-free.app'; // NumberOne AI backend
         this.currentSegment = this.detectMarketSegment();
         this.isBackendAvailable = false;
-        this.useDemoData = true; // Force demo data for production deployment
+        this.useDemoData = false; // Force demo data for production deployment
     }
 
     /**
