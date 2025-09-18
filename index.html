@@ -63,7 +63,13 @@
 
     <!-- Main content -->
     <main id="main-content" class="main-container" role="main">
-        <header>
+        <header class="site-header">
+            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#analysis" class="nav-link">Analysis</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
         </header>
 
         <!-- Hero Section -->
@@ -75,7 +81,7 @@
         </section>
 
         <!-- About Bailey Section -->
-        <section class="about-section">
+        <section id="about" class="about-section">
             <h2 class="section-title">About Bailey</h2>
             <div class="about-content">
                 <div class="about-text">
@@ -95,12 +101,11 @@
         </section>
 
         <!-- Services Section -->
-        <section class="services-section">
-            <h2 class="section-title">Commercial Acceleration Across the Customer Lifecycle
-            </h2>
+        <section id="services" class="services-section">
+            <h2 class="section-title">Commercial Acceleration Across the Customer Lifecycle</h2>
             <div class="services-grid">
                 <div class="service-card featured-service">
-                    <div class="service-icon">🧠</div>
+                    <div class="service-icon" aria-hidden="true">🧠</div>
                     <h3 class="service-title">GenAI & Custom LLM Deployments</h3>
                     <p class="service-tagline">Build and fine-tune AI models that align with your enterprise workflows, with governance baked in.</p>
                     <p class="service-description">
@@ -110,7 +115,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">☁️</div>
+                    <div class="service-icon" aria-hidden="true">☁️</div>
                     <h3 class="service-title">Cloud Cost Optimization & FinOps Excellence</h3>
                     <p class="service-tagline">Automate visibility into cloud spend and implement best-practice governance to maximize ROI.</p>
                     <p class="service-description">
@@ -120,7 +125,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🚀</div>
+                    <div class="service-icon" aria-hidden="true">🚀</div>
                     <h3 class="service-title">SaaS Product & Business Transformation</h3>
                     <p class="service-tagline">Navigate the complete journey from on-premise to scalable cloud-native SaaS solutions.</p>
                     <p class="service-description">
@@ -130,7 +135,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🎯</div>
+                    <div class="service-icon" aria-hidden="true">🎯</div>
                     <h3 class="service-title">Sales Engineering & Customer Success</h3>
                     <p class="service-tagline">Accelerate the 'technical yes' and build retention programs that drive sustainable growth.</p>
                     <p class="service-description">
@@ -141,7 +146,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-icon" aria-hidden="true">🤝</div>
                     <h3 class="service-title">Strategic Partnerships & Commercial Growth</h3>
                     <p class="service-tagline">Build ecosystem partnerships that create new revenue streams and accelerate market penetration.</p>
                     <p class="service-description">
@@ -151,7 +156,7 @@
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon">⚡</div>
+                    <div class="service-icon" aria-hidden="true">⚡</div>
                     <h3 class="service-title">Leadership Development & Operational Excellence</h3>
                     <p class="service-tagline">Foster cultures of innovation while building scalable systems and high-performing teams.</p>
                     <p class="service-description">
@@ -163,13 +168,13 @@
         </section>
 
         <!-- Market Analysis Section -->
-        <section class="market-analysis-section">
+        <section id="analysis" class="market-analysis-section">
             <h2 class="section-title">Strategic Market Analysis</h2>
             <p class="section-intro">Access exclusive competitive intelligence and strategic positioning analysis for key technology segments.</p>
             
             <div class="analysis-grid">
                 <div class="analysis-card">
-                    <div class="analysis-icon">💰</div>
+                    <div class="analysis-icon" aria-hidden="true">💰</div>
                     <h3 class="analysis-title">FinOps Market Intelligence</h3>
                     <p class="analysis-description">
                         Comprehensive analysis of the Financial Operations market convergence with Agentic AI. Strategic positioning of 20+ vendors across the $200B+ transformation.
@@ -178,7 +183,7 @@
                 </div>
                 
                 <div class="analysis-card">
-                    <div class="analysis-icon">🤖</div>
+                    <div class="analysis-icon" aria-hidden="true">🤖</div>
                     <h3 class="analysis-title">AIOps & Kubernetes Intelligence</h3>
                     <p class="analysis-description">
                         Enterprise Kubernetes Fleet Management meets AIOps analysis. Strategic insights on the scale-intelligence convergence across 9 key vendors.
@@ -187,7 +192,7 @@
                 </div>
                 
                 <div class="analysis-card">
-                    <div class="analysis-icon">🐧</div>
+                    <div class="analysis-icon" aria-hidden="true">🐧</div>
                     <h3 class="analysis-title">Kubernetes-Optimized Linux OS</h3>
                     <p class="analysis-description">
                         Future of secure fleet operations: API-driven, immutable Linux distributions engineered for Kubernetes. Analysis of 9 vendors across security and automation dimensions.
@@ -198,7 +203,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section aria-labelledby="contact-heading" class="contact-section">
+        <section id="contact" aria-labelledby="contact-heading" class="contact-section">
             <h2 id="contact-heading" class="section-title">Ready to Accelerate Your Growth?</h2>
             <p class="contact-intro">Let's discuss how we can optimize your technology business for sustainable, profitable growth.</p>
             
@@ -209,31 +214,9 @@
         </section>
 
         <footer class="site-footer" role="contentinfo">
-            <p>&copy; 2025 Bailey H Caldwell | Updated August 2025</p>
+            <p>&copy; 2025 Bailey H Caldwell | Updated September 2025</p>
         </footer>
     </main>
-
-    <!-- Screen reader only class for accessibility -->
-    <style>
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        .error-text {
-            color: #f44336;
-            font-size: 0.8rem;
-            margin-top: 5px;
-            display: none;
-        }
-    </style>
 
     <script src="script.js"></script>
 </body>
