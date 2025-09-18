@@ -7,62 +7,53 @@
     --primary-blue-light: #42a5f5;
     --primary-blue-dark: #1e88e5;
     --accent-green: #81c784;
-    
     /* Typography Colors */
     --text-primary: #ffffff;
     --text-secondary: #b0bec5;
     --text-muted: #90a4ae;
     --text-footer: #78909c;
-    
     /* Background & Glass Effects */
     --bg-overlay: rgba(0, 0, 0, 0.7);
     --glass-bg: rgba(0, 0, 0, 0.3);
     --glass-border: rgba(255, 255, 255, 0.1);
-    
     /* Form Elements */
     --input-bg: rgba(255, 255, 255, 0.05);
     --input-border: rgba(255, 255, 255, 0.2);
-    
     /* Shadows */
     --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.5);
     --shadow-button: 0 10px 25px rgba(30, 136, 229, 0.4);
-    
     /* Typography */
     --font-mono: 'Courier New', monospace;
-    
     /* Border Radius */
     --border-radius: 15px;
     --border-radius-small: 8px;
     --border-radius-pill: 50px;
-    
     /* Transitions */
     --transition-smooth: all 0.3s ease;
-    
     /* Effects */
     --backdrop-blur: blur(10px);
 }
-
 /* ===================================================================
    Navigation Styles
    =================================================================== */
 .site-header {
-    position: fixed;
+    position: absolute;
     top: 20px;
     right: 20px;
     z-index: 1000;
+    
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius);
     padding: 10px 20px;
 }
-
 .main-navigation {
     display: flex;
     gap: 20px;
+    
     align-items: center;
 }
-
 .nav-link {
     color: var(--text-secondary);
     text-decoration: none;
@@ -72,14 +63,12 @@
     padding: 8px 12px;
     border-radius: var(--border-radius-small);
 }
-
 .nav-link:hover,
 .nav-link:focus {
     color: var(--primary-blue-light);
     background: rgba(100, 181, 246, 0.1);
     outline: none;
 }
-
 /* ===================================================================
    Base Styles
    =================================================================== */
@@ -88,11 +77,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 html {
     scroll-behavior: smooth;
 }
-
 body {
     font-family: var(--font-mono);
     line-height: 1.6;
@@ -101,10 +88,12 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-
 /* Skip link for accessibility */
 .skip-link {
     position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     top: -40px;
     left: 6px;
     background: var(--primary-blue);
@@ -114,16 +103,17 @@ body {
     border-radius: 4px;
     z-index: 1001;
 }
-
 .skip-link:focus {
     top: 6px;
 }
-
 /* ===================================================================
    Star Background Animation
    =================================================================== */
 .stars-container {
-    position: fixed;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
@@ -131,19 +121,19 @@ body {
     pointer-events: none;
     z-index: -1;
 }
-
 .star {
     position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     background: white;
     border-radius: 50%;
     animation: twinkle 3s infinite;
 }
-
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
 }
-
 /* ===================================================================
    Main Container
    =================================================================== */
@@ -156,8 +146,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-primary);
+    position: relative;
+    margin: 20px;
 }
-
 /* ===================================================================
    Hero Section
    =================================================================== */
@@ -165,15 +156,13 @@ body {
     text-align: center;
     margin-bottom: 80px;
 }
-
 .value-proposition {
     padding: 20px;
     background: rgba(100, 181, 246, 0.1);
     border-radius: var(--border-radius-small);
     border: 1px solid rgba(100, 181, 246, 0.3);
-    margin-bottom: 30px;
+    
 }
-
 .value-prop-text {
     font-size: 1.3rem;
     font-weight: 600;
@@ -183,7 +172,6 @@ body {
     margin: 0 auto;
     line-height: 1.5;
 }
-
 .hero-title {
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: bold;
@@ -195,7 +183,6 @@ body {
     letter-spacing: 1px;
     text-shadow: 0 0 15px rgba(100, 181, 246, 0.4);
 }
-
 /* ===================================================================
    Section Styles
    =================================================================== */
@@ -203,10 +190,9 @@ body {
     font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 30px;
+    
     text-align: center;
 }
-
 .section-intro {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -214,19 +200,16 @@ body {
     max-width: 700px;
     margin: 0 auto 40px;
 }
-
 /* ===================================================================
    About Section
    =================================================================== */
 .about-section {
     margin-bottom: 80px;
 }
-
 .about-content {
     max-width: 900px;
     margin: 0 auto;
 }
-
 .about-text p {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -235,21 +218,18 @@ body {
     text-shadow: 0 0 15px rgba(100, 181, 246, 0.4);
     line-height: 1.7;
 }
-
 /* ===================================================================
    Services Section
    =================================================================== */
 .services-section {
     margin-bottom: 80px;
 }
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 25px;
-    margin-top: 30px;
+    margin-
 }
-
 .service-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
@@ -260,13 +240,11 @@ body {
     position: relative;
     overflow: hidden;
 }
-
 .service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
     border-color: var(--primary-blue-light);
 }
-
 .service-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -274,32 +252,27 @@ body {
     text-shadow: 0 0 15px rgba(100, 181, 246, 0.4);
     display: block;
 }
-
 .service-title {
     font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 15px;
 }
-
 .service-tagline {
     font-size: 1rem;
     color: var(--primary-blue-light);
     font-weight: 500;
     margin-bottom: 15px;
 }
-
 .service-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
-
 .featured-service {
     border: 2px solid var(--primary-blue);
     background: rgba(100, 181, 246, 0.05);
 }
-
 /* ===================================================================
    Market Analysis Section
    =================================================================== */
@@ -307,13 +280,11 @@ body {
     margin: 60px 0;
     padding: 0 20px;
 }
-
 .analysis-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
-
 .analysis-card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(15px);
@@ -323,13 +294,11 @@ body {
     transition: var(--transition-smooth);
     text-align: center;
 }
-
 .analysis-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
     border-color: var(--primary-blue-light);
 }
-
 .analysis-icon {
     font-size: 2.5rem;
     margin-bottom: 20px;
@@ -337,7 +306,6 @@ body {
     text-shadow: 0 0 15px rgba(100, 181, 246, 0.4);
     display: block;
 }
-
 .analysis-title {
     font-size: 1.3rem;
     font-weight: 600;
@@ -346,14 +314,12 @@ body {
     color: var(--text-primary);
     margin-bottom: 15px;
 }
-
 .analysis-description {
     font-size: 0.95rem;
     color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 25px;
 }
-
 .analysis-link {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
@@ -365,7 +331,6 @@ body {
     transition: var(--transition-smooth);
     box-shadow: var(--shadow-button);
 }
-
 .analysis-link:hover,
 .analysis-link:focus {
     transform: translateY(-2px);
@@ -373,7 +338,6 @@ body {
     background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
     outline: none;
 }
-
 /* ===================================================================
    Contact Section
    =================================================================== */
@@ -381,38 +345,32 @@ body {
     margin-bottom: 60px;
     text-align: center;
 }
-
 .contact-intro {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 30px;
+    
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
 }
-
 .contact-links {
-    margin-top: 30px;
+    margin-
 }
-
 .contact-links p {
     margin-bottom: 10px;
 }
-
 .contact-links a {
     color: var(--primary-blue-light);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition-smooth);
 }
-
 .contact-links a:hover,
 .contact-links a:focus {
     color: var(--primary-blue);
     text-decoration: underline;
     outline: none;
 }
-
 /* ===================================================================
    Footer
    =================================================================== */
@@ -423,94 +381,81 @@ body {
     color: var(--text-footer);
     font-size: 0.9rem;
 }
-
 /* ===================================================================
    Responsive Design - Mobile First
    =================================================================== */
 @media (max-width: 768px) {
     .site-header {
-        position: static;
-        margin-bottom: 30px;
+        position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+        
         background: rgba(0, 0, 0, 0.5);
     }
-    
     .main-navigation {
         justify-content: center;
         flex-wrap: wrap;
         gap: 15px;
     }
-    
     .nav-link {
         font-size: 0.85rem;
         padding: 6px 10px;
     }
-    
     .main-container {
         margin: 8px;
         padding: 30px 20px;
-        margin-top: 20px;
+        margin-
     }
-    
     .hero-title {
         font-size: 2.5rem;
     }
-    
     .value-prop-text {
         font-size: 1.1rem;
     }
-    
     .section-title {
         font-size: 2rem;
     }
-    
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-    }
     
+    }
     .service-card {
         padding: 25px;
     }
-    
     .analysis-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-    }
     
+    }
     .analysis-card {
         padding: 25px;
     }
 }
-
 @media (max-width: 480px) {
     .main-container {
         margin: 5px;
         padding: 25px 18px;
     }
-    
     .hero-title {
         font-size: 2rem;
     }
-    
     .value-prop-text {
         font-size: 1rem;
     }
-    
     .section-title {
         font-size: 1.8rem;
     }
-    
     .service-card,
     .analysis-card {
         padding: 20px;
     }
-    
     .service-icon,
     .analysis-icon {
         font-size: 2rem;
     }
 }
-
 /* ===================================================================
    Accessibility Improvements
    =================================================================== */
@@ -522,16 +467,13 @@ body {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-    
     .main-container {
         transform: none !important;
     }
-    
     html {
         scroll-behavior: auto;
     }
 }
-
 /* High contrast mode support */
 @media (prefers-contrast: high) {
     :root {
@@ -541,16 +483,17 @@ body {
         --input-border: rgba(255, 255, 255, 0.8);
     }
 }
-
 /* Focus indicators for keyboard navigation */
 *:focus {
     outline: 2px solid var(--primary-blue-light);
     outline-offset: 2px;
 }
-
 /* Screen reader only class */
 .sr-only {
     position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     width: 1px;
     height: 1px;
     padding: 0;
@@ -560,7 +503,6 @@ body {
     white-space: nowrap;
     border: 0;
 }
-
 .error-text {
     color: #f44336;
     font-size: 0.8rem;
