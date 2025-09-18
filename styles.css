@@ -38,10 +38,13 @@
    =================================================================== */
 .site-header {
     position: static;
-    
-    
     margin-bottom: 30px;
     text-align: right;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    
+    
     
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
@@ -92,11 +95,12 @@ body {
 }
 /* Skip link for accessibility */
 .skip-link {
-    position: static;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     
     
-    margin-bottom: 30px;
-    text-align: right;
     top: -40px;
     left: 6px;
     background: var(--primary-blue);
@@ -113,11 +117,12 @@ body {
    Star Background Animation
    =================================================================== */
 .stars-container {
-    position: static;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     
     
-    margin-bottom: 30px;
-    text-align: right;
     top: 0;
     left: 0;
     width: 100%;
@@ -126,11 +131,12 @@ body {
     z-index: -1;
 }
 .star {
-    position: static;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     
     
-    margin-bottom: 30px;
-    text-align: right;
     background: white;
     border-radius: 50%;
     animation: twinkle 3s infinite;
@@ -392,10 +398,13 @@ body {
 @media (max-width: 768px) {
     .site-header {
         position: static;
-    
-    
     margin-bottom: 30px;
     text-align: right;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    
+    
         
         background: rgba(0, 0, 0, 0.5);
     }
@@ -498,11 +507,12 @@ body {
 }
 /* Screen reader only class */
 .sr-only {
-    position: static;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
     
     
-    margin-bottom: 30px;
-    text-align: right;
     width: 1px;
     height: 1px;
     padding: 0;
