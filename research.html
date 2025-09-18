@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="NumberOne AI Research Portal - Advanced market research powered by Perplexity AI and real-time intelligence. Professional research automation by Bailey H. Caldwell Consulting.">
+    <meta name="keywords"
+        content="AI research, market analysis, Perplexity AI, NumberOne AI, Bailey Caldwell, technology consulting, automated research, citation analysis">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baileyhcaldwell.com/research">
+    <meta property="og:title" content="NumberOne AI Research Portal - Bailey H. Caldwell Consulting">
+    <meta property="og:description"
+        content="Advanced AI-powered research platform with real-time intelligence and citation analysis.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://baileyhcaldwell.com/research">
+    <meta property="twitter:title" content="NumberOne AI Research Portal - Bailey H. Caldwell Consulting">
+    <meta property="twitter:description"
+        content="Advanced AI-powered research platform with real-time intelligence and citation analysis.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <title>NumberOne AI Research Portal - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="research.css">
+    <link rel="stylesheet" href="news-ticker.css">
+
+    <!-- API Configuration -->
+    <script src="api-keys-config.js"></script>
+</head>
+
+<body data-analysis-type="research">
+    <!-- Access Code Section -->
+    <section class="access-gate" id="access-gate">
+        <div class="access-content">
+            <div class="access-form">
+                <div class="access-icon">🔐</div>
+                <h2 class="access-title">Research Portal Access</h2>
+                <p class="access-description">
+                    Enter the access code to use the NumberOne AI Research Portal
+                </p>
+                <div class="access-input-group">
+                    <input type="password" id="access-code" class="access-input" 
+                           placeholder="Enter access code" autocomplete="off">
+                    <button id="access-submit" class="access-button">
+                        <span class="button-text">Access Portal</span>
+                    </button>
+                </div>
+                <div id="access-error" class="access-error" style="display: none;">
+                    Invalid access code. Please try again.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Research Portal -->
+    <div class="research-portal" id="research-portal">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="logo">
+                </div>
+                <div class="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="finops-market-overview.html" class="nav-link">FinOps Analysis</a>
+                    <a href="k8s-market-analysis.html" class="nav-link">K8s Analysis</a>
+                    <a href="research.html" class="nav-link active">AI Research</a>
+                    <a href="bio.html" class="nav-link">About</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="research-hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon">🤖</span>
+                <span class="badge-text">NumberOne AI Research Portal</span>
+            </div>
+            <h1 class="hero-title">
+                Advanced Market Research
+                <span class="gradient-text">Powered by AI</span>
+            </h1>
+            <p class="hero-description">
+                Professional-grade research automation with Perplexity AI or SerpApi+Firecrawl. 
+                Generate citation-rich reports in minutes, not hours.
+            </p>
+            
+            <!-- Research Input -->
+            <div class="research-input-container">
+                <div class="research-form">
+                    <div class="input-group">
+                        <input type="text" id="research-topic" class="research-input" 
+                               placeholder="Enter research topic (e.g., 'FinOps market trends 2024')" 
+                               autocomplete="off">
+                        <button id="start-research" class="research-button">
+                            <span class="button-icon">🔍</span>
+                            <span class="button-text">Start Research</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Advanced Options -->
+                    <div class="advanced-options" id="advanced-options">
+                        <div class="option-group">
+                            <label for="research-depth">Research Depth:</label>
+                            <select id="research-depth" class="option-select">
+                                <option value="3">Quick (3) - Fast facts</option>
+                                <option value="5" selected>Standard (5) - Balanced analysis</option>
+                                <option value="8">Comprehensive (8) - Deep dive</option>
+                                <option value="10">Expert (10) - Maximum depth</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="research-provider">Research Provider:</label>
+                            <select id="research-provider" class="option-select">
+                                <option value="perplexity" selected>Perplexity AI (Recommended)</option>
+                                <option value="serpapi">SerpApi + Firecrawl</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label for="custom-sources">Preferred Sources:</label>
+                            <input type="text" id="custom-sources" class="option-input" 
+                                   placeholder="e.g., gartner.com, forrester.com (optional)">
+                        </div>
+                    </div>
+                    
+                    <button class="toggle-options" id="toggle-options">
+                        <span>Advanced Options</span>
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Animation -->
+        <div class="hero-background">
+            <div class="floating-elements">
+                <div class="floating-element" data-speed="2">🔍</div>
+                <div class="floating-element" data-speed="3">📊</div>
+                <div class="floating-element" data-speed="1.5">🤖</div>
+                <div class="floating-element" data-speed="2.5">📈</div>
+                <div class="floating-element" data-speed="1.8">💡</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Progress Section -->
+    <section class="research-progress" id="research-progress" style="display: none;">
+        <div class="container">
+            <div class="progress-header">
+                <h2 class="progress-title">Research in Progress</h2>
+                <div class="progress-status" id="progress-status">Initializing...</div>
+            </div>
+            
+            <div class="progress-bar-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-percentage" id="progress-percentage">0%</div>
+            </div>
+            
+            <div class="progress-steps">
+                <div class="step" id="step-1">
+                    <div class="step-icon">🔍</div>
+                    <div class="step-text">Analyzing Topic</div>
+                </div>
+                <div class="step" id="step-2">
+                    <div class="step-icon">📡</div>
+                    <div class="step-text">Collecting Sources</div>
+                </div>
+                <div class="step" id="step-3">
+                    <div class="step-icon">🧠</div>
+                    <div class="step-text">AI Analysis</div>
+                </div>
+                <div class="step" id="step-4">
+                    <div class="step-icon">📝</div>
+                    <div class="step-text">Generating Report</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Results Section -->
+    <section class="research-results" id="research-results" style="display: none;">
+        <div class="container">
+            <div class="results-header">
+                <h2 class="results-title">Research Complete</h2>
+                <div class="results-meta" id="results-meta"></div>
+                <div class="results-actions">
+                    <button class="action-button" id="export-pdf">
+                        <span class="button-icon">📄</span>
+                        Export PDF
+                    </button>
+                    <button class="action-button" id="export-markdown">
+                        <span class="button-icon">📝</span>
+                        Export Markdown
+                    </button>
+                    <button class="action-button" id="share-results">
+                        <span class="button-icon">🔗</span>
+                        Share Results
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Research Report -->
+            <div class="research-report" id="research-report">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+            
+            <!-- Citations Section -->
+            <div class="citations-section" id="citations-section">
+                <h3 class="citations-title">Sources & Citations</h3>
+                <div class="citations-list" id="citations-list">
+                    <!-- Dynamic citations will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research History Section -->
+    <section class="research-history" id="research-history" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Recent Research Sessions</h2>
+            <div class="history-grid" id="history-grid">
+                <!-- Dynamic history items will be inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer" style="display: none;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="footer-logo">
+                    <p class="footer-description">
+                        AI-powered research and consulting services for technology leaders.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Research Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Market Analysis</a></li>
+                        <li><a href="#" class="footer-link">Competitive Intelligence</a></li>
+                        <li><a href="#" class="footer-link">Technology Trends</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:bailey@baileyhcaldwell.com" class="footer-link">Email</a></li>
+                        <li><a href="https://linkedin.com/in/baileyhcaldwell" class="footer-link">LinkedIn</a></li>
+                        <li><a href="https://github.com/bailey-caldwell-sb" class="footer-link">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Bailey H. Caldwell Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="news-ticker.js"></script>
+    <script src="research.js"></script>
+</body>
+
+</html>

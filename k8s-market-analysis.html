@@ -31,7 +31,7 @@
 
     <title>Kubernetes Fleet Management + AIOps Market Analysis - Bailey H. Caldwell Consulting</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="news-ticker.css">
+    <link rel="stylesheet" href="universal-market-intelligence.css">
     <script src="api-keys-config.js"></script>
     
     <style>
@@ -389,16 +389,6 @@
     <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- News Ticker -->
-    <div class="news-ticker" id="news-ticker">
-        <div class="ticker-container">
-            <div class="ticker-label">MARKET NEWS</div>
-            <div class="ticker-content" id="ticker-content">
-                <!-- News items will be populated here -->
-            </div>
-        </div>
-    </div>
-
     <!-- Animated star background -->
     <div class="stars-container" id="stars" aria-hidden="true"></div>
 
@@ -570,6 +560,16 @@
             </div>
         </section>
 
+        <!-- Market Intelligence Section -->
+        <section class="market-intelligence" data-analysis-type="kubernetes">
+            <div id="intelligence-loading" style="display: none;">
+                <p>Loading market intelligence...</p>
+            </div>
+            <div id="intelligence-content">
+                <!-- Market intelligence content will be populated by JavaScript -->
+            </div>
+        </section>
+
         <footer class="site-footer" role="contentinfo">
             <p>&copy; 2025 Bailey H Caldwell | Kubernetes Fleet Management + AIOps Market Analysis</p>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
@@ -582,6 +582,7 @@
     <div id="companyTooltip" class="company-tooltip"></div>
 
     <script src="script.js"></script>
+    <script src="universal-market-intelligence.js"></script>
     <script>
         // Check if user has access
         if (!sessionStorage.getItem('k8s-access')) {
@@ -715,7 +716,6 @@
             initialize2x2Analysis();
         });
     </script>
-    <script src="news-ticker.js"></script>
 </body>
 
 </html>
