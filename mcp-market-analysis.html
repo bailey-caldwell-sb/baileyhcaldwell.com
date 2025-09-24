@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="MCP Market Analysis: Gartner-Style Research Framework & Competitive Intelligence for Model Context Protocol ecosystem. Professional market research by Bailey H. Caldwell Consulting.">
+    <meta name="keywords"
+        content="MCP analysis, Model Context Protocol, Gartner Magic Quadrant, AI agents, protocol analysis, Bailey Caldwell, technology consulting, market research">
+    <meta name="author" content="Bailey H. Caldwell">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baileyhcaldwell.com/mcp-market-analysis">
+    <meta property="og:title" content="MCP Market Analysis - Gartner-Style Research Framework - Bailey H. Caldwell Consulting">
+    <meta property="og:description"
+        content="Comprehensive Model Context Protocol market analysis with competitive intelligence and strategic insights.">
+    <meta property="og:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://baileyhcaldwell.com/mcp-market-analysis">
+    <meta property="twitter:title" content="MCP Market Analysis - Gartner-Style Research Framework - Bailey H. Caldwell Consulting">
+    <meta property="twitter:description"
+        content="Comprehensive Model Context Protocol market analysis with competitive intelligence and strategic insights.">
+    <meta property="twitter:image"
+        content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <title>MCP Market Analysis: 14 Infrastructure Companies - Magic Quadrant - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="universal-market-intelligence.css">
+    <script src="api-keys-config.js"></script>
+    
+    <style>
+        /* Additional styles for 4x4 Analysis */
+        .magic-quadrant-container {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-with-legend {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-legend {
+            flex: 0 0 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            width: 300px;
+            margin-right: 30px;
+        }
+
+        .legend-title {
+            color: var(--primary-blue-light);
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .legend-search {
+            margin-bottom: 15px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-small);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+        }
+        
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .legend-companies {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .legend-company {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: var(--border-radius-small);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .legend-company:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .legend-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .legend-company-name {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .quadrant-chart {
+            flex: 1;
+            position: relative;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .axis-line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        .axis-line.vertical {
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+        }
+
+        .axis-line.horizontal {
+            top: 45.5%;
+            left: 0;
+            right: 0;
+            height: 1px;
+        }
+
+        .axis-label {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 3;
+        }
+
+        .axis-label.x-axis {
+            bottom: -25px;
+            right: 10px;
+        }
+
+        .axis-label.y-axis {
+            top: 10px;
+            left: 10px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        .threshold-label {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 10px;
+            z-index: 3;
+        }
+
+        .threshold-label.x {
+            bottom: -20px;
+            left: 48%;
+        }
+
+        .threshold-label.y {
+            top: 43%;
+            left: 5px;
+        }
+
+        .quadrant {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 15px;
+        }
+
+        .quadrant-emerging {
+            top: 45.5%;
+            left: 0;
+            width: 50%;
+            height: 54.5%;
+            background: rgba(96, 125, 139, 0.1);
+        }
+
+        .quadrant-experts {
+            top: 45.5%;
+            left: 50%;
+            width: 50%;
+            height: 54.5%;
+            background: rgba(255, 193, 7, 0.1);
+        }
+
+        .quadrant-labs {
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 45.5%;
+            background: rgba(156, 39, 176, 0.1);
+        }
+
+        .quadrant-pioneers {
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 45.5%;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .quadrant-label {
+            font-weight: bold;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .company-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+            z-index: 5;
+        }
+
+        .company-dot:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 0 20px rgba(100, 181, 246, 0.6);
+            z-index: 10;
+        }
+
+        .company-dot.pioneers {
+            background: var(--accent-green);
+        }
+
+        .company-dot.experts {
+            background: #ffc107;
+        }
+
+        .company-dot.labs {
+            background: #9c27b0;
+        }
+
+        .company-dot.emerging {
+            background: #607d8b;
+        }
+
+        .axis-labels {
+            position: absolute;
+            font-weight: bold;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .x-axis-label {
+            bottom: 10px;
+            right: 15px;
+        }
+
+        .y-axis-label {
+            top: 15px;
+            right: 15px;
+            transform: rotate(90deg);
+            transform-origin: center;
+        }
+
+        .company-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px;
+            border-radius: var(--border-radius-small);
+            font-size: 0.8rem;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-width: 200px;
+        }
+
+        .company-tooltip.visible {
+            opacity: 1;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius-small);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-text {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .chart-with-legend {
+                flex-direction: column;
+            }
+            
+            .company-legend {
+                width: 100%;
+                max-height: 300px;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .quadrant-chart {
+                height: 400px;
+            }
+            
+            .company-dot {
+                width: 20px;
+                height: 20px;
+                font-size: 0.7rem;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Animated star background -->
+    <div class="stars-container" id="stars" aria-hidden="true"></div>
+
+    <!-- Main content -->
+    <main id="main-content" class="main-container" role="main">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="hero-title">MCP Market Analysis: Refined Focus on 14 Pure-Play Infrastructure Companies</h1>
+            <p class="hero-description">
+                The Model Context Protocol (MCP) infrastructure market represents a paradigm shift in AI agent interoperability and context management. This refined analysis examines 14 companies that are genuinely building their business around MCP infrastructure, excluding general cloud providers who merely support MCP as one feature. Our Magic Quadrant provides detailed scoring, rankings, and strategic insights into market positioning, competitive dynamics, and investment opportunities in the rapidly evolving MCP ecosystem.
+            </p>
+        </section>
+
+        <!-- Convergence Analysis -->
+        <section class="market-insights">
+            <h2 class="section-title">The MCP Revolution: From Isolated AI Agents to Unified Context Ecosystems</h2>
+            <div class="insight-text" style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);">
+                <p><strong>Protocol Foundation: Anthropic's Strategic Vision</strong><br>
+                Anthropic's introduction of the Model Context Protocol represents more than a technical specification—it's a strategic play to establish the foundational layer for AI agent interoperability. By open-sourcing MCP, Anthropic positions itself as the protocol steward while creating a massive ecosystem opportunity that extends far beyond their Claude models.</p>
+
+                <p><strong>Market Dynamics: The Network Effect Opportunity</strong><br>
+                MCP creates powerful network effects where each new server, client, and integration increases the value of the entire ecosystem. Early adopters gain significant advantages in context sharing, tool discovery, and agent orchestration capabilities. The protocol's design enables seamless communication between AI agents and external systems, creating a new category of infrastructure and tooling opportunities.</p>
+
+                <p><strong>Enterprise Adoption: Security and Governance as Differentiators</strong><br>
+                Enterprise MCP adoption hinges on security, compliance, and governance capabilities. Organizations need to manage context access, audit agent interactions, and ensure data privacy across multi-agent systems. This creates significant opportunities for vendors who can provide enterprise-grade MCP implementations with comprehensive security frameworks.</p>
+            </div>
+        </section>
+
+        <!-- Universal Market Intelligence Section -->
+        <section class="market-intelligence-section" data-market-segment="mcp">
+            <div class="intelligence-header">
+                <h2>Live Market Intelligence</h2>
+                <p>Real-time analysis of the Model Context Protocol ecosystem and competitive landscape</p>
+            </div>
+
+            <div id="intelligence-loading" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading market intelligence...</p>
+            </div>
+
+            <div id="intelligence-content" class="intelligence-content" style="display: none;">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Market Forces -->
+        <section class="market-insights">
+            <h2 class="section-title">Market Forces Driving MCP Adoption</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-title">1. AI Agent Proliferation: The Interoperability Challenge</div>
+                    <div class="insight-text">
+                        As organizations deploy multiple AI agents across different functions, the need for seamless context sharing and tool interoperability becomes critical. MCP addresses the fragmentation problem by providing a standardized protocol for agent communication, enabling complex multi-agent workflows that were previously impossible.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">2. Enterprise Security: Context Access Control</div>
+                    <div class="insight-text">
+                        Enterprise adoption requires sophisticated access control mechanisms for context sharing. Organizations need to ensure that sensitive information is only accessible to authorized agents while maintaining audit trails for compliance. This creates opportunities for security-focused MCP implementations and governance platforms.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">3. Developer Experience: Simplified Integration</div>
+                    <div class="insight-text">
+                        MCP dramatically reduces the complexity of building AI applications by providing standardized interfaces for context and tool access. Developers can focus on business logic rather than integration complexity, accelerating AI application development and creating demand for MCP-native development tools and frameworks.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">4. Platform Economics: The Race for Ecosystem Control</div>
+                    <div class="insight-text">
+                        Major technology platforms recognize MCP as a potential control point for AI ecosystems. Success in MCP infrastructure, tooling, or marketplace offerings could provide significant competitive advantages in the broader AI market, driving substantial investment and innovation in the space.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4x4 Analysis Chart -->
+        <section class="magic-quadrant-container">
+            <h2 class="section-title">Strategic Market Positioning in the MCP Ecosystem</h2>
+
+            <div class="chart-with-legend">
+                <!-- Company Legend -->
+                <div class="company-legend">
+                    <div class="legend-title">Companies</div>
+                    <div class="legend-search">
+                        <input type="text" id="companySearch" placeholder="Search companies..." class="search-input">
+                    </div>
+                    <div class="legend-companies" id="companyLegend">
+                        <!-- Legend items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Chart -->
+                <div class="quadrant-chart" id="quadrantChart">
+                    <!-- Axis lines -->
+                    <div class="axis-line vertical"></div>
+                    <div class="axis-line horizontal"></div>
+
+                    <!-- Axis labels -->
+                    <div class="axis-label x-axis">Ability to Execute →</div>
+                    <div class="axis-label y-axis">Completeness of Vision ↑</div>
+                    <div class="threshold-label x">7.5</div>
+                    <div class="threshold-label y">7.5</div>
+
+                    <!-- Quadrant sections -->
+                    <div class="quadrant quadrant-emerging">
+                        <div class="quadrant-label">Niche Players</div>
+                    </div>
+                    <div class="quadrant quadrant-experts">
+                        <div class="quadrant-label">Challengers</div>
+                    </div>
+                    <div class="quadrant quadrant-labs">
+                        <div class="quadrant-label">Visionaries</div>
+                    </div>
+                    <div class="quadrant quadrant-pioneers">
+                        <div class="quadrant-label">Leaders</div>
+                    </div>
+
+                    <!-- Axis labels -->
+                    <div class="axis-labels x-axis-label">Ability to Execute →</div>
+                    <div class="axis-labels y-axis-label">Completeness of Vision →</div>
+                </div>
+            </div>
+
+            <!-- Tooltip for company details -->
+            <div class="company-tooltip" id="companyTooltip"></div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot pioneers" style="background: var(--accent-green);"></div>
+                    <span class="legend-text">Leaders (21.4%) - High vision ≥7.5, high execution ≥7.5</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot experts" style="background: #ffc107;"></div>
+                    <span class="legend-text">Challengers (14.3%) - Vision <7.5, high execution ≥7.5</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot labs" style="background: #9c27b0;"></div>
+                    <span class="legend-text">Visionaries (28.6%) - High vision ≥7.5, execution <7.5</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot emerging" style="background: #607d8b;"></div>
+                    <span class="legend-text">Niche Players (35.7%) - Vision <7.5, execution <7.5</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Positioning -->
+        <section class="market-insights">
+            <h2 class="section-title">Strategic Market Positioning in the MCP Era</h2>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <div class="insight-title">Leaders: Protocol Stewardship and Platform Control (21.4%)</div>
+                    <div class="insight-text">
+                        <strong>Anthropic</strong> (#1, 18.7), <strong>Microsoft</strong> (#2, 17.2), and <strong>Obot AI</strong> (#3, 16.0) represent the leadership tier with comprehensive MCP strategies. Anthropic's protocol stewardship, Microsoft's enterprise integration capabilities, and Obot's enterprise-focused platform create a strong ecosystem foundation focused purely on MCP infrastructure.
+                        <br><br><strong>Strategic Advantage:</strong> These leaders control critical infrastructure and protocol development, positioning them to capture significant value as the MCP ecosystem scales.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Challengers: Execution Excellence with Emerging Vision (14.3%)</div>
+                    <div class="insight-text">
+                        <strong>K2view</strong> (#5, 14.7) and <strong>Rapid Innovation</strong> (#7, 14.6) demonstrate strong execution capabilities with growing MCP adoption strategies. Their proven enterprise deployment capabilities position them well for rapid MCP integration once strategic direction crystallizes.
+                        <br><br><strong>Strategic Opportunity:</strong> These vendors can leverage their operational excellence to become critical MCP infrastructure providers.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Visionaries: The AI-Native MCP Revolution (28.6%)</div>
+                    <div class="insight-text">
+                        <strong>Alpic</strong> (#4, 15.5), <strong>Speakeasy</strong> (#6, 14.7), <strong>FastMCP</strong> (#8, 14.4), and <strong>Archestra</strong> (#9, 14.3) represent the vanguard of MCP-native innovation. These platforms understand that MCP enables fundamentally new approaches to AI agent orchestration, security, and developer experience.
+                        <br><br><strong>Competitive Advantage:</strong> They're building for an MCP-first future, creating solutions that traditional vendors struggle to replicate.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Niche Players: Specialized Infrastructure Focus (35.7%)</div>
+                    <div class="insight-text">
+                        The substantial niche player segment includes <strong>Stainless</strong> (#10, 14.1), <strong>MCP Market</strong> (#11, 13.4), <strong>Mintlify</strong> (#12, 13.2), <strong>Smithery</strong> (#13, 12.7), and <strong>Taghash</strong> (#14, 12.0) who are developing specialized MCP infrastructure and tooling. This balanced distribution indicates a maturing market with opportunities for focused solutions.
+                        <br><br><strong>Market Opportunity:</strong> These companies can leverage their specialized expertise to create compelling MCP infrastructure components and developer tools.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Investment and Strategic Implications</div>
+                    <div class="insight-text">
+                        <strong>For Enterprise Buyers:</strong> Adopt a "protocol-first" strategy—evaluate MCP compatibility in AI tooling decisions, pilot MCP-native solutions for new initiatives, and prepare for ecosystem consolidation around MCP standards.
+                        <br><br><strong>For Investors:</strong> The MCP ecosystem creates a $10B+ opportunity in infrastructure, tooling, and platform plays. Focus on companies with strong protocol expertise, enterprise security capabilities, and developer-focused solutions.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Future Market Evolution</div>
+                    <div class="insight-text">
+                        <strong>Network Effects:</strong> MCP adoption will accelerate as more servers and clients join the ecosystem, creating winner-take-most dynamics in infrastructure and marketplace segments.
+                        <br><br><strong>Enterprise Adoption:</strong> Security, governance, and compliance capabilities will become table stakes for enterprise MCP deployments, favoring vendors with comprehensive enterprise solutions.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bailey H. Caldwell Consulting</h3>
+                    <p>Professional technology consulting and market research services specializing in emerging AI technologies and strategic market analysis.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="mailto:bailey@baileyhcaldwell.com">Strategic Consulting</a></li>
+                        <li><a href="mailto:bailey@baileyhcaldwell.com">Market Research</a></li>
+                        <li><a href="mailto:bailey@baileyhcaldwell.com">Technology Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="mailto:bailey@baileyhcaldwell.com">Email</a></li>
+                        <li><a href="index.html">Portfolio</a></li>
+                        <li><a href="research.html">Research Portal</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bailey H. Caldwell Consulting. All rights reserved.</p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Company data and JavaScript -->
+    <script>
+        // MCP Infrastructure Company Data - Complete Analysis (14 Companies)
+        const companies = [
+            // Leaders (High Vision ≥7.5, High Execution ≥7.5) - 3 companies (21.4%)
+            { name: 'Anthropic', vision: 9.5, execution: 9.2, quadrant: 'pioneers', rank: 1, total: 18.7, url: 'https://www.anthropic.com/' },
+            { name: 'Microsoft', vision: 8.2, execution: 9.0, quadrant: 'pioneers', rank: 2, total: 17.2, url: 'https://www.microsoft.com/' },
+            { name: 'Obot AI', vision: 8.4, execution: 7.6, quadrant: 'pioneers', rank: 3, total: 16.0, url: 'https://www.obot.ai/' },
+
+            // Visionaries (High Vision ≥7.5, Lower Execution <7.5) - 4 companies (28.6%)
+            { name: 'Alpic', vision: 8.7, execution: 6.8, quadrant: 'labs', rank: 4, total: 15.5, url: 'https://www.alpic.com/' },
+            { name: 'Speakeasy', vision: 7.6, execution: 7.1, quadrant: 'labs', rank: 6, total: 14.7, url: 'https://www.speakeasy.com/' },
+            { name: 'FastMCP', vision: 7.9, execution: 6.5, quadrant: 'labs', rank: 8, total: 14.4, url: 'https://fastmcp.com/' },
+            { name: 'Archestra', vision: 8.1, execution: 6.2, quadrant: 'labs', rank: 9, total: 14.3, url: 'https://www.archestra.com/' },
+
+            // Challengers (Lower Vision <7.5, High Execution ≥7.5) - 2 companies (14.3%)
+            { name: 'K2view', vision: 7.0, execution: 7.7, quadrant: 'experts', rank: 5, total: 14.7, url: 'https://www.k2view.com/' },
+            { name: 'Rapid Innovation', vision: 6.8, execution: 7.8, quadrant: 'experts', rank: 7, total: 14.6, url: 'https://rapidinnovation.io/' },
+
+            // Niche Players (Lower Vision <7.5, Lower Execution <7.5) - 5 companies (35.7%)
+            { name: 'Stainless', vision: 7.2, execution: 6.9, quadrant: 'emerging', rank: 10, total: 14.1, url: 'https://www.stainlessapi.com/' },
+            { name: 'MCP Market', vision: 7.1, execution: 6.3, quadrant: 'emerging', rank: 11, total: 13.4, url: 'https://mcpmarket.com/' },
+            { name: 'Mintlify', vision: 7.2, execution: 6.0, quadrant: 'emerging', rank: 12, total: 13.2, url: 'https://mintlify.com/' },
+            { name: 'Smithery', vision: 6.9, execution: 5.8, quadrant: 'emerging', rank: 13, total: 12.7, url: 'https://smithery.ai/' },
+            { name: 'Taghash', vision: 6.8, execution: 5.2, quadrant: 'emerging', rank: 14, total: 12.0, url: 'https://taghash.com/' }
+        ];
+
+        function initialize4x4Analysis() {
+            const chart = document.getElementById('quadrantChart');
+            const tooltip = document.getElementById('companyTooltip');
+            const legendContainer = document.getElementById('companyLegend');
+            const searchInput = document.getElementById('companySearch');
+
+            let allCompanies = [];
+
+            // Search functionality
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filterCompanies(searchTerm);
+            });
+
+            function filterCompanies(searchTerm) {
+                allCompanies.forEach(({ legendItem, dot, company }) => {
+                    const isVisible = company.name.toLowerCase().includes(searchTerm);
+                    legendItem.style.display = isVisible ? 'flex' : 'none';
+                    dot.style.display = isVisible ? 'block' : 'none';
+                });
+            }
+
+            // Create legend items and chart dots
+            companies.forEach((company, index) => {
+                const companyNumber = index + 1;
+
+                // Create legend item
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-company';
+                legendItem.innerHTML = `
+                    <div class="legend-number ${company.quadrant}" style="background: ${getQuadrantColor(company.quadrant)};">${company.rank}</div>
+                    <div class="legend-company-name">${company.name} (${company.total})</div>
+                `;
+
+                // Add click event to legend item
+                legendItem.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+
+                legendContainer.appendChild(legendItem);
+
+                // Create chart dot
+                const dot = document.createElement('div');
+                dot.className = `company-dot ${company.quadrant}`;
+                dot.textContent = company.rank;
+
+                // Position based on actual scores with proper scaling
+                // Vision (Y-axis): Scale 4.5-10 to 0-100%, threshold at 7.5
+                // Execution (X-axis): Scale 5-10 to 0-100%, threshold at 7.5
+
+                // Scale vision (4.5-10 range) to 0-100%
+                const visionMin = 4.5, visionMax = 10;
+                const scaledVision = ((company.vision - visionMin) / (visionMax - visionMin)) * 100;
+                const baseY = 100 - scaledVision; // Invert Y for proper positioning
+
+                // Scale execution (5-10 range) to 0-100%
+                const executionMin = 5, executionMax = 10;
+                const scaledExecution = ((company.execution - executionMin) / (executionMax - executionMin)) * 100;
+                const baseX = scaledExecution;
+
+                // Add slight randomization to prevent overlap (±3% of chart)
+                const randomOffsetX = (Math.random() - 0.5) * 6;
+                const randomOffsetY = (Math.random() - 0.5) * 6;
+
+                const x = Math.max(3, Math.min(97, baseX + randomOffsetX));
+                const y = Math.max(3, Math.min(97, baseY + randomOffsetY));
+
+                dot.style.left = `${x}%`;
+                dot.style.top = `${y}%`;
+                dot.style.transform = 'translate(-50%, -50%)';
+
+                // Add click event to open company website
+                dot.addEventListener('click', () => {
+                    window.open(company.url, '_blank', 'noopener,noreferrer');
+                });
+
+                // Add hover events for tooltip
+                dot.addEventListener('mouseenter', (e) => {
+                    tooltip.innerHTML = `
+                        <strong>#${company.rank} ${company.name}</strong><br>
+                        Vision: ${company.vision}/10<br>
+                        Execution: ${company.execution}/10<br>
+                        Total Score: ${company.total}<br>
+                        <em>Click to visit website</em>
+                    `;
+                    tooltip.classList.add('visible');
+
+                    // Highlight corresponding legend item
+                    legendItem.style.background = 'rgba(100, 181, 246, 0.2)';
+                });
+
+                dot.addEventListener('mousemove', (e) => {
+                    const rect = chart.getBoundingClientRect();
+                    tooltip.style.left = `${e.clientX - rect.left + 15}px`;
+                    tooltip.style.top = `${e.clientY - rect.top - 10}px`;
+                });
+
+                dot.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                    legendItem.style.background = '';
+                });
+
+                // Add hover events to legend item
+                legendItem.addEventListener('mouseenter', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1.3)';
+                    dot.style.boxShadow = '0 0 20px rgba(100, 181, 246, 0.6)';
+                    dot.style.zIndex = '10';
+                });
+
+                legendItem.addEventListener('mouseleave', () => {
+                    dot.style.transform = 'translate(-50%, -50%) scale(1)';
+                    dot.style.boxShadow = '0 0 10px rgba(100, 181, 246, 0.3)';
+                    dot.style.zIndex = '';
+                });
+
+                chart.appendChild(dot);
+
+                // Store reference for search functionality
+                allCompanies.push({ legendItem, dot, company });
+            });
+        }
+
+        // Helper function to get quadrant colors
+        function getQuadrantColor(quadrant) {
+            switch(quadrant) {
+                case 'pioneers': return 'var(--accent-green)';
+                case 'experts': return '#ffc107';
+                case 'labs': return '#9c27b0';
+                case 'emerging': return '#607d8b';
+                default: return '#607d8b';
+            }
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initialize4x4Analysis);
+    </script>
+
+    <!-- Universal Market Intelligence Script -->
+    <script src="universal-market-intelligence.js"></script>
+</body>
+
+</html>

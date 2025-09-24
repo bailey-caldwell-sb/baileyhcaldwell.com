@@ -582,11 +582,20 @@ This research would typically involve:
 
     initializeNewsTicker() {
         // Define research-related companies for news ticker
-        const researchCompanies = [
+        let researchCompanies = [
             'OpenAI', 'Anthropic', 'Perplexity', 'Google', 'Microsoft',
             'Meta', 'Amazon', 'IBM', 'NVIDIA', 'Databricks',
             'Hugging Face', 'Cohere', 'Stability AI', 'Midjourney'
         ];
+
+        // Check if this is the MCP analysis page and use MCP-specific companies
+        if (document.body.getAttribute('data-analysis-type') === 'mcp') {
+            researchCompanies = [
+                'Anthropic', 'Microsoft', 'OpenAI', 'Cloudflare', 'Obot AI',
+                'Block', 'MongoDB', 'Stripe', 'Alpic', 'Archestra',
+                'Google', 'Salesforce', 'Zapier', 'Notion', 'FastMCP'
+            ];
+        }
 
         // Set up news ticker if available
         if (typeof setNewsTickerApiKeys === 'function' && typeof window.newsTickerCompanies === 'undefined') {
@@ -944,9 +953,78 @@ This research would typically involve:
                     'Edge computing requirements accelerating demand for lightweight, autonomous OS platforms',
                     'Traditional Linux distributions losing ground to specialized container-native alternatives'
                 ]
+            },
+            'mcp': {
+                'market_segment': 'mcp',
+                'market_trends': [
+                    {
+                        'icon': '🤖',
+                        'title': 'AI Agent Orchestration',
+                        'description': 'Growing demand for multi-agent systems driving MCP adoption for context sharing and tool discovery across enterprise AI deployments.'
+                    },
+                    {
+                        'icon': '🔒',
+                        'title': 'Enterprise Security Focus',
+                        'description': 'Security, compliance, and governance becoming table stakes for enterprise MCP adoption with 300% growth in security-first implementations.'
+                    },
+                    {
+                        'icon': '🌐',
+                        'title': 'Protocol Standardization',
+                        'description': 'Industry moving toward standardized MCP implementations for interoperability, with Anthropic leading protocol development.'
+                    }
+                ],
+                'companies': [
+                    {
+                        'name': 'Anthropic',
+                        'category': 'leaders',
+                        'recent_developments': 'Released MCP 1.0 with enhanced security features, maintains protocol leadership',
+                        'market_positioning': 'Protocol creator with market-defining influence and technical excellence across AI ecosystem',
+                        'technology_approach': 'Foundational protocol development with focus on safety and enterprise adoption',
+                        'confidence_score': 9.5,
+                        'sources': 25,
+                        'url': 'https://www.anthropic.com/'
+                    },
+                    {
+                        'name': 'Microsoft',
+                        'category': 'leaders',
+                        'recent_developments': 'Integrated MCP across Azure AI services and Windows 11, comprehensive enterprise platform',
+                        'market_positioning': 'Comprehensive enterprise platform integration with proven deployment capabilities',
+                        'technology_approach': 'Full-stack integration across cloud, desktop, and enterprise AI services',
+                        'confidence_score': 8.2,
+                        'sources': 18,
+                        'url': 'https://www.microsoft.com/'
+                    },
+                    {
+                        'name': 'Obot AI',
+                        'category': 'leaders',
+                        'recent_developments': 'Raised $35M Series A for enterprise MCP platform, comprehensive solution approach',
+                        'market_positioning': 'Enterprise-focused MCP platform with comprehensive agent management capabilities',
+                        'technology_approach': 'Purpose-built enterprise MCP platform with security and governance focus',
+                        'confidence_score': 8.4,
+                        'sources': 12,
+                        'url': 'https://www.obot.ai/'
+                    },
+                    {
+                        'name': 'Alpic',
+                        'category': 'visionaries',
+                        'recent_developments': 'Secured $6M for first MCP-native cloud platform with innovative architecture',
+                        'market_positioning': 'First MCP-native cloud platform addressing infrastructure and deployment challenges',
+                        'technology_approach': 'Cloud-native MCP infrastructure with focus on scalability and developer experience',
+                        'confidence_score': 8.7,
+                        'sources': 8,
+                        'url': 'https://www.alpic.com/'
+                    }
+                ],
+                'key_insights': [
+                    'Market maturity indicated by average scores of 7.2 for both execution and vision',
+                    'Anthropic maintains dominant positioning as protocol creator and technical leader',
+                    'Enterprise adoption driven by security, compliance, and governance requirements',
+                    'Network effects creating winner-take-most scenarios in infrastructure segments',
+                    '$44M+ in recent funding rounds indicates strong investor confidence in ecosystem'
+                ]
             }
         };
-        
+
         return demoData[segment] || demoData['finops'];
     }
 
