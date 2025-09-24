@@ -4,9 +4,9 @@
  * 
  * Features:
  * - Animated starfield background
- * - 3D tilt effects on mouse movement
- * - Form validation and submission
+ * - Smooth scroll navigation
  * - Performance optimized animations
+ * - Accessibility improvements
  */
 
 // Performance optimized star creation and animation
@@ -20,6 +20,7 @@ class StarField {
     }
 
     init() {
+        if (!this.container) return;
         this.createStars();
         this.startAnimation();
     }
@@ -65,199 +66,71 @@ class StarField {
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
         }
-        this.container.innerHTML = '';
+        if (this.container) {
+            this.container.innerHTML = '';
+        }
     }
 }
 
-// Enhanced form handling with validation and feedback
-class ContactForm {
-    constructor(formSelector) {
-        this.form = document.querySelector(formSelector);
-        this.submitButton = this.form.querySelector('.submit-button');
-        this.originalButtonText = this.submitButton.textContent;
+// Smooth scroll navigation
+class SmoothNavigation {
+    constructor() {
         this.init();
     }
 
     init() {
-        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-        this.addRealTimeValidation();
-    }
-
-    addRealTimeValidation() {
-        const inputs = this.form.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
-            input.addEventListener('input', () => this.clearFieldError(input));
+        // Add smooth scroll behavior to navigation links
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => this.handleNavClick(e));
         });
+
+        // Update active navigation based on scroll position
+        this.updateActiveNav();
+        window.addEventListener('scroll', () => this.throttle(this.updateActiveNav.bind(this), 100));
     }
 
-    validateField(field) {
-        const isValid = field.checkValidity();
-        field.setAttribute('aria-invalid', !isValid);
-        
-        if (!isValid) {
-            this.showFieldError(field);
-        } else {
-            this.clearFieldError(field);
-        }
-        
-        return isValid;
-    }
-
-    showFieldError(field) {
-        field.style.borderColor = '#f44336';
-    }
-
-    clearFieldError(field) {
-        field.style.borderColor = '';
-    }
-
-    async handleSubmit(e) {
+    handleNavClick(e) {
         e.preventDefault();
+        const targetId = e.target.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
         
-        // Validate all fields
-        const formData = new FormData(this.form);
-        const isValid = this.validateForm();
-        
-        if (!isValid) {
-            this.showMessage('Please fill in all required fields correctly.', 'error');
-            return;
-        }
+        if (targetElement) {
+            const headerOffset = 80; // Account for fixed header
+            const elementPosition = targetElement.offsetTop;
+            const offsetPosition = elementPosition - headerOffset;
 
-        // Show loading state
-        this.setLoadingState(true);
-
-        try {
-            // Simulate form submission (replace with actual endpoint)
-            await this.submitForm(formData);
-            
-            const name = formData.get('name');
-            this.showMessage(`Thank you, ${name}! Your message has been received. I'll get back to you soon.`, 'success');
-            this.form.reset();
-            
-        } catch (error) {
-            console.error('Form submission error:', error);
-            this.showMessage('Sorry, there was an error sending your message. Please try again later.', 'error');
-        } finally {
-            this.setLoadingState(false);
-        }
-    }
-
-    validateForm() {
-        const inputs = this.form.querySelectorAll('input[required], textarea[required]');
-        let isValid = true;
-
-        inputs.forEach(input => {
-            if (!this.validateField(input)) {
-                isValid = false;
-            }
-        });
-
-        return isValid;
-    }
-
-    async submitForm(formData) {
-        // Use native form submission for Netlify Forms
-        // This will be handled by Netlify automatically when deployed
-        const form = this.form;
-        
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(formData).toString()
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            return response;
-        } catch (error) {
-            console.error('Form submission failed:', error);
-            throw error;
+            // Update focus for accessibility
+            targetElement.focus({ preventScroll: true });
         }
     }
 
-    setLoadingState(isLoading) {
-        this.submitButton.disabled = isLoading;
-        this.submitButton.textContent = isLoading ? 'Transmitting...' : this.originalButtonText;
+    updateActiveNav() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
         
-        if (isLoading) {
-            this.submitButton.style.opacity = '0.7';
-        } else {
-            this.submitButton.style.opacity = '';
-        }
-    }
-
-    showMessage(text, type) {
-        // Remove existing messages
-        const existingMessages = this.form.querySelectorAll('.success-message, .error-message');
-        existingMessages.forEach(msg => msg.remove());
-
-        // Create new message
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `${type}-message`;
-        messageDiv.textContent = text;
-        messageDiv.style.display = 'block';
-        messageDiv.setAttribute('role', 'alert');
-        messageDiv.setAttribute('aria-live', 'polite');
-
-        // Insert at the beginning of the form
-        this.form.insertBefore(messageDiv, this.form.firstChild);
-
-        // Auto-remove success messages after 5 seconds
-        if (type === 'success') {
-            setTimeout(() => {
-                if (messageDiv.parentNode) {
-                    messageDiv.remove();
-                }
-            }, 5000);
-        }
-    }
-}
-
-// Enhanced 3D tilt effect with performance optimization
-class TiltEffect {
-    constructor(elementSelector) {
-        this.element = document.querySelector(elementSelector);
-        this.isHovering = false;
-        this.throttledMouseMove = this.throttle(this.handleMouseMove.bind(this), 16); // ~60fps
-        this.init();
-    }
-
-    init() {
-        if (!this.element) return;
-
-        document.addEventListener('mousemove', this.throttledMouseMove);
-        this.element.addEventListener('mouseenter', () => this.isHovering = true);
-        this.element.addEventListener('mouseleave', () => {
-            this.isHovering = false;
-            this.resetTilt();
+        let currentSection = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute('id');
+            }
         });
-    }
 
-    handleMouseMove(e) {
-        if (!this.isHovering) return;
-
-        const rect = this.element.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-
-            this.element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        }
-    }
-
-    resetTilt() {
-        this.element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentSection}`) {
+                link.classList.add('active');
+            }
+        });
     }
 
     throttle(func, limit) {
@@ -272,14 +145,77 @@ class TiltEffect {
             }
         }
     }
+}
 
-    destroy() {
-        document.removeEventListener('mousemove', this.throttledMouseMove);
+// Performance monitoring and optimization
+class PerformanceOptimizer {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        // Lazy load images when they come into view
+        this.setupLazyLoading();
+        
+        // Optimize animations based on device capabilities
+        this.optimizeAnimations();
+        
+        // Monitor performance
+        this.monitorPerformance();
+    }
+
+    setupLazyLoading() {
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    }
+
+    optimizeAnimations() {
+        // Reduce animations on low-end devices
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        
+        if (connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g')) {
+            document.body.classList.add('reduced-animations');
+        }
+
+        // Respect user's motion preferences
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.body.classList.add('reduced-motion');
+        }
+    }
+
+    monitorPerformance() {
+        // Monitor Core Web Vitals
+        if ('web-vital' in window) {
+            // This would integrate with web-vitals library if included
+            // For now, just basic performance monitoring
+        }
+
+        // Basic performance logging
+        window.addEventListener('load', () => {
+            const perfData = performance.getEntriesByType('navigation')[0];
+            if (perfData) {
+                console.log(`Page load time: ${perfData.loadEventEnd - perfData.loadEventStart}ms`);
+            }
+        });
     }
 }
 
 // Accessibility enhancements
-class AccessibilityManager {
+class AccessibilityEnhancer {
     constructor() {
         this.init();
     }
@@ -287,17 +223,21 @@ class AccessibilityManager {
     init() {
         this.setupKeyboardNavigation();
         this.setupFocusManagement();
-        this.setupScreenReaderSupport();
+        this.setupARIALabels();
     }
 
     setupKeyboardNavigation() {
-        // Enhanced keyboard navigation for interactive elements
-        const interactiveElements = document.querySelectorAll('button, input, textarea, a[href]');
-        
-        interactiveElements.forEach((element, index) => {
-            element.addEventListener('keydown', (e) => {
-                if (e.key === 'Tab') {
-                    // Custom tab handling if needed
+        // Enhanced keyboard navigation for cards
+        const cards = document.querySelectorAll('.service-card, .analysis-card');
+        cards.forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    const link = card.querySelector('a');
+                    if (link) {
+                        e.preventDefault();
+                        link.click();
+                    }
                 }
             });
         });
@@ -305,128 +245,88 @@ class AccessibilityManager {
 
     setupFocusManagement() {
         // Ensure focus is visible and properly managed
-        const focusableElements = document.querySelectorAll('button, input, textarea, a[href]');
-        
-        focusableElements.forEach(element => {
-            element.addEventListener('focus', () => {
-                element.style.outline = '2px solid var(--primary-blue)';
-                element.style.outlineOffset = '2px';
-            });
-            
-            element.addEventListener('blur', () => {
-                element.style.outline = '';
-                element.style.outlineOffset = '';
-            });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-navigation');
         });
     }
 
-    setupScreenReaderSupport() {
-        // Add ARIA labels and descriptions where needed
-        const form = document.querySelector('.contact-form');
-        if (form) {
-            form.setAttribute('aria-label', 'Contact form');
-        }
-
-        // Add live region for dynamic content
-        const liveRegion = document.createElement('div');
-        liveRegion.setAttribute('aria-live', 'polite');
-        liveRegion.setAttribute('aria-atomic', 'true');
-        liveRegion.className = 'sr-only';
-        liveRegion.style.position = 'absolute';
-        liveRegion.style.width = '1px';
-        liveRegion.style.height = '1px';
-        liveRegion.style.padding = '0';
-        liveRegion.style.margin = '-1px';
-        liveRegion.style.overflow = 'hidden';
-        liveRegion.style.clip = 'rect(0, 0, 0, 0)';
-        liveRegion.style.whiteSpace = 'nowrap';
-        liveRegion.style.border = '0';
-        
-        document.body.appendChild(liveRegion);
+    setupARIALabels() {
+        // Add ARIA labels where needed
+        const cards = document.querySelectorAll('.service-card, .analysis-card');
+        cards.forEach((card, index) => {
+            const title = card.querySelector('h3');
+            if (title && !card.getAttribute('aria-label')) {
+                card.setAttribute('aria-label', `Service: ${title.textContent}`);
+            }
+        });
     }
 }
 
-// Performance monitoring
-class PerformanceMonitor {
+// Main application initialization
+class WebsiteApp {
     constructor() {
-        this.metrics = {};
+        this.components = {};
         this.init();
     }
 
     init() {
-        if ('performance' in window) {
-            this.measurePageLoad();
-            this.setupPerformanceObserver();
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initializeComponents());
+        } else {
+            this.initializeComponents();
         }
     }
 
-    measurePageLoad() {
-        window.addEventListener('load', () => {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            this.metrics.pageLoad = perfData.loadEventEnd - perfData.fetchStart;
-            console.log(`Page load time: ${this.metrics.pageLoad}ms`);
+    initializeComponents() {
+        try {
+            // Initialize all components
+            this.components.starField = new StarField('stars', 80);
+            this.components.navigation = new SmoothNavigation();
+            this.components.performance = new PerformanceOptimizer();
+            this.components.accessibility = new AccessibilityEnhancer();
+
+            console.log('Website components initialized successfully');
+        } catch (error) {
+            console.error('Error initializing website components:', error);
+        }
+    }
+
+    destroy() {
+        // Clean up components
+        Object.values(this.components).forEach(component => {
+            if (component && typeof component.destroy === 'function') {
+                component.destroy();
+            }
         });
-    }
-
-    setupPerformanceObserver() {
-        if ('PerformanceObserver' in window) {
-            const observer = new PerformanceObserver((list) => {
-                for (const entry of list.getEntries()) {
-                    if (entry.entryType === 'largest-contentful-paint') {
-                        this.metrics.lcp = entry.startTime;
-                        console.log(`LCP: ${this.metrics.lcp}ms`);
-                    }
-                }
-            });
-            
-            observer.observe({ entryTypes: ['largest-contentful-paint'] });
-        }
     }
 }
 
+// Initialize the application
+const app = new WebsiteApp();
 
-// Initialize everything when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize star field
-    const starField = new StarField('stars', 100);
-    
-    // Initialize contact form
-    const contactForm = new ContactForm('.contact-form');
-    
-    
-    // Initialize tilt effect (only if user doesn't prefer reduced motion)
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const tiltEffect = new TiltEffect('.main-container');
-    }
-    
-    // Initialize accessibility enhancements
-    const accessibilityManager = new AccessibilityManager();
-    
-    // Initialize performance monitoring (development only)
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        const performanceMonitor = new PerformanceMonitor();
-    }
-
-    // Handle page visibility changes for performance
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            // Pause animations when page is not visible
-            document.body.style.animationPlayState = 'paused';
-        } else {
-            // Resume animations when page becomes visible
-            document.body.style.animationPlayState = 'running';
+// Handle page visibility changes for performance
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        // Pause animations when page is not visible
+        if (app.components.starField) {
+            app.components.starField.destroy();
         }
-    });
+    } else {
+        // Resume animations when page becomes visible
+        if (app.components.starField) {
+            app.components.starField = new StarField('stars', 80);
+        }
+    }
 });
 
-// Export classes for potential testing or external use
+// Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        StarField,
-        ContactForm,
-        TiltEffect,
-        AccessibilityManager,
-        PerformanceMonitor,
-        BackgroundRotator
-    };
+    module.exports = { WebsiteApp, StarField, SmoothNavigation };
 }
