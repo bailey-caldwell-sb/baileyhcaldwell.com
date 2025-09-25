@@ -443,8 +443,6 @@ body {
     .analysis-grid {
         grid-template-columns: 1fr;
         gap: 20px;
-    justify-content: flex-end;
-    
     }
     .analysis-card {
         padding: 25px;
