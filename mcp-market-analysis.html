@@ -612,6 +612,12 @@
 
     <!-- Company data and JavaScript -->
     <script>
+        // Check if user has access
+        if (!sessionStorage.getItem('mcp-access')) {
+            window.location.href = 'mcp-login.html';
+        }
+    </script>
+    <script>
         // MCP Infrastructure Company Data - Complete Analysis (19 Companies - 2025 Update)
         const companies = [
             // Leaders (High Vision ≥7.5, High Execution ≥7.5) - 5 companies (26.3%)

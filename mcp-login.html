@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Required - MCP Infrastructure Market Analysis - Bailey H. Caldwell Consulting</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .login-input {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--border-radius-small);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
+        }
+        
+        .login-button {
+            padding: 15px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-small);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .login-button:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-2px);
+        }
+        
+        .login-title {
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .login-description {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="brand-logo">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        <div class="login-container">
+            <h1 class="login-title">Access Required</h1>
+            <p class="login-description">
+                This comprehensive MCP Infrastructure Market Analysis (2025) with Magic Quadrant positioning of 19 companies is restricted to invited participants. Please enter the access code provided to you.
+            </p>
+            
+            <form class="login-form" id="loginForm">
+                <input 
+                    type="password" 
+                    id="accessCode" 
+                    class="login-input" 
+                    placeholder="Enter access code"
+                    required
+                >
+                <button type="submit" class="login-button">Access Analysis</button>
+                <div class="error-message" id="errorMessage">
+                    Invalid access code. Please try again.
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Access codes for MCP Market Analysis
+        const validCodes = [
+            'mcp-infrastructure-2025',
+            'protocol-analysis',
+            'bailey'
+        ];
+        
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const enteredCode = document.getElementById('accessCode').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (validCodes.includes(enteredCode.toLowerCase())) {
+                // Store access in session
+                sessionStorage.setItem('mcp-access', 'granted');
+                // Redirect to protected page
+                window.location.href = 'mcp-market-analysis.html';
+            } else {
+                errorMessage.style.display = 'block';
+                document.getElementById('accessCode').value = '';
+                document.getElementById('accessCode').focus();
+            }
+        });
+    </script>
+</body>
+</html>
