@@ -35,6 +35,13 @@
     <script src="api-keys-config.js"></script>
     
     <style>
+        /* Page Layout - Centered Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
         /* Additional styles for 4x4 Analysis */
         .magic-quadrant-container {
             margin: 40px 0;
@@ -50,7 +57,7 @@
             display: flex;
             gap: 30px;
             align-items: flex-start;
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -322,22 +329,7 @@
             font-size: 0.9rem;
         }
 
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: var(--primary-blue-light);
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 1px solid var(--primary-blue);
-            border-radius: var(--border-radius-small);
-            background: rgba(100, 181, 246, 0.1);
-            transition: var(--transition-smooth);
-        }
 
-        .back-link:hover {
-            background: rgba(100, 181, 246, 0.2);
-            transform: translateY(-2px);
-        }
 
         .market-insights {
             margin-top: 40px;
@@ -373,40 +365,74 @@
             line-height: 1.6;
         }
 
+        /* Hero Section Improvements */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Section Spacing */
+        .market-insights {
+            margin-bottom: 40px;
+        }
+
         @media (max-width: 768px) {
+            .main-container {
+                padding: 0 15px;
+            }
+
             .chart-with-legend {
                 flex-direction: column;
                 gap: 20px;
             }
-            
+
             .company-legend {
                 flex: none;
                 max-height: 300px;
                 order: 2;
+                margin-right: 0;
+                width: 100%;
             }
-            
+
             .quadrant-chart {
                 height: 500px;
                 order: 1;
             }
-            
+
             .y-axis-label {
                 left: -100px;
                 font-size: 0.8rem;
             }
-            
+
             .x-axis-label {
                 font-size: 0.8rem;
             }
-            
+
             .company-dot {
                 width: 20px;
                 height: 20px;
                 font-size: 0.7rem;
             }
-            
+
             .legend {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
             }
         }
     </style>
@@ -421,8 +447,16 @@
 
     <!-- Main content -->
     <main id="main-content" class="main-container" role="main">
-        <a href="index.html" class="back-link">← Back to Home</a>
-        
+        <header class="site-header">
+            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#analysis" class="nav-link">Analysis</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+        </header>
+
         <!-- Hero Section -->
         <section class="hero-section">
             <h1 class="hero-title">FinOps Market Analysis: The Great Convergence of Traditional Cloud Cost Management and Agentic AI</h1>
