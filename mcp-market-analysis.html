@@ -35,6 +35,28 @@
     <script src="api-keys-config.js"></script>
     
     <style>
+        /* Page Layout - Centered Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section Improvements */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            margin-bottom: 20px;
+        }
+
+        .hero-description {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         /* Additional styles for 4x4 Analysis */
         .magic-quadrant-container {
             margin: 40px 0;
@@ -374,7 +396,15 @@
 
     <!-- Main content -->
     <main id="main-content" class="main-container" role="main">
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <header class="site-header">
+            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#analysis" class="nav-link">Analysis</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+        </header>
 
         <!-- Hero Section -->
         <section class="hero-section">
