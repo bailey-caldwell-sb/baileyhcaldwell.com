@@ -4,3 +4,6 @@
 *_original.css
 *_original.js
 test_website.html
+
+# Local Netlify folder
+.netlify

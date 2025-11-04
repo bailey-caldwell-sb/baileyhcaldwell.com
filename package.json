@@ -1,0 +1,46 @@
+{
+  "name": "bailey-caldwell-consulting-website",
+  "version": "2.0.0",
+  "description": "Bailey H. Caldwell Consulting website with interactive SOW proposal system",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "npm run build:sow",
+    "build:sow": "cd sow-proposals && npm run build",
+    "deploy": "netlify deploy --prod",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.ts,.tsx",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "consulting",
+    "sow",
+    "proposals",
+    "google-docs",
+    "netlify",
+    "react",
+    "typescript"
+  ],
+  "author": "Bailey H. Caldwell",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bailey-caldwell-sb/baileyhcaldwell.com"
+  }
+}
