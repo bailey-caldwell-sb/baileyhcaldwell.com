@@ -209,6 +209,7 @@ h1 {
 .tag.surf { color: var(--good); }
 .tag.moon { color: #9ec8ff; }
 .tag.fish { color: var(--epic); }
+.tag.boat { color: #ffc561; }
 
 .checks { list-style: none; padding: 0; margin: 18px 0 0; }
 
