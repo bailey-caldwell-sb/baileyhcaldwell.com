@@ -10,8 +10,8 @@
         content="Bailey Caldwell, FinOps consulting, SaaS growth strategy, enterprise GenAI deployment, technology consulting, SaaS consulting, cloud cost optimization, customer success, McKinsey, business transformation, AI consulting, LLM deployment">
     <meta name="author" content="Bailey H. Caldwell">
     <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#08090a">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://baileyhcaldwell.com/">
     <meta property="og:title" content="Bailey H. Caldwell Consulting - Technology & SaaS Business Acceleration">
@@ -20,7 +20,6 @@
     <meta property="og:image"
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://baileyhcaldwell.com/">
     <meta property="twitter:title" content="Bailey H. Caldwell Consulting - Technology & SaaS Business Acceleration">
@@ -29,19 +28,16 @@
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
 
-    <!-- Preload critical resources -->
-    <link rel="preload"
-        href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        as="image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 
     <title>Bailey H. Caldwell Consulting - Technology & SaaS Business Acceleration</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home.css">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -55,178 +51,288 @@
 </head>
 
 <body>
-    <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <!-- Animated star background -->
-    <div class="stars-container" id="stars" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="#top" aria-label="Bailey H. Caldwell, back to top">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#intel">Intel</a>
+            <a href="#build">Build</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="#contact">Let's talk</a>
+        </div>
+    </header>
 
-    <!-- Main content -->
-    <main id="main-content" class="main-container" role="main">
-        <header class="site-header">
-            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#analysis" class="nav-link">Analysis</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-        </header>
+    <main id="main-content">
+        <section class="hero" id="top">
+            <canvas class="hero__field" id="field" aria-hidden="true"></canvas>
+            <div class="hero__aurora" aria-hidden="true"></div>
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="value-proposition">
-                <p class="value-prop-text">Empowering growth-minded SaaS and technology leaders to scale profitably through AI-powered innovation and strategic execution.</p>
+            <div class="hero__inner">
+                <p class="eyebrow" data-reveal>
+                    <span class="eyebrow__dot" aria-hidden="true"></span>
+                    Executive advisor &middot; Santa Barbara, CA
+                </p>
+
+                <h1 class="hero__title" data-reveal
+                    aria-label="Turning AI pilots, cloud spend, on-prem apps, technical deals and partnerships into profitable growth.">
+                    <span aria-hidden="true">
+                        <span class="line">Turning <span class="rotator" id="rotator">AI pilots</span></span>
+                        <span class="line">into <em>profitable</em> growth.</span>
+                    </span>
+                </h1>
+
+                <p class="hero__lede" data-reveal>
+                    Empowering growth-minded SaaS and technology leaders to scale profitably through
+                    AI-powered innovation and strategic execution.
+                    <span class="muted">30+ years in software. Former Associate Partner, McKinsey &amp; Company.</span>
+                </p>
+
+                <div class="hero__ctas" data-reveal>
+                    <a class="btn btn--primary magnetic" href="mailto:bailey@baileyhcaldwell.com">
+                        Start a conversation <span class="btn__arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                    <a class="btn btn--ghost" href="#services">Explore the work</a>
+                </div>
             </div>
-            <h1 class="hero-title">Bailey H. Caldwell Consulting</h1>
+
+            <div class="marquee" aria-label="Previously at McKinsey &amp; Company, Cloud by McKinsey, Flexera, RightScale, Paxonix and Realtor.com">
+                <span class="marquee__label" aria-hidden="true">Previously</span>
+                <div class="marquee__track" aria-hidden="true">
+                    <div class="marquee__row">
+                        <span>McKinsey &amp; Company</span><i>&#10022;</i>
+                        <span>Cloud by McKinsey</span><i>&#10022;</i>
+                        <span>Flexera</span><i>&#10022;</i>
+                        <span>RightScale</span><i>&#10022;</i>
+                        <span>Paxonix</span><i>&#10022;</i>
+                        <span>Realtor.com</span><i>&#10022;</i>
+                    </div>
+                    <div class="marquee__row">
+                        <span>McKinsey &amp; Company</span><i>&#10022;</i>
+                        <span>Cloud by McKinsey</span><i>&#10022;</i>
+                        <span>Flexera</span><i>&#10022;</i>
+                        <span>RightScale</span><i>&#10022;</i>
+                        <span>Paxonix</span><i>&#10022;</i>
+                        <span>Realtor.com</span><i>&#10022;</i>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- About Bailey Section -->
-        <section id="about" class="about-section">
-            <h2 class="section-title">About Bailey</h2>
-            <div class="about-content">
-                <div class="about-text">
+        <section class="section about" id="about">
+            <div class="section__head" data-reveal>
+                <span class="kicker">01 / About</span>
+            </div>
+            <div class="about__grid">
+                <h2 class="statement" data-reveal>
+                    Three decades where <em>technology</em> meets <em>economics</em>, from strategy deck to shipped system.
+                </h2>
+                <div class="about__body" data-reveal>
                     <p>
-                        Executive Level Technical Leader with 30+ years across software and technology industries. Former
-                        Associate Partner at McKinsey & Company and founding member of Cloud by McKinsey;
-                        built, led and scaled the technology economics and FinOps practice.
+                        Executive-level technical leader with 30+ years across software and technology. Former
+                        Associate Partner at McKinsey &amp; Company and founding member of Cloud by McKinsey, where
+                        I built, led and scaled the technology economics and FinOps practice.
                     </p>
                     <p>
-                        My passion lies in helping technology companies navigate complex transformations—whether that's optimizing cloud economics, deploying enterprise AI solutions, or scaling customer success operations. Having worked with Fortune 500 enterprises and high-growth startups alike, I bring both strategic vision and hands-on execution experience.
+                        I help technology companies navigate complex transformations: optimizing cloud economics,
+                        deploying enterprise AI, and scaling customer success. Fortune 500 enterprises and
+                        high-growth startups alike get both the strategic vision and the hands-on execution.
                     </p>
+                    <a class="link-arrow" href="bio.html">Read the full bio <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+
+            <dl class="stats">
+                <div class="stat" data-reveal>
+                    <dt>Years in software</dt>
+                    <dd><span data-count="30">30</span>+</dd>
+                </div>
+                <div class="stat" data-reveal>
+                    <dt>Founding member</dt>
+                    <dd class="stat__word">Cloud by McKinsey</dd>
+                </div>
+                <div class="stat" data-reveal>
+                    <dt>Practice areas</dt>
+                    <dd><span data-count="6">6</span></dd>
+                </div>
+                <div class="stat" data-reveal>
+                    <dt>Vendors mapped in market intel</dt>
+                    <dd><span data-count="55">55</span>+</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="section services" id="services">
+            <div class="section__head" data-reveal>
+                <span class="kicker">02 / Services</span>
+                <h2 class="section__title">Commercial acceleration across the <em>customer lifecycle</em>.</h2>
+            </div>
+
+            <ol class="svc" id="svc">
+                <li class="svc__item is-open" data-reveal>
+                    <button class="svc__row" aria-expanded="true" aria-controls="svc-1">
+                        <span class="svc__num">01</span>
+                        <span class="svc__title">GenAI &amp; Custom LLM Deployments</span>
+                        <span class="svc__tag">Build and fine-tune AI models that align with your enterprise workflows, with governance baked in.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-1">
+                        <div><p>Strategic advisory for AI integration, custom LLM development &amp; fine-tuning, AI architecture &amp; deployment, responsible AI &amp; governance, and AI-driven business process optimization.</p></div>
+                    </div>
+                </li>
+                <li class="svc__item" data-reveal>
+                    <button class="svc__row" aria-expanded="false" aria-controls="svc-2">
+                        <span class="svc__num">02</span>
+                        <span class="svc__title">Product-Market Fit &amp; AI Product Acceleration</span>
+                        <span class="svc__tag">Take AI initiatives from concept to market success through data-driven validation.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-2">
+                        <div><p>Transform experimental AI projects into market-ready products. Advisory for AI product strategy, market validation, competitive positioning, and product-market fit assessment. Growth strategies that let developer-led adoption scale into enterprise-ready solutions.</p></div>
+                    </div>
+                </li>
+                <li class="svc__item" data-reveal>
+                    <button class="svc__row" aria-expanded="false" aria-controls="svc-3">
+                        <span class="svc__num">03</span>
+                        <span class="svc__title">SaaS Product &amp; Business Transformation</span>
+                        <span class="svc__tag">The complete journey from on-premise to scalable, cloud-native SaaS.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-3">
+                        <div><p>Guidance for companies moving from on-premise to cloud/SaaS models: pricing strategy, migration planning, architecture optimization, and scaling operations.</p></div>
+                    </div>
+                </li>
+                <li class="svc__item" data-reveal>
+                    <button class="svc__row" aria-expanded="false" aria-controls="svc-4">
+                        <span class="svc__num">04</span>
+                        <span class="svc__title">Sales Engineering &amp; Customer Success</span>
+                        <span class="svc__tag">Accelerate the "technical yes" and build retention programs that compound.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-4">
+                        <div><p>Design and enhance customer success organizations, develop proactive retention programs, and establish 24x7 global support operations. Scale Sales Engineering teams to lift win rates during the buying process.</p></div>
+                    </div>
+                </li>
+                <li class="svc__item" data-reveal>
+                    <button class="svc__row" aria-expanded="false" aria-controls="svc-5">
+                        <span class="svc__num">05</span>
+                        <span class="svc__title">Strategic Partnerships &amp; Commercial Growth</span>
+                        <span class="svc__tag">Ecosystem partnerships that open new revenue streams and speed market penetration.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-5">
+                        <div><p>Global business development strategy and strategic alliances across ISV, channel and technology ecosystems, with partnership models built around measurable success rates.</p></div>
+                    </div>
+                </li>
+                <li class="svc__item" data-reveal>
+                    <button class="svc__row" aria-expanded="false" aria-controls="svc-6">
+                        <span class="svc__num">06</span>
+                        <span class="svc__title">Leadership Development &amp; Operational Excellence</span>
+                        <span class="svc__tag">Cultures of innovation, scalable systems and high-performing teams.</span>
+                        <span class="svc__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="svc__panel" id="svc-6">
+                        <div><p>Develop leadership capabilities, implement accountability frameworks, and build scalable systems across critical business processes.</p></div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="section intel" id="intel">
+            <div class="section__head" data-reveal>
+                <span class="kicker">03 / Market intel</span>
+                <h2 class="section__title">Strategic market analysis, <em>by invitation</em>.</h2>
+                <p class="section__sub">Competitive intelligence and positioning analysis for key technology segments. Client access required.</p>
+            </div>
+
+            <div class="intel__grid">
+                <a class="card spot card--wide" href="login.html" data-reveal>
+                    <span class="card__meta"><span class="lock" aria-hidden="true"></span>FinOps &times; Agentic AI</span>
+                    <span class="card__big">20<sup>+</sup></span>
+                    <span class="card__unit">vendors positioned</span>
+                    <h3 class="card__title">FinOps Market Intelligence</h3>
+                    <p class="card__desc">The Financial Operations market converging with Agentic AI, across a $200B+ transformation.</p>
+                    <span class="card__cta">Access analysis <span aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card spot" href="mcp-login.html" data-reveal>
+                    <span class="card__meta"><span class="lock" aria-hidden="true"></span>Model Context Protocol</span>
+                    <span class="card__big">17</span>
+                    <span class="card__unit">companies verified</span>
+                    <h3 class="card__title">MCP Infrastructure</h3>
+                    <p class="card__desc">Magic Quadrant positioning of the companies actually building MCP solutions, with full methodology.</p>
+                    <span class="card__cta">Access analysis <span aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card spot" href="k8s-login.html" data-reveal>
+                    <span class="card__meta"><span class="lock" aria-hidden="true"></span>AIOps &times; Kubernetes</span>
+                    <span class="card__big">9</span>
+                    <span class="card__unit">vendors analyzed</span>
+                    <h3 class="card__title">Fleet Management Intelligence</h3>
+                    <p class="card__desc">Enterprise Kubernetes fleet management meets AIOps: the scale-intelligence convergence.</p>
+                    <span class="card__cta">Access analysis <span aria-hidden="true">&rarr;</span></span>
+                </a>
+                <a class="card spot card--wide" href="k8s-linux-login.html" data-reveal>
+                    <span class="card__meta"><span class="lock" aria-hidden="true"></span>Immutable Linux</span>
+                    <span class="card__big">9</span>
+                    <span class="card__unit">distributions compared</span>
+                    <h3 class="card__title">Kubernetes-Optimized Linux OS</h3>
+                    <p class="card__desc">API-driven, immutable Linux engineered for Kubernetes, scored on security and automation.</p>
+                    <span class="card__cta">Access analysis <span aria-hidden="true">&rarr;</span></span>
+                </a>
+            </div>
+        </section>
+
+        <section class="section build" id="build">
+            <div class="build__panel spot" data-reveal>
+                <div class="build__copy">
+                    <span class="kicker">04 / Build</span>
+                    <h2 class="section__title">Advisors should <em>ship</em>.</h2>
                     <p>
-                        Expertise spans GenAI & Custom LLM deployments, Cloud & FinOps excellence, SaaS business transformation, Sales Engineering acceleration, and Customer Success optimization. Previous leadership roles at McKinsey & Company, Flexera, RightScale, Paxonix Inc., and Realtor.com consistently driving innovation and operational excellence.
+                        I still build. <strong>Lunatide</strong> is my iPhone app for the coast: live tides over a
+                        satellite view of your shoreline, spot-by-spot surf, marine forecasts, moon phases and
+                        solunar fishing times.
                     </p>
+                    <a class="btn btn--ghost" href="/lunatide/">See Lunatide <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+                </div>
+                <div class="build__phones" aria-hidden="true">
+                    <img class="phone phone--back" src="lunatide/images/02-surf.jpg" alt="" loading="lazy" width="506" height="1100">
+                    <img class="phone phone--front" src="lunatide/images/01-tides.jpg" alt="" loading="lazy" width="506" height="1100">
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services-section">
-            <h2 class="section-title">Commercial Acceleration Across the Customer Lifecycle</h2>
-            <div class="services-grid">
-                <div class="service-card featured-service">
-                    <div class="service-icon" aria-hidden="true">🧠</div>
-                    <h3 class="service-title">GenAI & Custom LLM Deployments</h3>
-                    <p class="service-tagline">Build and fine-tune AI models that align with your enterprise workflows, with governance baked in.</p>
-                    <p class="service-description">
-                        Strategic advisory for AI integration, custom LLM development & fine-tuning, AI architecture &
-                        deployment, responsible AI & governance, and AI-driven business process optimization.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">📊</div>
-                    <h3 class="service-title">Product Market Fit Strategy & AI Product Acceleration</h3>
-                    <p class="service-tagline">Accelerate AI initiatives from concept to market success through strategic product development and data-driven validation frameworks.</p>
-                    <p class="service-description">
-                        Transform experimental AI projects into market-ready products through systematic strategy development. Strategic advisory for AI product strategy, market validation, competitive positioning, and product-market fit assessment. Design growth strategies that enable developer-led adoption to scale into enterprise-ready solutions.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">🚀</div>
-                    <h3 class="service-title">SaaS Product & Business Transformation</h3>
-                    <p class="service-tagline">Navigate the complete journey from on-premise to scalable cloud-native SaaS solutions.</p>
-                    <p class="service-description">
-                        Strategic guidance for companies transitioning from on-premise to cloud/SaaS models, including
-                        pricing strategy, migration planning, architecture optimization, and scaling operations.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">🎯</div>
-                    <h3 class="service-title">Sales Engineering & Customer Success</h3>
-                    <p class="service-tagline">Accelerate the 'technical yes' and build retention programs that drive sustainable growth.</p>
-                    <p class="service-description">
-                        Design and enhance customer success organizations, develop proactive retention programs, and
-                        establish 24x7 global support operations. Scale Sales Engineering teams to accelerate
-                        customer win rates during the buying process.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">🤝</div>
-                    <h3 class="service-title">Strategic Partnerships & Commercial Growth</h3>
-                    <p class="service-tagline">Build ecosystem partnerships that create new revenue streams and accelerate market penetration.</p>
-                    <p class="service-description">
-                        Formulate global business development strategies, cultivate strategic alliances across ISV,
-                        Channel and Technology ecosystems. Implement partnership models with measurable success rates.
-                    </p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon" aria-hidden="true">⚡</div>
-                    <h3 class="service-title">Leadership Development & Operational Excellence</h3>
-                    <p class="service-tagline">Foster cultures of innovation while building scalable systems and high-performing teams.</p>
-                    <p class="service-description">
-                        Guide organizations in developing leadership capabilities, implementing accountability frameworks,
-                        and building scalable systems across critical business processes.
-                    </p>
-                </div>
+        <section class="contact" id="contact">
+            <span class="kicker" data-reveal>05 / Contact</span>
+            <h2 class="contact__title" data-reveal>Ready to <em>accelerate</em>?</h2>
+            <p class="contact__sub" data-reveal>Let's talk about building a technology business that grows profitably and sustainably.</p>
+            <a class="contact__email magnetic" href="mailto:bailey@baileyhcaldwell.com" data-reveal>
+                bailey@baileyhcaldwell.com <span aria-hidden="true">&nearr;</span>
+            </a>
+            <div class="contact__links" data-reveal>
+                <a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+                <a href="bio.html">Full bio</a>
+                <a href="/lunatide/">Lunatide</a>
             </div>
         </section>
-
-        <!-- Market Analysis Section -->
-        <section id="analysis" class="market-analysis-section">
-            <h2 class="section-title">Strategic Market Analysis</h2>
-            <p class="section-intro">Access exclusive competitive intelligence and strategic positioning analysis for key technology segments.</p>
-            
-            <div class="analysis-grid">
-                <div class="analysis-card">
-                    <div class="analysis-icon" aria-hidden="true">💰</div>
-                    <h3 class="analysis-title">FinOps Market Intelligence</h3>
-                    <p class="analysis-description">
-                        Comprehensive analysis of the Financial Operations market convergence with Agentic AI. Strategic positioning of 20+ vendors across the $200B+ transformation.
-                    </p>
-                    <a href="login.html" class="analysis-link">Access Analysis →</a>
-                </div>
-                
-                <div class="analysis-card">
-                    <div class="analysis-icon" aria-hidden="true">🤖</div>
-                    <h3 class="analysis-title">AIOps & Kubernetes Intelligence</h3>
-                    <p class="analysis-description">
-                        Enterprise Kubernetes Fleet Management meets AIOps analysis. Strategic insights on the scale-intelligence convergence across 9 key vendors.
-                    </p>
-                    <a href="k8s-login.html" class="analysis-link">Access Analysis →</a>
-                </div>
-                
-                <div class="analysis-card">
-                    <div class="analysis-icon" aria-hidden="true">🐧</div>
-                    <h3 class="analysis-title">Kubernetes-Optimized Linux OS</h3>
-                    <p class="analysis-description">
-                        Future of secure fleet operations: API-driven, immutable Linux distributions engineered for Kubernetes. Analysis of 9 vendors across security and automation dimensions.
-                    </p>
-                    <a href="k8s-linux-login.html" class="analysis-link">Access Analysis →</a>
-                </div>
-
-                <div class="analysis-card">
-                    <div class="analysis-icon" aria-hidden="true">🔗</div>
-                    <h3 class="analysis-title">MCP Infrastructure Market Analysis</h3>
-                    <p class="analysis-description">
-                        Comprehensive 2025 analysis of the Model Context Protocol ecosystem. Verified Magic Quadrant positioning of 17 companies that actually build MCP solutions, with detailed research methodology and market insights.
-                    </p>
-                    <a href="mcp-login.html" class="analysis-link">Access Analysis →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" aria-labelledby="contact-heading" class="contact-section">
-            <h2 id="contact-heading" class="section-title">Ready to Accelerate Your Growth?</h2>
-            <p class="contact-intro">Let's discuss how we can optimize your technology business for sustainable, profitable growth.</p>
-            
-            <div class="contact-links">
-                <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
-                <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="bio.html">Full Bio</a></p>
-            </div>
-        </section>
-
-        <footer class="site-footer" role="contentinfo">
-            <p>&copy; 2025 Bailey H Caldwell Consulting | Santa Barbara, CA | EIN 41-2376637 | <a href="privacy-policy.html" style="color: inherit; text-decoration: underline;">Privacy Policy</a></p>
-        </footer>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+    <script src="home.js" defer></script>
 </body>
 
 </html>
