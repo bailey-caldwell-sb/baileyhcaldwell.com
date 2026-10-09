@@ -29,72 +29,66 @@
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
     <title>LLM Usage Dashboard - Bailey H. Caldwell Consulting</title>
-    <link rel="stylesheet" href="llm-dashboard.css">
-    <link rel="stylesheet" href="news-ticker.css">
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
+    <link rel="stylesheet" href="/llm-dashboard.css">
+    <link rel="stylesheet" href="/news-ticker.css">
 
-    <!-- Chart.js for visualizations -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Note: API keys now loaded from .env via NumberOne AI backend -->
 </head>
 
 <body data-analysis-type="llm-dashboard">
-    <!-- News Ticker Integration -->
-    <div id="news-ticker" class="news-ticker">
-        <div class="ticker-content">
-            <div class="ticker-item">Loading AI market intelligence...</div>
-        </div>
-    </div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="logo">
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="finops-market-overview.html" class="nav-link">FinOps Analysis</a>
-                <a href="k8s-market-analysis.html" class="nav-link">K8s Analysis</a>
-                <a href="research.html" class="nav-link">AI Research</a>
-                <a href="llm-dashboard.html" class="nav-link active">LLM Dashboard</a>
-                <a href="bio.html" class="nav-link">About</a>
-            </div>
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html">Bio</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="dashboard-hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-icon">📊</span>
-                <span class="badge-text">LLM Usage Analytics</span>
-            </div>
-            <h1 class="hero-title">
-                AI Spending Dashboard
-                <span class="gradient-text">Real-Time Analytics</span>
-            </h1>
-            <p class="hero-description">
+    <main id="main-content">
+        <header class="page-hero">
+            <span class="kicker" data-reveal>LLM Usage Analytics</span>
+            <h1 class="page-title dashboard-title" data-reveal>AI Spending Dashboard <em>Real-Time Analytics</em></h1>
+            <p class="page-lede" data-reveal>
                 Comprehensive tracking of LLM usage and costs across OpenAI, Claude, Grok, and Perplexity APIs.
                 Monitor spending, analyze token efficiency, and optimize AI investments.
             </p>
-        </div>
-    </section>
+        </header>
 
-    <!-- Dashboard Content -->
-    <section class="dashboard-content">
-        <div class="container">
-            <!-- Total Spend Summary -->
-            <div class="summary-card">
+        <div id="news-ticker" class="news-ticker">
+            <div class="ticker-content">
+                <div class="ticker-item">Loading AI market intelligence...</div>
+            </div>
+        </div>
+
+        <div class="page-body dashboard">
+            <section class="summary-card spot" data-reveal>
                 <div class="summary-header">
                     <h2 class="summary-title">Total AI Spend (Last 30 Days)</h2>
                     <div class="refresh-indicator">
-                        <span class="refresh-icon">🔄</span>
+                        <span class="pulse" aria-hidden="true"></span>
                         <span class="last-updated">Updated: <span id="last-updated-time">--</span></span>
                     </div>
                 </div>
@@ -103,17 +97,16 @@
                     <span class="amount" id="total-spend">0.00</span>
                 </div>
                 <div class="spend-trend">
-                    <span class="trend-indicator" id="spend-trend">📈</span>
+                    <span class="trend-indicator" id="spend-trend" aria-hidden="true"></span>
                     <span class="trend-text" id="trend-text">vs last month</span>
                 </div>
-            </div>
+            </section>
 
-            <!-- Provider Breakdown -->
-            <div class="providers-grid">
-                <div class="provider-card openai">
+            <section class="providers-grid" aria-label="Spend by provider">
+                <article class="provider-card spot openai" data-reveal>
                     <div class="provider-header">
                         <div class="provider-logo">
-                            <span class="provider-icon">🤖</span>
+                            <span class="provider-icon" aria-hidden="true"></span>
                             <span class="provider-name">OpenAI</span>
                         </div>
                         <div class="provider-status" id="openai-status">●</div>
@@ -122,22 +115,21 @@
                         <span class="provider-amount">$<span id="openai-spend">0.00</span></span>
                         <span class="provider-percentage">(<span id="openai-percentage">0</span>%)</span>
                     </div>
-                    <div class="provider-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Tokens:</span>
-                            <span class="detail-value" id="openai-tokens">0</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Requests:</span>
-                            <span class="detail-value" id="openai-requests">0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="provider-card claude">
+                    <dl class="provider-details">
+                            <div class="detail-item">
+                                <dt class="detail-label">Tokens:</dt>
+                                <dd class="detail-value" id="openai-tokens">0</dd>
+                            </div>
+                            <div class="detail-item">
+                                <dt class="detail-label">Requests:</dt>
+                                <dd class="detail-value" id="openai-requests">0</dd>
+                            </div>
+                    </dl>
+                </article>
+                <article class="provider-card spot claude" data-reveal>
                     <div class="provider-header">
                         <div class="provider-logo">
-                            <span class="provider-icon">🧠</span>
+                            <span class="provider-icon" aria-hidden="true"></span>
                             <span class="provider-name">Claude</span>
                         </div>
                         <div class="provider-status" id="claude-status">●</div>
@@ -146,22 +138,21 @@
                         <span class="provider-amount">$<span id="claude-spend">0.00</span></span>
                         <span class="provider-percentage">(<span id="claude-percentage">0</span>%)</span>
                     </div>
-                    <div class="provider-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Tokens:</span>
-                            <span class="detail-value" id="claude-tokens">0</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Requests:</span>
-                            <span class="detail-value" id="claude-requests">0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="provider-card grok">
+                    <dl class="provider-details">
+                            <div class="detail-item">
+                                <dt class="detail-label">Tokens:</dt>
+                                <dd class="detail-value" id="claude-tokens">0</dd>
+                            </div>
+                            <div class="detail-item">
+                                <dt class="detail-label">Requests:</dt>
+                                <dd class="detail-value" id="claude-requests">0</dd>
+                            </div>
+                    </dl>
+                </article>
+                <article class="provider-card spot grok" data-reveal>
                     <div class="provider-header">
                         <div class="provider-logo">
-                            <span class="provider-icon">⚡</span>
+                            <span class="provider-icon" aria-hidden="true"></span>
                             <span class="provider-name">Grok</span>
                         </div>
                         <div class="provider-status" id="grok-status">●</div>
@@ -170,22 +161,21 @@
                         <span class="provider-amount">$<span id="grok-spend">0.00</span></span>
                         <span class="provider-percentage">(<span id="grok-percentage">0</span>%)</span>
                     </div>
-                    <div class="provider-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Tokens:</span>
-                            <span class="detail-value" id="grok-tokens">0</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Requests:</span>
-                            <span class="detail-value" id="grok-requests">0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="provider-card perplexity">
+                    <dl class="provider-details">
+                            <div class="detail-item">
+                                <dt class="detail-label">Tokens:</dt>
+                                <dd class="detail-value" id="grok-tokens">0</dd>
+                            </div>
+                            <div class="detail-item">
+                                <dt class="detail-label">Requests:</dt>
+                                <dd class="detail-value" id="grok-requests">0</dd>
+                            </div>
+                    </dl>
+                </article>
+                <article class="provider-card spot perplexity" data-reveal>
                     <div class="provider-header">
                         <div class="provider-logo">
-                            <span class="provider-icon">🔍</span>
+                            <span class="provider-icon" aria-hidden="true"></span>
                             <span class="provider-name">Perplexity</span>
                         </div>
                         <div class="provider-status" id="perplexity-status">●</div>
@@ -194,27 +184,26 @@
                         <span class="provider-amount">$<span id="perplexity-spend">0.00</span></span>
                         <span class="provider-percentage">(<span id="perplexity-percentage">0</span>%)</span>
                     </div>
-                    <div class="provider-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Credits:</span>
-                            <span class="detail-value" id="perplexity-credits">0</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Requests:</span>
-                            <span class="detail-value" id="perplexity-requests">0</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <dl class="provider-details">
+                            <div class="detail-item">
+                                <dt class="detail-label">Credits:</dt>
+                                <dd class="detail-value" id="perplexity-credits">0</dd>
+                            </div>
+                            <div class="detail-item">
+                                <dt class="detail-label">Requests:</dt>
+                                <dd class="detail-value" id="perplexity-requests">0</dd>
+                            </div>
+                    </dl>
+                </article>
+            </section>
 
-            <!-- Charts Section -->
             <div class="charts-grid">
-                <!-- Daily Spend Trend -->
-                <div class="chart-card">
+                <section class="chart-card" data-reveal>
                     <div class="chart-header">
                         <h3 class="chart-title">Daily Spend Trends</h3>
                         <div class="chart-controls">
-                            <select id="spend-period" class="chart-select">
+                            <label class="visually-hidden" for="spend-period">Period</label>
+                            <select id="spend-period" class="field chart-select">
                                 <option value="7">Last 7 days</option>
                                 <option value="30" selected>Last 30 days</option>
                                 <option value="90">Last 90 days</option>
@@ -224,10 +213,9 @@
                     <div class="chart-container">
                         <canvas id="daily-spend-chart"></canvas>
                     </div>
-                </div>
+                </section>
 
-                <!-- Cost Efficiency -->
-                <div class="chart-card">
+                <section class="chart-card" data-reveal>
                     <div class="chart-header">
                         <h3 class="chart-title">Cost Efficiency ($/1K Tokens)</h3>
                         <div class="chart-legend">
@@ -244,12 +232,11 @@
                     <div class="chart-container">
                         <canvas id="cost-efficiency-chart"></canvas>
                     </div>
-                </div>
+                </section>
             </div>
 
-            <!-- Model Usage Breakdown -->
-            <div class="models-section">
-                <h3 class="section-title">Token Usage by Model</h3>
+            <section class="dashboard-block" data-reveal>
+                <h3 class="block-title">Token Usage by Model</h3>
                 <div class="models-grid">
                     <div class="model-card">
                         <div class="model-header">
@@ -263,7 +250,6 @@
                             <span class="usage-tokens"><span id="gpt4-tokens">0</span>K tokens</span>
                         </div>
                     </div>
-
                     <div class="model-card">
                         <div class="model-header">
                             <span class="model-name">Claude-3.5</span>
@@ -276,7 +262,6 @@
                             <span class="usage-tokens"><span id="claude35-tokens">0</span>K tokens</span>
                         </div>
                     </div>
-
                     <div class="model-card">
                         <div class="model-header">
                             <span class="model-name">Grok-3</span>
@@ -289,7 +274,6 @@
                             <span class="usage-tokens"><span id="grok3-tokens">0</span>K tokens</span>
                         </div>
                     </div>
-
                     <div class="model-card">
                         <div class="model-header">
                             <span class="model-name">PPLX-8x22B</span>
@@ -303,60 +287,51 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Budget Alerts -->
-            <div class="alerts-section">
-                <h3 class="section-title">Budget Alerts</h3>
+            <section class="dashboard-block" data-reveal>
+                <h3 class="block-title">Budget Alerts</h3>
                 <div class="alerts-container" id="alerts-container">
                     <div class="alert-item info">
-                        <span class="alert-icon">ℹ️</span>
+                        <span class="alert-icon" aria-hidden="true"></span>
                         <span class="alert-text">Dashboard initialized. Real-time monitoring active.</span>
                     </div>
                 </div>
                 <div class="budget-settings">
                     <label for="budget-threshold">Monthly Budget Alert ($):</label>
-                    <input type="number" id="budget-threshold" value="100" min="0" step="10">
-                    <button id="save-budget" class="save-button">Save</button>
+                    <input type="number" id="budget-threshold" class="field" value="100" min="0" step="10">
+                    <button type="button" id="save-budget" class="btn btn--primary save-button">Save</button>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>LLM Analytics</h4>
+            <section class="dashboard-block dashboard-about" data-reveal>
+                <div>
+                    <h3 class="block-title">LLM Analytics</h3>
                     <p>Professional AI usage tracking and cost optimization for technology leaders.</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Data Sources</h4>
-                    <ul>
+                <div>
+                    <h3 class="block-title">Data Sources</h3>
+                    <ul class="source-list">
                         <li>OpenAI Usage API</li>
                         <li>Claude Billing API</li>
                         <li>Grok Usage Monitoring</li>
                         <li>Perplexity Credit Tracking</li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <p>
-                        <a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a><br>
-                        <a href="https://linkedin.com/in/baileyhcaldwell">LinkedIn</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Bailey H. Caldwell Consulting. All rights reserved.</p>
-            </div>
+            </section>
         </div>
+    </main>
+
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
     </footer>
 
-    <!-- Scripts -->
-    <script src="news-ticker.js"></script>
-    <script src="llm-dashboard.js"></script>
+    <script src="/base.js" defer></script>
+    <script src="/news-ticker.js"></script>
+    <script src="/llm-dashboard.js"></script>
 </body>
 
 </html>

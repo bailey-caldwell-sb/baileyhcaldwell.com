@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Thank you for contacting Bailey H Caldwell. Your message has been received.">
+    <meta name="robots" content="noindex, nofollow">
     <title>Thank You - Bailey H Caldwell</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        /* Page Layout - Centered Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section Improvements */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-title {
-            margin-bottom: 20px;
-        }
-
-        .hero-description {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-    </style>
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
 </head>
-<body>
-    <!-- Animated star background -->
-    <div class="stars-container" id="stars" aria-hidden="true"></div>
-    
-    <!-- Main content -->
-    <main class="main-container" role="main">
-        <header class="site-header">
-            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#services" class="nav-link">Services</a>
-                <a href="index.html#analysis" class="nav-link">Analysis</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-            </nav>
-        </header>
 
-        <section class="hero-section">
-            <h1 class="hero-title">Message Received!</h1>
-            <p class="hero-description">Thank you for reaching out</p>
-        </section>
-        
-        <section>
-            <div class="status-badge" style="color: #81c784; border-color: #81c784;">Success</div>
-            
-            <p class="description">
-                Your transmission has been successfully logged in the digital archives. 
-                I'll review your message and get back to you as soon as possible.
-            </p>
-            
-            <div style="margin-top: 40px;">
-                <a href="/" class="submit-button" style="text-decoration: none; display: inline-block;">
-                    Return to Home
-                </a>
-            </div>
-        </section>
-        
-        <footer class="site-footer" role="contentinfo">
-            <p>&copy; 2025 Bailey H Caldwell | Exploring the Digital Frontier | Version 1.0</p>
-        </footer>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html">Bio</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="gate">
+        <div class="gate__card spot">
+            <div class="gate__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+            <span class="kicker">Message received</span>
+            <h1 class="gate__title">Thank <em>you</em>.</h1>
+            <p class="gate__desc">Thank you for reaching out. I'll review your message and get back to you as soon as possible.</p>
+            <a class="btn btn--primary" href="/">Return to Home <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+    <script src="/base.js" defer></script>
 </body>
+
 </html>

@@ -1,139 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Access Required - MCP Infrastructure Market Analysis - Bailey H. Caldwell Consulting</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .login-container {
-            max-width: 400px;
-            margin: 100px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-        }
-        
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .login-input {
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--border-radius-small);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-        
-        .login-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
-        }
-        
-        .login-button {
-            padding: 15px;
-            background: var(--primary-blue);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius-small);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-        
-        .login-button:hover {
-            background: var(--primary-blue-dark);
-            transform: translateY(-2px);
-        }
-        
-        .login-title {
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            font-size: 2rem;
-        }
-        
-        .login-description {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .error-message {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            display: none;
-            margin-top: 10px;
-        }
-    </style>
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
 </head>
+
 <body>
-    <header class="header">
-        <nav class="nav-container">
-            <div class="nav-brand">
-                <a href="index.html" class="brand-link">
-                    <img src="logo-horizontal.svg" alt="Bailey H. Caldwell Consulting" class="brand-logo">
-                </a>
-            </div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html">Bio</a>
         </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
+        </div>
     </header>
 
-    <main class="main-container">
-        <div class="login-container">
-            <h1 class="login-title">Access Required</h1>
-            <p class="login-description">
-                This comprehensive MCP Infrastructure Market Analysis (2025) with Magic Quadrant positioning of 19 companies is restricted to invited participants. Please enter the access code provided to you.
-            </p>
-            
-            <form class="login-form" id="loginForm">
-                <input 
-                    type="password" 
-                    id="accessCode" 
-                    class="login-input" 
-                    placeholder="Enter access code"
-                    required
-                >
-                <button type="submit" class="login-button">Access Analysis</button>
-                <div class="error-message" id="errorMessage">
-                    Invalid access code. Please try again.
-                </div>
+    <main id="main-content" class="gate">
+        <div class="gate__card spot">
+            <div class="gate__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <span class="kicker">Market intel / Model Context Protocol</span>
+            <h1 class="gate__title">Access <em>required</em></h1>
+            <p class="gate__desc">This comprehensive MCP Infrastructure Market Analysis (2025) with Magic Quadrant positioning of 19 companies is restricted to invited participants. Please enter the access code provided to you.</p>
+
+            <form class="gate__form" id="gateForm" data-storage-key="mcp-access" data-target="mcp-market-analysis.html"
+                data-codes="mcp-infrastructure-2025,protocol-analysis,bailey">
+                <label class="visually-hidden" for="accessCode">Access code</label>
+                <input type="password" id="accessCode" class="field" placeholder="Enter access code" autocomplete="off" required>
+                <button type="submit" class="btn btn--primary">Access Analysis <span class="btn__arrow" aria-hidden="true">&rarr;</span></button>
+                <p class="gate__error" id="gateError" role="alert">Invalid access code. Please try again.</p>
             </form>
+
+            <div class="gate__foot">
+                <a class="back-link" href="/#intel"><span aria-hidden="true">&larr;</span> All market intel</a>
+            </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
-    <script>
-        // Access codes for MCP Market Analysis
-        const validCodes = [
-            'mcp-infrastructure-2025',
-            'protocol-analysis',
-            'bailey'
-        ];
-        
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const enteredCode = document.getElementById('accessCode').value;
-            const errorMessage = document.getElementById('errorMessage');
-            
-            if (validCodes.includes(enteredCode.toLowerCase())) {
-                // Store access in session
-                sessionStorage.setItem('mcp-access', 'granted');
-                // Redirect to protected page
-                window.location.href = 'mcp-market-analysis.html';
-            } else {
-                errorMessage.style.display = 'block';
-                document.getElementById('accessCode').value = '';
-                document.getElementById('accessCode').focus();
-            }
-        });
-    </script>
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+    <script src="/base.js" defer></script>
+    <script src="/gate.js" defer></script>
 </body>
+
 </html>

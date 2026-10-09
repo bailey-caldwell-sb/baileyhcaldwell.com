@@ -11,7 +11,6 @@
     <meta name="author" content="Bailey H. Caldwell">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://baileyhcaldwell.com/finops-market-overview">
     <meta property="og:title" content="The Great Convergence: FinOps Meets Agentic AI - Bailey H. Caldwell Consulting">
@@ -20,7 +19,6 @@
     <meta property="og:image"
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://baileyhcaldwell.com/finops-market-overview">
     <meta property="twitter:title" content="The Great Convergence: FinOps Meets Agentic AI - Bailey H. Caldwell Consulting">
@@ -30,665 +28,280 @@
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
     <title>The Great Convergence: FinOps Meets Agentic AI - Bailey H. Caldwell Consulting</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="universal-market-intelligence.css">
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
+    <link rel="stylesheet" href="/universal-market-intelligence.css">
     <script src="api-keys-config.js"></script>
-    
+
     <style>
-        /* Page Layout - Centered Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Additional styles for 4x4 Analysis */
-        .magic-quadrant-container {
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .chart-with-legend {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-            max-width: 100%;
-            margin: 0 auto;
-        }
-
-        .company-legend {
-            flex: 0 0 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            max-height: 600px;
-            overflow-y: auto;
-            width: 300px;
-            margin-right: 30px;
-        }
-
-        .legend-title {
-            color: var(--primary-blue-light);
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-
-        .legend-search {
-            margin-bottom: 15px;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: var(--border-radius-small);
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            backdrop-filter: blur(10px);
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
-        }
-        
-        .search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .legend-companies {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .legend-company {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 6px 8px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.85rem;
-        }
-
-        .legend-company:hover {
-            background: rgba(100, 181, 246, 0.1);
-            transform: translateX(5px);
-        }
-
-        .legend-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .legend-company-name {
-            color: var(--text-secondary);
-            flex: 1;
-        }
-
-        .quadrant-chart {
-            position: relative;
-            flex: 1;
-            height: 600px;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-            border: 2px solid var(--primary-blue);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-        }
-
-        .quadrant {
-            position: absolute;
-            width: 50%;
-            height: 50%;
-            border: 1px solid rgba(100, 181, 246, 0.3);
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 15px;
-        }
-
         .quadrant-pioneers {
             top: 0;
             right: 0;
-            background: rgba(129, 199, 132, 0.1);
         }
 
         .quadrant-experts {
             top: 0;
             left: 0;
-            background: rgba(255, 193, 7, 0.1);
         }
 
         .quadrant-labs {
             bottom: 0;
             right: 0;
-            background: rgba(156, 39, 176, 0.1);
         }
 
         .quadrant-emerging {
             bottom: 0;
             left: 0;
-            background: rgba(96, 125, 139, 0.1);
-        }
-
-        .quadrant-label {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: var(--primary-blue-light);
-            text-shadow: 0 0 10px rgba(100, 181, 246, 0.5);
-            margin-bottom: 10px;
-        }
-
-        .company-dot {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 10px rgba(100, 181, 246, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: white;
-            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-        }
-
-        .company-dot:hover {
-            transform: scale(1.3);
-            box-shadow: 0 0 20px rgba(100, 181, 246, 0.6);
-            z-index: 10;
-        }
-
-        .company-dot.pioneers {
-            background: var(--accent-green);
-        }
-
-        .company-dot.experts {
-            background: #ffc107;
-        }
-
-        .company-dot.labs {
-            background: #9c27b0;
-        }
-
-        .company-dot.emerging {
-            background: #607d8b;
-        }
-
-        .company-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            pointer-events: none;
-            z-index: 20;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border: 1px solid var(--primary-blue);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .company-tooltip.visible {
-            opacity: 1;
-        }
-
-        .axis-labels {
-            position: absolute;
-            color: var(--text-secondary);
-            font-weight: bold;
-            font-size: 0.9rem;
-            text-shadow: 0 0 5px rgba(100, 181, 246, 0.3);
-        }
-
-        .x-axis-label {
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .y-axis-label {
-            left: -120px;
-            top: 50%;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        .axis-line {
-            position: absolute;
-            background: var(--primary-blue);
-            opacity: 0.6;
-        }
-
-        .axis-line.vertical {
-            left: 50%;
-            top: 0;
-            width: 2px;
-            height: 100%;
-            transform: translateX(-50%);
-        }
-
-        .axis-line.horizontal {
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            transform: translateY(-50%);
-        }
-
-        .legend {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius-small);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .legend-dot {
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .legend-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-
-
-        .market-insights {
-            margin-top: 40px;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .insight-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .insight-card {
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius-small);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .insight-title {
-            color: var(--primary-blue-light);
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .insight-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Hero Section Improvements */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-title {
-            margin-bottom: 20px;
-        }
-
-        .hero-description {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Section Spacing */
-        .market-insights {
-            margin-bottom: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .main-container {
-                padding: 0 15px;
-            }
-
-            .chart-with-legend {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .company-legend {
-                flex: none;
-                max-height: 300px;
-                order: 2;
-                margin-right: 0;
-                width: 100%;
-            }
-
-            .quadrant-chart {
-                height: 500px;
-                order: 1;
-            }
-
-            .y-axis-label {
-                left: -100px;
-                font-size: 0.8rem;
-            }
-
-            .x-axis-label {
-                font-size: 0.8rem;
-            }
-
-            .company-dot {
-                width: 20px;
-                height: 20px;
-                font-size: 0.7rem;
-            }
-
-            .legend {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-description {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <!-- Animated star background -->
-    <div class="stars-container" id="stars" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html">Bio</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
+        </div>
+    </header>
 
-    <!-- Main content -->
-    <main id="main-content" class="main-container" role="main">
-        <header class="site-header">
-            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#services" class="nav-link">Services</a>
-                <a href="index.html#analysis" class="nav-link">Analysis</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-            </nav>
-        </header>
-
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h1 class="hero-title">FinOps Market Analysis: The Great Convergence of Traditional Cloud Cost Management and Agentic AI</h1>
-            <p class="hero-description">
+    <main id="main-content">
+        <header class="page-hero">
+            <a class="back-link" href="/#intel"><span aria-hidden="true">&larr;</span> All market intel</a>
+            <span class="kicker" data-reveal>Market intel / FinOps</span>
+            <h1 class="page-title page-title--long" data-reveal>FinOps Market Analysis: The Great Convergence of Traditional Cloud Cost Management and <em>Agentic AI</em></h1>
+            <p class="page-lede" data-reveal>
                 The FinOps market stands at a historic inflection point where two powerful forces are converging to create an entirely new category of financial operations: traditional cloud cost management and agentic AI governance. This analysis examines the $200B+ market transformation and identifies significant white space opportunities at the intersection of established FinOps platforms and emerging AI governance solutions.
             </p>
-        </section>
+        </header>
 
-        <!-- Convergence Analysis -->
-        <section class="market-insights">
-            <h2 class="section-title">The Convergence Thesis: From Cloud Costs to Autonomous Agent Economics</h2>
-            <div class="insight-text" style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary);">
-                <p><strong>Traditional FinOps: The Foundation Under Pressure</strong><br>
-                The established FinOps market—built around static cloud resources and predictable workloads—is being disrupted by the emergence of autonomous AI agents that operate with their own economic logic. While traditional platforms like Flexera and CloudHealth mastered the art of tracking VM hours and storage costs, they face a new challenge: how do you govern systems that make independent decisions, consume resources dynamically, and generate value through autonomous actions?</p>
-                
-                <p><strong>Agentic AI: The New Economic Paradigm</strong><br>
-                Agentic AI systems represent a paradigm shift from passive infrastructure to active economic participants. These systems don't just consume resources—they make purchasing decisions, negotiate contracts, and even generate revenue streams. A single AI agent might spin up computing resources, call multiple LLM APIs, execute trades, and coordinate with other agents to complete complex business processes. Traditional cost allocation breaks down when faced with this level of autonomy and interdependence.</p>
-                
-                <p><strong>The Convergence Opportunity: $200B+ Market Transformation</strong><br>
-                This convergence creates a massive greenfield opportunity. Gartner estimates that by 2028, 60% of enterprise workloads will involve autonomous AI agents, representing over $200 billion in managed economic activity. Yet current FinOps tools can barely track basic LLM API costs, let alone govern complex multi-agent economic ecosystems.</p>
-            </div>
-        </section>
+        <div class="page-body">
+            <section class="market-insights">
+                <h2 class="section-title">The Convergence Thesis: From Cloud Costs to Autonomous Agent Economics</h2>
+                <div class="insight-text insight-text--lead">
+                    <p><strong>Traditional FinOps: The Foundation Under Pressure</strong><br>
+                    The established FinOps market—built around static cloud resources and predictable workloads—is being disrupted by the emergence of autonomous AI agents that operate with their own economic logic. While traditional platforms like Flexera and CloudHealth mastered the art of tracking VM hours and storage costs, they face a new challenge: how do you govern systems that make independent decisions, consume resources dynamically, and generate value through autonomous actions?</p>
 
-        <!-- Universal Market Intelligence Section -->
-        <section class="market-intelligence-section" data-market-segment="finops">
-            <div class="intelligence-header">
-                <h2>Live Market Intelligence</h2>
-                <p>Real-time analysis of the FinOps and cloud cost management landscape</p>
-            </div>
-            
-            <div id="intelligence-loading" class="loading-state">
-                <div class="loading-spinner"></div>
-                <p>Loading market intelligence...</p>
-            </div>
-            
-            <div id="intelligence-content" class="intelligence-content" style="display: none;">
-                <!-- Content will be populated by JavaScript -->
-            </div>
-        </section>
+                    <p><strong>Agentic AI: The New Economic Paradigm</strong><br>
+                    Agentic AI systems represent a paradigm shift from passive infrastructure to active economic participants. These systems don't just consume resources—they make purchasing decisions, negotiate contracts, and even generate revenue streams. A single AI agent might spin up computing resources, call multiple LLM APIs, execute trades, and coordinate with other agents to complete complex business processes. Traditional cost allocation breaks down when faced with this level of autonomy and interdependence.</p>
 
-        <!-- Market Forces -->
-        <section class="market-insights">
-            <h2 class="section-title">Market Forces Driving Convergence</h2>
-            <div class="insight-grid">
-                <div class="insight-card">
-                    <div class="insight-title">1. Economic Reality: AI ROI Accountability</div>
-                    <div class="insight-text">
-                        The "AI gold rush" mentality is rapidly giving way to demands for measurable returns. CFOs who approved AI investments during the peak hype cycle now demand answers: Which AI initiatives deliver value? How much does each autonomous process cost? What's the ROI of our AI agent workforce? Traditional FinOps metrics are inadequate for these questions.
-                    </div>
+                    <p><strong>The Convergence Opportunity: $200B+ Market Transformation</strong><br>
+                    This convergence creates a massive greenfield opportunity. Gartner estimates that by 2028, 60% of enterprise workloads will involve autonomous AI agents, representing over $200 billion in managed economic activity. Yet current FinOps tools can barely track basic LLM API costs, let alone govern complex multi-agent economic ecosystems.</p>
                 </div>
-                <div class="insight-card">
-                    <div class="insight-title">2. Operational Complexity: Agent-to-Agent Economics</div>
-                    <div class="insight-text">
-                        Modern AI systems operate in interconnected networks where agents collaborate, compete, and transact with each other. A single customer query might trigger a cascade of agent interactions across multiple providers, models, and services. Understanding the true cost and value of these distributed operations requires entirely new visibility and governance frameworks.
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">3. Regulatory Pressure: Autonomous System Governance</div>
-                    <div class="insight-text">
-                        Emerging regulations around AI transparency, algorithmic accountability, and autonomous system liability create new compliance requirements. Organizations need to demonstrate not just what their AI systems cost, but how they make decisions, allocate resources, and manage risk. This regulatory environment favors vendors who can provide comprehensive audit trails and governance controls.
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">4. Technology Evolution: From Monitoring to Orchestration</div>
-                    <div class="insight-text">
-                        The next generation of FinOps isn't just about monitoring costs—it's about orchestrating autonomous financial operations. Advanced AI systems will need to self-optimize their resource consumption, negotiate better rates with providers, and even participate in real-time pricing markets. This requires platforms that can embed financial intelligence directly into agent workflows.
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4x4 Analysis Chart -->
-        <section class="magic-quadrant-container">
-            <h2 class="section-title">Strategic Market Positioning in the Convergence Era</h2>
-            
-            <div class="chart-with-legend">
-                <!-- Company Legend -->
-                <div class="company-legend">
-                    <div class="legend-title">Companies</div>
-                    <div class="legend-search">
-                        <input type="text" id="companySearch" placeholder="Search companies..." class="search-input">
-                    </div>
-                    <div class="legend-companies" id="companyLegend">
-                        <!-- Legend items will be populated by JavaScript -->
-                    </div>
+            <section class="market-intelligence-section" data-market-segment="finops">
+                <div class="intelligence-header">
+                    <h2>Live Market Intelligence</h2>
+                    <p>Real-time analysis of the FinOps and cloud cost management landscape</p>
                 </div>
-                
-                <!-- Chart -->
-                <div class="quadrant-chart" id="quadrantChart">
-                    <!-- Axis lines -->
-                    <div class="axis-line vertical"></div>
-                    <div class="axis-line horizontal"></div>
-                    
-                    <!-- Quadrant sections -->
-                    <div class="quadrant quadrant-experts">
-                        <div class="quadrant-label">Challengers</div>
-                    </div>
-                    <div class="quadrant quadrant-pioneers">
-                        <div class="quadrant-label">Leaders</div>
-                    </div>
-                    <div class="quadrant quadrant-emerging">
-                        <div class="quadrant-label">Niche Players</div>
-                    </div>
-                    <div class="quadrant quadrant-labs">
-                        <div class="quadrant-label">Visionaries</div>
-                    </div>
-                    
-                    <!-- Axis labels -->
-                    <div class="axis-labels x-axis-label">Ability to Execute →</div>
-                    <div class="axis-labels y-axis-label">Completeness of Vision →</div>
-                </div>
-            </div>
 
+                <div id="intelligence-loading" class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading market intelligence...</p>
+                </div>
 
-            <!-- Legend -->
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-dot pioneers" style="background: var(--accent-green);"></div>
-                    <span class="legend-text">Leaders - High vision, high execution</span>
+                <div id="intelligence-content" class="intelligence-content" style="display: none;">
                 </div>
-{{ ... }}
-                <div class="legend-item">
-                    <div class="legend-dot experts" style="background: #ffc107;"></div>
-                    <span class="legend-text">Challengers - Lower vision, high execution</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot labs" style="background: #9c27b0;"></div>
-                    <span class="legend-text">Visionaries - High vision, lower execution</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-dot emerging" style="background: #607d8b;"></div>
-                    <span class="legend-text">Niche Players - Lower vision, lower execution</span>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Strategic Positioning -->
-        <section class="market-insights">
-            <h2 class="section-title">Strategic Market Positioning in the Convergence Era</h2>
-            <div class="insight-grid">
-                <div class="insight-card">
-                    <div class="insight-title">Leaders: Platform Expansion or Disruption Risk</div>
-                    <div class="insight-text">
-                        <strong>VMware CloudHealth</strong> (<a href="https://www.vmware.com/products/cloudhealth.html" target="_blank" rel="noopener">VMware CloudHealth</a>), <strong>Flexera</strong> (<a href="https://www.flexera.com/flexera-one/cloud-cost-optimization" target="_blank" rel="noopener">Flexera One</a>), <strong>IBM Cloudability</strong> (<a href="https://www.ibm.com/products/cloudability" target="_blank" rel="noopener">IBM Cloudability</a>) face a critical strategic decision: evolve into agentic AI governance platforms or risk being disrupted by AI-native competitors. Their strength—comprehensive cloud financial management—becomes a liability if they can't adapt to autonomous systems that transcend traditional cloud boundaries.
-                        <br><br><strong>Strategic Imperative:</strong> These leaders must acquire AI-native capabilities (likely through M&A) or risk being relegated to "legacy infrastructure monitoring" while the value migrates to agentic AI platforms.
+            <section class="market-insights">
+                <h2 class="section-title">Market Forces Driving Convergence</h2>
+                <div class="insight-grid">
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">1. Economic Reality: AI ROI Accountability</div>
+                        <div class="insight-text">
+                            The "AI gold rush" mentality is rapidly giving way to demands for measurable returns. CFOs who approved AI investments during the peak hype cycle now demand answers: Which AI initiatives deliver value? How much does each autonomous process cost? What's the ROI of our AI agent workforce? Traditional FinOps metrics are inadequate for these questions.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">2. Operational Complexity: Agent-to-Agent Economics</div>
+                        <div class="insight-text">
+                            Modern AI systems operate in interconnected networks where agents collaborate, compete, and transact with each other. A single customer query might trigger a cascade of agent interactions across multiple providers, models, and services. Understanding the true cost and value of these distributed operations requires entirely new visibility and governance frameworks.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">3. Regulatory Pressure: Autonomous System Governance</div>
+                        <div class="insight-text">
+                            Emerging regulations around AI transparency, algorithmic accountability, and autonomous system liability create new compliance requirements. Organizations need to demonstrate not just what their AI systems cost, but how they make decisions, allocate resources, and manage risk. This regulatory environment favors vendors who can provide comprehensive audit trails and governance controls.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">4. Technology Evolution: From Monitoring to Orchestration</div>
+                        <div class="insight-text">
+                            The next generation of FinOps isn't just about monitoring costs—it's about orchestrating autonomous financial operations. Advanced AI systems will need to self-optimize their resource consumption, negotiate better rates with providers, and even participate in real-time pricing markets. This requires platforms that can embed financial intelligence directly into agent workflows.
+                        </div>
                     </div>
                 </div>
-                <div class="insight-card">
-                    <div class="insight-title">Challengers: The Integration Advantage</div>
-                    <div class="insight-text">
-                        <strong>Datadog</strong> (<a href="https://www.datadoghq.com/product/cloud-cost-management/" target="_blank" rel="noopener">Datadog Cloud Cost Management</a>), <strong>IBM Turbonomic</strong> (<a href="https://www.ibm.com/products/turbonomic" target="_blank" rel="noopener">IBM Turbonomic</a>), <strong>Spot by NetApp</strong> (<a href="https://spot.io/" target="_blank" rel="noopener">Spot.io</a>) have an opportunity to bridge traditional infrastructure management with agentic AI governance. Their operational excellence in resource management positions them well to extend into AI agent resource orchestration.
-                        <br><br><strong>Strategic Opportunity:</strong> These vendors can leverage their infrastructure expertise to become the "operating system" layer for autonomous AI resource management.
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">Visionaries: The AI-Native Revolution</div>
-                    <div class="insight-text">
-                        <strong>Pay-i</strong> (<a href="https://pay-i.ai/" target="_blank" rel="noopener">Pay-i.ai</a>), <strong>LangChain/LangSmith</strong> (<a href="https://www.langchain.com/langsmith" target="_blank" rel="noopener">LangSmith</a>), <strong>AgentOps</strong> (<a href="https://agentops.ai/" target="_blank" rel="noopener">AgentOps.ai</a>), and emerging platforms like <strong>Revenium</strong> represent the vanguard of agentic AI financial operations. These platforms understand that managing AI agents requires fundamentally different approaches: real-time cost attribution, autonomous optimization, and agent-to-agent economic protocols.
-                        <br><br><strong>Competitive Advantage:</strong> They're building for a future where AI agents are economic actors, not just cost centers—a vision that traditional FinOps vendors struggle to comprehend.
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">Niche Players: Specialization or Obsolescence</div>
-                    <div class="insight-text">
-                        The convergence creates both opportunity and existential risk for specialized vendors. Those focused on narrow use cases (Kubernetes cost management, GPU optimization) must evolve to support agentic AI workloads or risk market marginalization.
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">Investment and Strategic Implications</div>
-                    <div class="insight-text">
-                        <strong>For Enterprise Buyers:</strong> Adopt a "convergence portfolio" approach—maintain traditional FinOps platforms for existing cloud infrastructure, pilot AI-native cost management for autonomous AI initiatives, and prepare for platform consolidation.
-                        <strong>For Investors:</strong> The convergence creates a $50B+ opportunity in acquisition targets, platform plays, and infrastructure enablers for agent-to-agent economics (<a href="https://www.gartner.com/en/newsroom/press-releases/2023-05-17-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-reach-nearly-600-billion-in-2023" target="_blank" rel="noopener">Gartner Cloud Market Forecast, 2023</a>).
-                    </div>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-title">The Next 24 Months: Convergence Acceleration</div>
-                    <div class="insight-text">
-                        Expect 5-8 major acquisitions as traditional FinOps leaders acquire AI-native capabilities. New category emergence: "Agentic FinOps" will emerge as a distinct market category. Regulatory catalyst: Government guidelines on autonomous AI system financial accountability will accelerate enterprise adoption.
-                        <br><br><strong>The convergence of traditional FinOps and agentic AI represents the most significant transformation in enterprise financial operations since the cloud revolution.</strong>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <h2 class="section-title">Ready to Accelerate Your Growth?</h2>
-            <p class="contact-intro">Let's discuss how we can optimize your technology business for sustainable, profitable growth.</p>
-            <div class="contact-links">
-                <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
-                <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="bio.html">Full Bio</a></p>
-            </div>
-        </section>
+            <section class="magic-quadrant-container">
+                <h2 class="section-title">Strategic Market Positioning in the Convergence Era</h2>
 
-        <!-- Market Intelligence Section -->
-        <section class="market-intelligence" data-analysis-type="finops">
-            <div id="intelligence-loading" style="display: none;">
-                <p>Loading market intelligence...</p>
-            </div>
-            <div id="intelligence-content">
-                <!-- Market intelligence content will be populated by JavaScript -->
-            </div>
-        </section>
+                <div class="chart-with-legend">
+                    <div class="company-legend">
+                        <div class="legend-title">Companies</div>
+                        <div class="legend-search">
+                            <input type="text" id="companySearch" placeholder="Search companies..." class="search-input">
+                        </div>
+                        <div class="legend-companies" id="companyLegend">
+                        </div>
+                    </div>
 
-        <footer class="site-footer" role="contentinfo">
-            <p>&copy; 2025 Bailey H Caldwell | The Great Convergence: FinOps Meets Agentic AI</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
-                <em>This analysis is experimental and may reflect aspirations for the future and/or base assumptions that may be flawed.</em>
-            </p>
-        </footer>
+                    <div class="quadrant-stage">
+                        <div class="quadrant-chart" id="quadrantChart">
+                            <div class="axis-line vertical"></div>
+                            <div class="axis-line horizontal"></div>
+
+                            <div class="quadrant quadrant-experts">
+                                <div class="quadrant-label">Challengers</div>
+                            </div>
+                            <div class="quadrant quadrant-pioneers">
+                                <div class="quadrant-label">Leaders</div>
+                            </div>
+                            <div class="quadrant quadrant-emerging">
+                                <div class="quadrant-label">Niche Players</div>
+                            </div>
+                            <div class="quadrant quadrant-labs">
+                                <div class="quadrant-label">Visionaries</div>
+                            </div>
+
+                            <div class="axis-labels x-axis-label">Ability to Execute →</div>
+                            <div class="axis-labels y-axis-label">Completeness of Vision →</div>
+                        </div>
+
+                        <div id="companyTooltip" class="company-tooltip"></div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-dot pioneers"></div>
+                        <span class="legend-text">Leaders - High vision, high execution</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot experts"></div>
+                        <span class="legend-text">Challengers - Lower vision, high execution</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot labs"></div>
+                        <span class="legend-text">Visionaries - High vision, lower execution</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot emerging"></div>
+                        <span class="legend-text">Niche Players - Lower vision, lower execution</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="market-insights">
+                <h2 class="section-title">Strategic Market Positioning in the Convergence Era</h2>
+                <div class="insight-grid">
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">Leaders: Platform Expansion or Disruption Risk</div>
+                        <div class="insight-text">
+                            <strong>VMware CloudHealth</strong> (<a href="https://www.vmware.com/products/cloudhealth.html" target="_blank" rel="noopener">VMware CloudHealth</a>), <strong>Flexera</strong> (<a href="https://www.flexera.com/flexera-one/cloud-cost-optimization" target="_blank" rel="noopener">Flexera One</a>), <strong>IBM Cloudability</strong> (<a href="https://www.ibm.com/products/cloudability" target="_blank" rel="noopener">IBM Cloudability</a>) face a critical strategic decision: evolve into agentic AI governance platforms or risk being disrupted by AI-native competitors. Their strength—comprehensive cloud financial management—becomes a liability if they can't adapt to autonomous systems that transcend traditional cloud boundaries.
+                            <br><br><strong>Strategic Imperative:</strong> These leaders must acquire AI-native capabilities (likely through M&A) or risk being relegated to "legacy infrastructure monitoring" while the value migrates to agentic AI platforms.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">Challengers: The Integration Advantage</div>
+                        <div class="insight-text">
+                            <strong>Datadog</strong> (<a href="https://www.datadoghq.com/product/cloud-cost-management/" target="_blank" rel="noopener">Datadog Cloud Cost Management</a>), <strong>IBM Turbonomic</strong> (<a href="https://www.ibm.com/products/turbonomic" target="_blank" rel="noopener">IBM Turbonomic</a>), <strong>Spot by NetApp</strong> (<a href="https://spot.io/" target="_blank" rel="noopener">Spot.io</a>) have an opportunity to bridge traditional infrastructure management with agentic AI governance. Their operational excellence in resource management positions them well to extend into AI agent resource orchestration.
+                            <br><br><strong>Strategic Opportunity:</strong> These vendors can leverage their infrastructure expertise to become the "operating system" layer for autonomous AI resource management.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">Visionaries: The AI-Native Revolution</div>
+                        <div class="insight-text">
+                            <strong>Pay-i</strong> (<a href="https://pay-i.ai/" target="_blank" rel="noopener">Pay-i.ai</a>), <strong>LangChain/LangSmith</strong> (<a href="https://www.langchain.com/langsmith" target="_blank" rel="noopener">LangSmith</a>), <strong>AgentOps</strong> (<a href="https://agentops.ai/" target="_blank" rel="noopener">AgentOps.ai</a>), and emerging platforms like <strong>Revenium</strong> represent the vanguard of agentic AI financial operations. These platforms understand that managing AI agents requires fundamentally different approaches: real-time cost attribution, autonomous optimization, and agent-to-agent economic protocols.
+                            <br><br><strong>Competitive Advantage:</strong> They're building for a future where AI agents are economic actors, not just cost centers—a vision that traditional FinOps vendors struggle to comprehend.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">Niche Players: Specialization or Obsolescence</div>
+                        <div class="insight-text">
+                            The convergence creates both opportunity and existential risk for specialized vendors. Those focused on narrow use cases (Kubernetes cost management, GPU optimization) must evolve to support agentic AI workloads or risk market marginalization.
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">Investment and Strategic Implications</div>
+                        <div class="insight-text">
+                            <strong>For Enterprise Buyers:</strong> Adopt a "convergence portfolio" approach—maintain traditional FinOps platforms for existing cloud infrastructure, pilot AI-native cost management for autonomous AI initiatives, and prepare for platform consolidation.
+                            <strong>For Investors:</strong> The convergence creates a $50B+ opportunity in acquisition targets, platform plays, and infrastructure enablers for agent-to-agent economics (<a href="https://www.gartner.com/en/newsroom/press-releases/2023-05-17-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-reach-nearly-600-billion-in-2023" target="_blank" rel="noopener">Gartner Cloud Market Forecast, 2023</a>).
+                        </div>
+                    </div>
+                    <div class="insight-card spot" data-reveal>
+                        <div class="insight-title">The Next 24 Months: Convergence Acceleration</div>
+                        <div class="insight-text">
+                            Expect 5-8 major acquisitions as traditional FinOps leaders acquire AI-native capabilities. New category emergence: "Agentic FinOps" will emerge as a distinct market category. Regulatory catalyst: Government guidelines on autonomous AI system financial accountability will accelerate enterprise adoption.
+                            <br><br><strong>The convergence of traditional FinOps and agentic AI represents the most significant transformation in enterprise financial operations since the cloud revolution.</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-section">
+                <h2 class="section-title">Ready to Accelerate Your Growth?</h2>
+                <p class="contact-intro">Let's discuss how we can optimize your technology business for sustainable, profitable growth.</p>
+                <div class="contact-links">
+                    <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
+                    <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="bio.html">Full Bio</a></p>
+                </div>
+            </section>
+
+            <section class="market-intelligence" data-analysis-type="finops">
+                <div id="intelligence-loading" style="display: none;">
+                    <p>Loading market intelligence...</p>
+                </div>
+                <div id="intelligence-content">
+                </div>
+            </section>
+
+            <p class="intel-disclaimer"><em>This analysis is experimental and may reflect aspirations for the future and/or base assumptions that may be flawed.</em></p>
+        </div>
     </main>
 
-    <!-- Tooltip for company information -->
-    <div id="companyTooltip" class="company-tooltip"></div>
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </footer>
 
-    <script src="script.js"></script>
+    <script src="/base.js" defer></script>
     <script src="universal-market-intelligence.js"></script>
     <script>
-        // Check if user has access
         if (!sessionStorage.getItem('finops-access')) {
             window.location.href = 'login.html';
         }
         
-        // Company data with website URLs
         const companies = [
-            // Leaders (High Vision + High Execution)
             { name: "Flexera", vision: 8.5, execution: 8.5, quadrant: "pioneers", url: "https://www.flexera.com/" },
             { name: "VMware Tanzu CloudHealth", vision: 8, execution: 9, quadrant: "pioneers", url: "https://www.vmware.com/products/cloudhealth.html" },
             { name: "IBM Cloudability / Apptio", vision: 8.5, execution: 8, quadrant: "pioneers", url: "https://www.ibm.com/products/cloudability" },
             { name: "CloudZero", vision: 7.5, execution: 7.5, quadrant: "pioneers", url: "https://www.cloudzero.com/" },
             
-            // Challengers (Lower Vision + High Execution)
             { name: "Spot by NetApp", vision: 4.5, execution: 8.5, quadrant: "experts", url: "https://spot.io/" },
             { name: "IBM Turbonomic", vision: 4, execution: 8, quadrant: "experts", url: "https://www.ibm.com/products/turbonomic" },
             { name: "Datadog", vision: 5, execution: 7.5, quadrant: "experts", url: "https://www.datadoghq.com/" },
@@ -696,7 +309,6 @@
             { name: "Harness", vision: 4.5, execution: 7, quadrant: "experts", url: "https://www.harness.io/" },
             { name: "Finout", vision: 5.5, execution: 7, quadrant: "experts", url: "https://www.finout.io/" },
             
-            // Visionaries (High Vision + Lower Execution)
             { name: "Pay-i", vision: 8.5, execution: 4, quadrant: "labs", url: "https://www.pay-i.com/" },
             { name: "LangSmith (LangChain)", vision: 8, execution: 5, quadrant: "labs", url: "https://www.langchain.com/langsmith" },
             { name: "Anodot (Umbrella)", vision: 7.5, execution: 4.5, quadrant: "labs", url: "https://www.anodot.com/" },
@@ -712,7 +324,6 @@
             { name: "Stitcher AI", vision: 7, execution: 2, quadrant: "labs", url: "https://www.stitcher.ai/" },
             { name: "Attrb", vision: 6.5, execution: 3.5, quadrant: "labs", url: "https://attrb.io/" },
             
-            // Niche Players (Lower Vision + Lower Execution)
             { name: "Helicone", vision: 4, execution: 4, quadrant: "emerging", url: "https://www.helicone.ai/" },
             { name: "nOps", vision: 3.5, execution: 4.5, quadrant: "emerging", url: "https://www.nops.io/" },
             { name: "CloudEagle", vision: 4, execution: 4, quadrant: "emerging", url: "https://www.cloudeagle.ai/" },
@@ -730,7 +341,6 @@
             { name: "Cloud Provider Natives (AWS, Azure, GCP)", vision: 2.5, execution: 5.5, quadrant: "emerging", url: "https://aws.amazon.com/aws-cost-management/" }
         ];
 
-        // Initialize the 4x4 analysis chart
         function initialize4x4Analysis() {
             const chart = document.getElementById('quadrantChart');
             const tooltip = document.getElementById('companyTooltip');
@@ -739,7 +349,6 @@
             
             let allCompanies = [];
             
-            // Search functionality
             searchInput.addEventListener('input', (e) => {
                 const searchTerm = e.target.value.toLowerCase();
                 filterCompanies(searchTerm);
@@ -753,46 +362,36 @@
                 });
             }
             
-            // Create legend items and chart dots
             companies.forEach((company, index) => {
                 const companyNumber = index + 1;
                 
-                // Create legend item
                 const legendItem = document.createElement('div');
                 legendItem.className = 'legend-company';
                 legendItem.innerHTML = `
-                    <div class="legend-number ${company.quadrant}" style="background: ${getQuadrantColor(company.quadrant)};">${companyNumber}</div>
+                    <div class="legend-number ${company.quadrant}">${companyNumber}</div>
                     <div class="legend-company-name">${company.name}</div>
                 `;
                 
-                // Add click event to legend item
                 legendItem.addEventListener('click', () => {
                     window.open(company.url, '_blank', 'noopener,noreferrer');
                 });
                 
                 legendContainer.appendChild(legendItem);
                 
-                // Create chart dot
                 const dot = document.createElement('div');
                 dot.className = `company-dot ${company.quadrant}`;
                 dot.textContent = companyNumber;
                 
-                // Position based on scores (0-10 scale)
-                // Vision (Y-axis): 0 at bottom, 10 at top
-                // Execution (X-axis): 0 at left, 10 at right
                 const x = (company.execution / 10) * 100;
-                const y = 100 - (company.vision / 10) * 100; // Invert Y for proper positioning
+                const y = 100 - (company.vision / 10) * 100;
                 
                 dot.style.left = `${x}%`;
                 dot.style.top = `${y}%`;
-                dot.style.transform = 'translate(-50%, -50%)';
                 
-                // Add click event to open company website
                 dot.addEventListener('click', () => {
                     window.open(company.url, '_blank', 'noopener,noreferrer');
                 });
                 
-                // Add hover events for tooltip
                 dot.addEventListener('mouseenter', (e) => {
                     tooltip.innerHTML = `
                         <strong>${companyNumber}. ${company.name}</strong><br>
@@ -802,8 +401,7 @@
                     `;
                     tooltip.classList.add('visible');
                     
-                    // Highlight corresponding legend item
-                    legendItem.style.background = 'rgba(100, 181, 246, 0.2)';
+                    legendItem.classList.add('is-highlighted');
                 });
                 
                 dot.addEventListener('mousemove', (e) => {
@@ -814,41 +412,23 @@
                 
                 dot.addEventListener('mouseleave', () => {
                     tooltip.classList.remove('visible');
-                    legendItem.style.background = '';
+                    legendItem.classList.remove('is-highlighted');
                 });
                 
-                // Add hover events to legend item
                 legendItem.addEventListener('mouseenter', () => {
-                    dot.style.transform = 'translate(-50%, -50%) scale(1.3)';
-                    dot.style.boxShadow = '0 0 20px rgba(100, 181, 246, 0.6)';
-                    dot.style.zIndex = '10';
+                    dot.classList.add('is-highlighted');
                 });
                 
                 legendItem.addEventListener('mouseleave', () => {
-                    dot.style.transform = 'translate(-50%, -50%) scale(1)';
-                    dot.style.boxShadow = '0 0 10px rgba(100, 181, 246, 0.3)';
-                    dot.style.zIndex = '';
+                    dot.classList.remove('is-highlighted');
                 });
                 
                 chart.appendChild(dot);
                 
-                // Store reference for search functionality
                 allCompanies.push({ legendItem, dot, company });
             });
         }
-        
-        // Helper function to get quadrant colors
-        function getQuadrantColor(quadrant) {
-            switch(quadrant) {
-                case 'pioneers': return 'var(--accent-green)';
-                case 'experts': return '#ffc107';
-                case 'labs': return '#9c27b0';
-                case 'emerging': return '#607d8b';
-                default: return '#607d8b';
-            }
-        }
 
-        // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', initialize4x4Analysis);
     </script>
 </body>

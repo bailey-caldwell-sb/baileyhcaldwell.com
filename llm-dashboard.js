@@ -287,7 +287,42 @@ class LLMDashboard {
         };
     }
 
+    readToken(name) {
+        return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+
+    applyChartTheme() {
+        Chart.defaults.color = this.readToken('--text-3');
+        Chart.defaults.borderColor = this.readToken('--line');
+        Chart.defaults.font.family = this.readToken('--mono');
+        Chart.defaults.font.size = 11;
+        Chart.defaults.plugins.legend.labels.usePointStyle = true;
+        Chart.defaults.plugins.legend.labels.boxWidth = 8;
+        Chart.defaults.plugins.legend.labels.boxHeight = 8;
+        Chart.defaults.plugins.tooltip.backgroundColor = this.readToken('--ink-3');
+        Chart.defaults.plugins.tooltip.borderColor = this.readToken('--line-strong');
+        Chart.defaults.plugins.tooltip.borderWidth = 1;
+        Chart.defaults.plugins.tooltip.titleColor = this.readToken('--text');
+        Chart.defaults.plugins.tooltip.bodyColor = this.readToken('--text-2');
+        Chart.defaults.plugins.tooltip.padding = 12;
+        Chart.defaults.plugins.tooltip.cornerRadius = 10;
+    }
+
+    providerLine(label, color, data) {
+        return {
+            label: label,
+            data: data,
+            borderColor: color,
+            backgroundColor: color,
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.4
+        };
+    }
+
     initializeCharts() {
+        this.applyChartTheme();
         this.initDailySpendChart();
         this.initCostEfficiencyChart();
     }
@@ -305,34 +340,10 @@ class LLMDashboard {
             data: {
                 labels: labels,
                 datasets: [
-                    {
-                        label: 'OpenAI',
-                        data: this.data.dailySpend.map(d => d.openai),
-                        borderColor: '#10a37f',
-                        backgroundColor: 'rgba(16, 163, 127, 0.1)',
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Claude',
-                        data: this.data.dailySpend.map(d => d.claude),
-                        borderColor: '#ff6b35',
-                        backgroundColor: 'rgba(255, 107, 53, 0.1)',
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Grok',
-                        data: this.data.dailySpend.map(d => d.grok),
-                        borderColor: '#1da1f2',
-                        backgroundColor: 'rgba(29, 161, 242, 0.1)',
-                        tension: 0.4
-                    },
-                    {
-                        label: 'Perplexity',
-                        data: this.data.dailySpend.map(d => d.perplexity),
-                        borderColor: '#8b5cf6',
-                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                        tension: 0.4
-                    }
+                    this.providerLine('OpenAI', this.readToken('--provider-openai'), this.data.dailySpend.map(d => d.openai)),
+                    this.providerLine('Claude', this.readToken('--provider-claude'), this.data.dailySpend.map(d => d.claude)),
+                    this.providerLine('Grok', this.readToken('--provider-grok'), this.data.dailySpend.map(d => d.grok)),
+                    this.providerLine('Perplexity', this.readToken('--provider-perplexity'), this.data.dailySpend.map(d => d.perplexity))
                 ]
             },
             options: {
@@ -372,16 +383,16 @@ class LLMDashboard {
                     {
                         label: 'Input Tokens',
                         data: inputCosts,
-                        backgroundColor: '#667eea',
-                        borderColor: '#5a6fd8',
-                        borderWidth: 1
+                        backgroundColor: this.readToken('--token-input'),
+                        borderRadius: 6,
+                        maxBarThickness: 28
                     },
                     {
                         label: 'Output Tokens',
                         data: outputCosts,
-                        backgroundColor: '#ff6b6b',
-                        borderColor: '#ff5252',
-                        borderWidth: 1
+                        backgroundColor: this.readToken('--token-output'),
+                        borderRadius: 6,
+                        maxBarThickness: 28
                     }
                 ]
             },
@@ -426,15 +437,10 @@ class LLMDashboard {
         const trendElement = document.getElementById('spend-trend');
         const trendTextElement = document.getElementById('trend-text');
         
-        if (trendPercentage > 0) {
-            trendElement.textContent = '📈';
-            trendTextElement.textContent = `+${trendPercentage.toFixed(1)}% vs last month`;
-            trendTextElement.style.color = '#e74c3c';
-        } else {
-            trendElement.textContent = '📉';
-            trendTextElement.textContent = `${trendPercentage.toFixed(1)}% vs last month`;
-            trendTextElement.style.color = '#27ae60';
-        }
+        const isRising = trendPercentage > 0;
+        trendElement.textContent = isRising ? '↑' : '↓';
+        trendElement.parentElement.dataset.direction = isRising ? 'up' : 'down';
+        trendTextElement.textContent = `${isRising ? '+' : ''}${trendPercentage.toFixed(1)}% vs last month`;
     }
 
     updateProviderCards() {
@@ -458,14 +464,12 @@ class LLMDashboard {
             
             // Update status indicator
             const statusElement = document.getElementById(`${provider}-status`);
+            statusElement.dataset.status = data.status;
             if (data.status === 'active') {
-                statusElement.style.color = '#27ae60';
                 statusElement.title = 'Live data from .env API keys';
             } else if (data.status === 'no_key') {
-                statusElement.style.color = '#e74c3c';
                 statusElement.title = 'API key not found in .env';
             } else {
-                statusElement.style.color = '#f39c12';
                 statusElement.title = 'Mock data - API key available';
             }
         });
@@ -540,12 +544,9 @@ class LLMDashboard {
         this.data.alerts.forEach(alert => {
             const alertElement = document.createElement('div');
             alertElement.className = `alert-item ${alert.type}`;
-            
-            const icon = alert.type === 'error' ? '🚨' : 
-                        alert.type === 'warning' ? '⚠️' : 'ℹ️';
-            
+
             alertElement.innerHTML = `
-                <span class="alert-icon">${icon}</span>
+                <span class="alert-icon" aria-hidden="true"></span>
                 <span class="alert-text">${alert.message}</span>
             `;
             

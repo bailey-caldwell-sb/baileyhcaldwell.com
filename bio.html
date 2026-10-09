@@ -11,7 +11,6 @@
     <meta name="author" content="Bailey H. Caldwell">
     <meta name="robots" content="index, follow">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://baileyhcaldwell.com/bio.html">
     <meta property="og:title" content="Executive Bio: Bailey H. Caldwell - Technology & SaaS Leadership">
@@ -20,7 +19,6 @@
     <meta property="og:image"
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://baileyhcaldwell.com/bio.html">
     <meta property="twitter:title" content="Executive Bio: Bailey H. Caldwell - Technology & SaaS Leadership">
@@ -28,20 +26,16 @@
         content="Senior technology executive with 30+ years experience building practices, scaling organizations, and delivering transformation across SaaS, cloud, and digital platforms.">
     <meta property="twitter:image"
         content="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-    <!-- Preload critical resources -->
-    <link rel="preload"
-        href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-        as="image">
-
     <title>Executive Bio: Bailey H. Caldwell - Technology & SaaS Leadership</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -52,281 +46,129 @@
         "url": "https://baileyhcaldwell.com/bio.html"
     }
     </script>
-
-    <style>
-        /* Page Layout - Centered Content */
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section Improvements */
-        .hero-section {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-title {
-            margin-bottom: 20px;
-        }
-
-        .bio-section {
-            margin-bottom: 25px;
-            padding: 20px 0;
-        }
-        
-        .bio-section:not(:last-child) {
-            border-bottom: 1px solid var(--glass-border);
-        }
-        
-        .bio-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .bio-paragraph {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        
-        .bio-paragraph:first-of-type {
-            font-size: 1.15rem;
-            color: var(--primary-blue-light);
-            font-weight: 500;
-        }
-        
-        .company-highlight {
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-        
-        .role-highlight {
-            color: var(--accent-green);
-            font-weight: 500;
-        }
-        
-
-        
-        .career-section {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 25px;
-            margin: 20px 0;
-            border: 1px solid var(--glass-border);
-        }
-        
-        .career-title {
-            font-size: 1.3rem;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        /* Mobile optimizations for bio page */
-        @media (max-width: 768px) {
-            .bio-paragraph {
-                font-size: 1.05rem;
-                line-height: 1.7;
-                margin-bottom: 25px;
-                text-align: left;
-            }
-            
-            .bio-paragraph:first-of-type {
-                font-size: 1.15rem;
-                text-align: left;
-            }
-            
-            .career-section {
-                padding: 20px 18px;
-                margin: 18px 0;
-            }
-            
-            .career-title {
-                font-size: 1.2rem;
-                margin-bottom: 18px;
-            }
-            
-            .back-link {
-                padding: 12px 20px;
-                font-size: 1rem;
-                min-height: 44px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .bio-paragraph {
-                font-size: 1rem;
-                line-height: 1.7;
-                margin-bottom: 22px;
-            }
-            
-            .bio-paragraph:first-of-type {
-                font-size: 1.1rem;
-            }
-            
-            .career-section {
-                padding: 18px 16px;
-                margin: 15px 0;
-            }
-            
-            .career-title {
-                font-size: 1.15rem;
-                line-height: 1.3;
-            }
-            
-            .back-link {
-                padding: 14px 22px;
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-            
-            .hero-title {
-                font-size: 1.5rem;
-                line-height: 1.3;
-            }
-            
-            .value-prop-text {
-                font-size: 1rem;
-                padding: 15px;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <!-- Skip to main content link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <!-- Animated star background -->
-    <div class="stars-container" id="stars" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html" aria-current="page">Bio</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
+        </div>
+    </header>
 
-    <!-- Main content -->
-    <main id="main-content" class="main-container" role="main">
-        <header class="site-header">
-            <nav class="main-navigation" role="navigation" aria-label="Main navigation">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="index.html#about" class="nav-link">About</a>
-                <a href="index.html#services" class="nav-link">Services</a>
-                <a href="index.html#analysis" class="nav-link">Analysis</a>
-                <a href="index.html#contact" class="nav-link">Contact</a>
-            </nav>
+    <main id="main-content">
+        <header class="page-hero">
+            <span class="kicker" data-reveal>Executive bio</span>
+            <h1 class="page-title" data-reveal>Bailey <em>Caldwell</em></h1>
+            <p class="page-lede" data-reveal>Senior Technology Executive &middot; 30+ Years Experience &middot; Transformation Leader</p>
         </header>
 
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h1 class="hero-title">Executive Bio: Bailey Caldwell</h1>
-            <div class="value-proposition">
-                <p class="value-prop-text">Senior Technology Executive • 30+ Years Experience • Transformation Leader</p>
+        <div class="page-body">
+            <ol class="chapters">
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">Today</span>
+                        <h2 class="chapter__title">Overview</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Bailey Caldwell is a senior technology executive with more than three decades of experience building practices, scaling organizations, and delivering measurable transformation across SaaS, cloud, and digital platforms. His career spans leadership roles in global consulting, enterprise software, and high-growth digital businesses, giving him a rare combination of consulting rigor, enterprise execution, and consumer internet scale.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">McKinsey &amp; Company</span>
+                        <h2 class="chapter__title">McKinsey &amp; Company Leadership</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>At <strong>McKinsey & Company</strong>, Bailey helped found the <em>Cloud by McKinsey practice</em> and went on to create and lead the firm's <em>Technology Economics and FinOps practice</em>. He built McKinsey's capabilities in technology financial governance, IT economics, and cloud cost optimization—enabling Fortune 1000 clients to bend cost curves, accelerate transformation, and embed financial accountability into technology strategy. His work influenced CxO-level technology adoption and procurement frameworks across industries. Bailey also served as a <em>Governing Board Member of the FinOps Foundation</em> (2021–2023), helping define global standards for technology financial management.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">Flexera &middot; RightScale</span>
+                        <h2 class="chapter__title">Enterprise Software &amp; Cloud Transformation</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Before McKinsey, Bailey held senior executive roles at <strong>Flexera</strong> and <strong>RightScale</strong>, where he scaled global pre-sales, solutions engineering, and customer success organizations. He became known for <em>"accelerating the technical yes,"</em> creating operating models and playbooks that increased win rates and shortened deal cycles. At RightScale, he also built one of the world's most successful cloud partner ecosystems, forging deep alliances with Google, Amazon, Microsoft, and IBM, and enabling global enterprises to adopt and optimize cloud services.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">Paxonix &middot; Realtor.com</span>
+                        <h2 class="chapter__title">SaaS Business Model Innovation</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Earlier in his career, Bailey joined <strong>Paxonix</strong>, where he led one of the earliest <em>SaaS business model transformations</em>. He built product and delivery capabilities for an enterprise SaaS platform that attracted leading CPG clients and fueled revenue growth during a critical stage of adoption.</p>
+                        <p>He then served as an executive at <strong>Realtor.com (Move, Inc.)</strong>, playing a pivotal role in scaling one of the internet's most recognized consumer platforms. His leadership spanned product, technology, and go-to-market execution, combining consumer internet scale with SaaS operating discipline. Under his guidance, Realtor.com advanced its data-driven monetization strategy and solidified its position as a top digital property marketplace.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">QAD Inc.</span>
+                        <h2 class="chapter__title">Enterprise IT Leadership Foundation</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Bailey's executive career began at <strong>QAD Inc.</strong>, a global ERP software company, where he served as <em>Chief Information Officer</em>. In that role, he led enterprise IT strategy, systems modernization, and infrastructure transformation. The experience gave him first-hand perspective on the challenges CIOs face balancing delivery, governance, and cost—a foundation that has strengthened his credibility with client executives throughout his consulting and solutions leadership career.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">Across every role</span>
+                        <h2 class="chapter__title">Technology Innovation</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Across every role, Bailey has been at the forefront of emerging technologies. He has led enterprise programs in <em>Generative AI and custom LLMs</em>, designing architectures, governance frameworks, and adoption strategies. He has also driven advancements in SaaS innovation, quantum technologies, and digital transformation for complex global clients.</p>
+                    </div>
+                </li>
+                <li class="chapter" data-reveal>
+                    <div>
+                        <span class="chapter__label">Next</span>
+                        <h2 class="chapter__title">Leadership Philosophy &amp; Future Vision</h2>
+                    </div>
+                    <div class="chapter__body">
+                        <p>Bailey's career is defined by his ability to bridge technology economics, solutions engineering, and customer success to deliver tangible enterprise value. He thrives at the intersection of strategic vision, commercial growth, and deep technical leadership. He is now seeking <em>full-time or contract</em> senior executive roles—such as <em>EVP, SVP, or VP of Solutions Engineering, Technology Economics, or Customer Success</em>—at a growth-oriented technology or SaaS company, where he can scale teams, expand ecosystems, and deliver measurable business impact.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <section class="contact" aria-labelledby="contact-heading">
+            <span class="kicker" data-reveal>Contact</span>
+            <h2 id="contact-heading" class="contact__title" data-reveal>Connect with <em>Bailey</em></h2>
+            <p class="contact__sub" data-reveal>Ready to discuss technology leadership opportunities or strategic consulting engagements?</p>
+            <a class="contact__email magnetic" href="mailto:bailey@baileyhcaldwell.com" data-reveal>
+                bailey@baileyhcaldwell.com <span aria-hidden="true">&nearr;</span>
+            </a>
+            <div class="contact__links" data-reveal>
+                <a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a>
+                <a href="/">Main site</a>
             </div>
         </section>
-
-        <!-- Bio Content -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <p class="bio-paragraph">
-                    Bailey Caldwell is a senior technology executive with more than three decades of experience building practices, scaling organizations, and delivering measurable transformation across SaaS, cloud, and digital platforms. His career spans leadership roles in global consulting, enterprise software, and high-growth digital businesses, giving him a rare combination of consulting rigor, enterprise execution, and consumer internet scale.
-                </p>
-            </div>
-        </section>
-
-        <!-- McKinsey Experience -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <div class="career-section">
-                    <h3 class="career-title">McKinsey & Company Leadership</h3>
-                    <p class="bio-paragraph">
-                        At <span class="company-highlight">McKinsey & Company</span>, Bailey helped found the <span class="role-highlight">Cloud by McKinsey practice</span> and went on to create and lead the firm's <span class="role-highlight">Technology Economics and FinOps practice</span>. He built McKinsey's capabilities in technology financial governance, IT economics, and cloud cost optimization—enabling Fortune 1000 clients to bend cost curves, accelerate transformation, and embed financial accountability into technology strategy. His work influenced CxO-level technology adoption and procurement frameworks across industries. Bailey also served as a <span class="role-highlight">Governing Board Member of the FinOps Foundation</span> (2021–2023), helping define global standards for technology financial management.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Enterprise Software Leadership -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <div class="career-section">
-                    <h3 class="career-title">Enterprise Software & Cloud Transformation</h3>
-                    <p class="bio-paragraph">
-                        Before McKinsey, Bailey held senior executive roles at <span class="company-highlight">Flexera</span> and <span class="company-highlight">RightScale</span>, where he scaled global pre-sales, solutions engineering, and customer success organizations. He became known for <span class="role-highlight">"accelerating the technical yes,"</span> creating operating models and playbooks that increased win rates and shortened deal cycles. At RightScale, he also built one of the world's most successful cloud partner ecosystems, forging deep alliances with Google, Amazon, Microsoft, and IBM, and enabling global enterprises to adopt and optimize cloud services.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Early SaaS Innovation -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <div class="career-section">
-                    <h3 class="career-title">SaaS Business Model Innovation</h3>
-                    <p class="bio-paragraph">
-                        Earlier in his career, Bailey joined <span class="company-highlight">Paxonix</span>, where he led one of the earliest <span class="role-highlight">SaaS business model transformations</span>. He built product and delivery capabilities for an enterprise SaaS platform that attracted leading CPG clients and fueled revenue growth during a critical stage of adoption.
-                    </p>
-                    
-                    <p class="bio-paragraph">
-                        He then served as an executive at <span class="company-highlight">Realtor.com (Move, Inc.)</span>, playing a pivotal role in scaling one of the internet's most recognized consumer platforms. His leadership spanned product, technology, and go-to-market execution, combining consumer internet scale with SaaS operating discipline. Under his guidance, Realtor.com advanced its data-driven monetization strategy and solidified its position as a top digital property marketplace.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- CIO Foundation -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <div class="career-section">
-                    <h3 class="career-title">Enterprise IT Leadership Foundation</h3>
-                    <p class="bio-paragraph">
-                        Bailey's executive career began at <span class="company-highlight">QAD Inc.</span>, a global ERP software company, where he served as <span class="role-highlight">Chief Information Officer</span>. In that role, he led enterprise IT strategy, systems modernization, and infrastructure transformation. The experience gave him first-hand perspective on the challenges CIOs face balancing delivery, governance, and cost—a foundation that has strengthened his credibility with client executives throughout his consulting and solutions leadership career.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Technology Innovation -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <p class="bio-paragraph">
-                    Across every role, Bailey has been at the forefront of emerging technologies. He has led enterprise programs in <span class="role-highlight">Generative AI and custom LLMs</span>, designing architectures, governance frameworks, and adoption strategies. He has also driven advancements in SaaS innovation, quantum technologies, and digital transformation for complex global clients.
-                </p>
-            </div>
-        </section>
-
-        <!-- Career Summary & Future Focus -->
-        <section class="bio-section">
-            <div class="bio-content">
-                <div class="career-section">
-                    <h3 class="career-title">Leadership Philosophy & Future Vision</h3>
-                    <p class="bio-paragraph">
-                        Bailey's career is defined by his ability to bridge technology economics, solutions engineering, and customer success to deliver tangible enterprise value. He thrives at the intersection of strategic vision, commercial growth, and deep technical leadership. He is now seeking <span class="role-highlight">full-time or contract</span> senior executive roles—such as <span class="role-highlight">EVP, SVP, or VP of Solutions Engineering, Technology Economics, or Customer Success</span>—at a growth-oriented technology or SaaS company, where he can scale teams, expand ecosystems, and deliver measurable business impact.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section aria-labelledby="contact-heading" class="contact-section">
-            <h2 id="contact-heading" class="section-title">Connect with Bailey</h2>
-            <p class="contact-intro">Ready to discuss technology leadership opportunities or strategic consulting engagements?</p>
-            
-            <div class="contact-links">
-                <p><a href="mailto:bailey@baileyhcaldwell.com">bailey@baileyhcaldwell.com</a></p>
-                <p><a href="https://www.linkedin.com/in/baileycaldwell/" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <a href="index.html">Main Site</a></p>
-            </div>
-        </section>
-
-        <footer class="site-footer" role="contentinfo">
-            <p>&copy; 2025 Bailey H Caldwell | Updated August 2025</p>
-        </footer>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </footer>
+
+    <script src="/base.js" defer></script>
 </body>
 
 </html>

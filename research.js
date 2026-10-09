@@ -659,52 +659,11 @@ This research would typically involve:
         notification.className = `notification notification-${type}`;
         notification.innerHTML = `
             <div class="notification-content">
-                <span class="notification-icon">${type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️'}</span>
+                <span class="notification-icon" aria-hidden="true"></span>
                 <span class="notification-message">${message}</span>
-                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                <button type="button" class="notification-close" aria-label="Dismiss" onclick="this.parentElement.parentElement.remove()">×</button>
             </div>
         `;
-
-        // Add styles if not already present
-        if (!document.getElementById('notification-styles')) {
-            const styles = document.createElement('style');
-            styles.id = 'notification-styles';
-            styles.textContent = `
-                .notification {
-                    position: fixed;
-                    top: 20px;
-                    right: 20px;
-                    z-index: 10000;
-                    max-width: 400px;
-                    background: white;
-                    border-radius: 8px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-                    animation: slideInRight 0.3s ease;
-                }
-                .notification-error { border-left: 4px solid #ff6b6b; }
-                .notification-success { border-left: 4px solid #51cf66; }
-                .notification-info { border-left: 4px solid #339af0; }
-                .notification-content {
-                    display: flex;
-                    align-items: center;
-                    padding: 1rem;
-                    gap: 0.75rem;
-                }
-                .notification-message { flex: 1; color: #495057; }
-                .notification-close {
-                    background: none;
-                    border: none;
-                    font-size: 1.2rem;
-                    cursor: pointer;
-                    color: #868e96;
-                }
-                @keyframes slideInRight {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
-            document.head.appendChild(styles);
-        }
 
         document.body.appendChild(notification);
 

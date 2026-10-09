@@ -4,164 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Access Kubernetes-Optimized Linux OS Distributions Analysis - Bailey H. Caldwell Consulting">
-    <meta name="author" content="Bailey H. Caldwell">
     <meta name="robots" content="noindex, nofollow">
     <title>Access Required - Kubernetes-Optimized Linux Analysis</title>
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        .login-container {
-            max-width: 500px;
-            margin: 100px auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .login-title {
-            color: var(--primary-blue-light);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .login-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        .access-form {
-            margin-bottom: 30px;
-        }
-
-        .access-input {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            margin-bottom: 20px;
-            transition: border-color 0.3s ease;
-        }
-
-        .access-input:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-        }
-
-        .access-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .access-button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-purple));
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .access-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(100, 181, 246, 0.3);
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            display: none;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: var(--primary-blue-light);
-        }
-    </style>
+    <meta name="theme-color" content="#08090a">
+    <link rel="icon" type="image/svg+xml" href="/logo-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/page.css">
 </head>
 
 <body>
-    <!-- Animated star background -->
-    <div class="stars-container" id="stars" aria-hidden="true"></div>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grain" aria-hidden="true"></div>
 
-    <div class="login-container">
-        <h1 class="login-title">Access Required</h1>
-        <p class="login-subtitle">Kubernetes-Optimized Linux OS Distributions Analysis</p>
-        
-        <form class="access-form" id="accessForm">
-            <input 
-                type="password" 
-                id="accessCode" 
-                class="access-input" 
-                placeholder="Enter access code"
-                autocomplete="off"
-                required
-            >
-            <button type="submit" class="access-button">Access Analysis</button>
-            <div id="errorMessage" class="error-message">
-                Invalid access code. Please try again.
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="/" aria-label="Bailey H. Caldwell, home">
+            <span class="nav__mark">BHC</span>
+            <span class="nav__name">Bailey H. Caldwell</span>
+        </a>
+        <nav class="nav__links" aria-label="Main navigation">
+            <a href="/#about">About</a>
+            <a href="/#services">Services</a>
+            <a href="/#intel">Intel</a>
+            <a href="/bio.html">Bio</a>
+        </nav>
+        <div class="nav__meta">
+            <span class="nav__clock" aria-label="Local time in Santa Barbara">
+                <span class="pulse" aria-hidden="true"></span>SBA <time id="clock">--:--</time>
+            </span>
+            <a class="btn btn--small" href="/#contact">Let's talk</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="gate">
+        <div class="gate__card spot">
+            <div class="gate__icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+            <span class="kicker">Market intel / Immutable Linux</span>
+            <h1 class="gate__title">Access <em>required</em></h1>
+            <p class="gate__desc">Kubernetes-Optimized Linux OS Distributions Analysis</p>
+
+            <form class="gate__form" id="gateForm" data-storage-key="k8s-linux-access" data-target="k8s-linux-os-analysis.html"
+                data-codes="k8s-linux-2025,immutable-os,secure-fleet,bailey" data-reset-on-load>
+                <label class="visually-hidden" for="accessCode">Access code</label>
+                <input type="password" id="accessCode" class="field" placeholder="Enter access code" autocomplete="off" required>
+                <button type="submit" class="btn btn--primary">Access Analysis <span class="btn__arrow" aria-hidden="true">&rarr;</span></button>
+                <p class="gate__error" id="gateError" role="alert">Invalid access code. Please try again.</p>
+            </form>
+
+            <div class="gate__foot">
+                <a class="back-link" href="/#intel"><span aria-hidden="true">&larr;</span> All market intel</a>
             </div>
-        </form>
-        
-        <a href="index.html" class="back-link">← Back to Home</a>
-    </div>
+        </div>
+    </main>
 
-    <script src="script.js"></script>
-    <script>
-        document.getElementById('accessForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const accessCode = document.getElementById('accessCode').value.toLowerCase().trim();
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Valid access codes for Kubernetes-Optimized Linux analysis
-            const validCodes = [
-                'k8s-linux-2025',
-                'immutable-os',
-                'secure-fleet',
-                'bailey'
-            ];
-            
-            if (validCodes.includes(accessCode)) {
-                // Store access in session
-                sessionStorage.setItem('k8s-linux-access', 'granted');
-                // Redirect to analysis page
-                window.location.href = 'k8s-linux-os-analysis.html';
-            } else {
-                // Show error message
-                errorMessage.style.display = 'block';
-                document.getElementById('accessCode').value = '';
-                
-                // Hide error message after 3 seconds
-                setTimeout(() => {
-                    errorMessage.style.display = 'none';
-                }, 3000);
-            }
-        });
+    <footer class="footer">
+        <span>&copy; <span id="year">2026</span> Bailey H Caldwell Consulting</span>
+        <span>Santa Barbara, CA</span>
+        <span>EIN 41-2376637</span>
+        <a href="/privacy-policy.html">Privacy Policy</a>
+    </footer>
 
-        // Clear any existing access on page load
-        sessionStorage.removeItem('k8s-linux-access');
-    </script>
+    <script src="/base.js" defer></script>
+    <script src="/gate.js" defer></script>
 </body>
 
 </html>
